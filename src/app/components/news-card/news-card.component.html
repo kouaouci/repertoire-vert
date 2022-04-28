@@ -1,0 +1,38 @@
+<ion-card [class]="size" *ngIf="company" class="company"
+  [routerLink]="['/tabs/company-profile/', company.id]">
+  <img 
+    [src]="imgUrl"
+    onerror="this.onerror=null;this.src='../../../assets/imgs/no_product.jpg';"/>
+
+  <ion-card-header>
+    <div class="transparent-background"></div>
+    <ion-card-title class="icon">
+      <ion-icon name="business"></ion-icon>
+    </ion-card-title>
+    <ion-card-title>Entreprise {{ size === 'small'? company.name : '' }}</ion-card-title>
+    <ion-card-title *ngIf="size === 'medium' || size === 'large'">{{ company.name }}</ion-card-title>
+    <ion-card-subtitle>Inscrite le {{ date }}</ion-card-subtitle>
+  </ion-card-header>
+</ion-card>
+
+<ion-card [class]="size" *ngIf="product" class="product"
+  [routerLink]="['/tabs/product-details', product.id]">  
+  <ion-card-content *ngIf="product">
+    <ion-img
+      [src]="imgUrl"
+      (ionError)="handleImageError(img)" #img
+      [alt]="product.name">
+    </ion-img>
+  </ion-card-content>
+
+  <ion-card-header>
+    <ion-card-title class="icon">
+      <ion-icon name="pricetag-outline"></ion-icon>
+    </ion-card-title>
+    <div class="product-name">
+      <ion-card-title>{{ product.name | titlecase}}</ion-card-title>
+      <ion-card-subtitle class="price">{{ product.price + ' ' + product.currency }}</ion-card-subtitle>
+    </div>
+    <ion-card-subtitle>Ajouté le {{ date }}</ion-card-subtitle>
+  </ion-card-header>
+</ion-card>

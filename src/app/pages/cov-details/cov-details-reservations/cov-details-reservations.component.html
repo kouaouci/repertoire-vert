@@ -1,0 +1,89 @@
+<ion-grid class="outer-grid" *ngIf="invitations && friends">
+
+  <!-- Reservation button row -->
+  <ion-row class="reservation-button-row" *ngIf="!isCreator">
+    <ion-col size="12" class="button-col">
+      <ion-button 
+        [color]="reservedAlready? 'light':'gaea-green-grass'"
+        [ngClass]="reservedAlready? 'btn-shadow':''"
+        (click)="handleClick()">
+        {{ reservedAlready? 'Annuler la réservation' : 'Réserver ma place' }}
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <!-- Pending reservations -->
+  <ion-row class="pending-row" *ngIf="isCreator && showPending">
+    <ion-col size="12" class="text-col">
+      <ion-text>{{ 'carpool.reservationRequests' | translate:{number:pendingParticipations?.length} }}</ion-text>
+    </ion-col>
+
+    <ion-col size="12" *ngIf="pendingParticipations?.length > 3">
+      <pagination-controls
+        id="participants-pagination"
+        (pageChange)="pageChanged($event)"
+        previousLabel="Précédent"
+        nextLabel="Prochain"
+        maxSize="3">
+      </pagination-controls>
+    </ion-col>
+
+    <ion-col 
+      class="participant-col"
+      size="12" 
+      *ngFor="let p of pendingParticipations | paginate: config">
+      <app-user-offer-card 
+        type="reservation"
+        [user]="p.participant"
+        [participationId]="p.id"
+        [host]="getHost(p.participant.id)"
+        (acceptEvent)="acceptReservation($event)"
+        (deleteEvent)="deleteReservation($event)">
+      </app-user-offer-card>
+    </ion-col>
+  </ion-row>
+
+
+  <!-- Confirmed reservations -->
+  <ion-row class="confirmed-row">
+    <ion-col size="12" class="text-col">
+      <ion-text>{{ 'carpool.confirmedReservations' | translate:{confirmed:confirmedParticipations?.length,total:nbPlaces} }} :</ion-text>
+    </ion-col>
+    <ion-col 
+      class="participant-col"
+      size="12" 
+      *ngFor="let p of confirmedParticipations">
+      <app-user-offer-card 
+        type="reservation-confirmed"
+        [user]="p.participant"
+        [isFriend]="isFriend(p.participant.id)"
+        [isFavorite]="isFavorite(p.participant.id)"
+        (addFavoriteEvent)="addFavorite($event)"
+        (removeFavoriteEvent)="removeFavorite($event)">
+      </app-user-offer-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<!--<ion-list>
+  <ion-item >
+    <ion-grid>
+      <ion-row>
+        <ion-col size="1">
+          <ion-icon name="ellipse" color="gaea-green-grass"></ion-icon>
+        </ion-col>
+        <ion-col size="11">
+          <ion-label>{{ participant.name }}</ion-label>
+        </ion-col>
+        <ion-col size="12" class="buttons-col">
+          <ion-button color="gaea-green-grass">
+            Accepter
+          </ion-button>
+          <ion-button color="gaea-red">
+            Refuser
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+</ion-list>-->

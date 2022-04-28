@@ -1,0 +1,18 @@
+@import "../../../../../global.scss";
+
+ion-img {
+  height: calc(50px + 3vw);
+}
+
+ion-card {
+  margin: 0;
+  box-shadow: none;
+}
+
+ion-card-subtitle {
+  color: $gaea-gray;
+  text-align: center;
+  text-transform: none;
+  font-size: min(3.5vw, 16px);
+  font-weight: normal;
+}

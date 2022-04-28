@@ -1,0 +1,45 @@
+<!--
+    Generated template for the QrcodePage page.
+
+    See http://ionicframework.com/docs/components/#navigation for more info on
+    Ionic pages and navigation.
+  -->
+  <app-toolbar></app-toolbar>
+
+  <ion-button color="primary"  (click)="scanProduct()">Start Scan</ion-button>
+
+
+  <ion-item *ngIf="productFound">
+    <ion-card-header>
+      <h2>Price: $ {{selectedProduct.price}}</h2>
+    </ion-card-header>
+    <ion-card-content>
+      <ul>
+        <li>{{selectedProduct.plu}}</li>
+        <li>{{selectedProduct.name}}</li>
+        <li>{{selectedProduct.desc}}</li>
+      </ul>
+    </ion-card-content>
+  </ion-item>
+  <ion-content padding>
+    <h3 class="item-divider" style="color: white;">{{name}} ({{brands}}) </h3>
+    <ion-card class="servings">
+      <ion-item >Serving size :    <p align="right">{{serving}}</p>  </ion-item>
+      <ion-item>Serving quantity : <p align="right">{{serving_quantity}}</p> </ion-item>
+    </ion-card>
+    <div class="item item-divider" style="color: white;">Nutrition facts:</div>
+    <ion-card>
+      <ion-item>Sodium (mg)    : <p align="right">{{sodium}}</p>    </ion-item>
+      <ion-item>Potassium (mg) : <p align="right">{{potassium}}</p> </ion-item>
+      <ion-item>Carbs (g)      : <p align="right">{{carbs}}</p>     </ion-item>
+      <ion-item>Fibres (g)      : <p align="right">{{fiber}}</p>     </ion-item>
+      <ion-item>Sucres (g)     : <p align="right">{{sugars}}</p>    </ion-item>
+      <ion-item>Proteines (g)    : <p align="right">{{proteins}}</p>  </ion-item>
+      <ion-item>Vitamine A (%)  : <p align="right">{{vitamina}}</p>  </ion-item>
+      <ion-item>Vitamine B (%)  : <p align="right">{{vitaminc}}</p>  </ion-item>
+      <ion-item>Calcium (%)    : <p align="right">{{calcium}}</p>   </ion-item>
+      <ion-item>Fer (%)       : <p align="right">{{iron}}</p>      </ion-item>
+    </ion-card>
+  </ion-content>
+
+  

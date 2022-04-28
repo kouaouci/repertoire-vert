@@ -1,0 +1,263 @@
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/ionic/ionic.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/ionic/ionic.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@latest/css/ionic.bundle.css" />
+
+
+<body>
+  <div id="main-content">
+    <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+
+          <ion-buttons slot="end">
+            <ion-back-button defaultHref="/identification"></ion-back-button>
+          </ion-buttons>
+            <ion-title>
+              Entreprise
+            </ion-title>
+        </ion-toolbar>
+    </ion-header>
+  </div>
+  
+  <ion-app>
+    <ion-menu slot="start" contentId="main-content">
+      <ion-content>
+        <ion-list>
+          <ion-item>
+            <ion-icon name="grid-outline" slot="start"></ion-icon>
+            <ion-label>Accueil</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="person-outline" slot="start"></ion-icon>
+            <ion-label>Profil</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="search-outline" slot="start"></ion-icon>
+            <ion-label>Recherche</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <ion-content force-overscroll="false"> <!--[scrollEvents]="true"-->  
+      <div class="label">
+        <!-- Inputs with labels -->
+
+        <ion-item>
+          <ion-label position="stacked">Pseudo</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Nom, Prénom du contact*</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Mot de passe</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Confirmer le mot de passe</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Adresse mail</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Confirmer l'adresse mail</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Nom de l'entreprise</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Raison sociale</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Adresse</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Ville</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Code postal</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Canton, département</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Pays</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Téléphone</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Site Web</ion-label>
+          <ion-input>http://</ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Lien Facebook</ion-label>
+          <ion-input>http://</ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Lien Twitter</ion-label>
+          <ion-input>http://</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Lien LinkedIn</ion-label>
+          <ion-input>http://</ion-input>
+        </ion-item>
+
+        <div class="grid-item">
+          <h2>Début de l'activité</h2>
+          <ion-button id="open-modal">Open Datetime Modal</ion-button>
+          <ion-modal trigger="open-modal">
+            <ion-content force-overscroll="false">
+              <ion-datetime></ion-datetime>
+            </ion-content>
+          </ion-modal>
+        </div>
+
+        <ion-item>
+          <ion-label>Début de l'activité</ion-label>
+          <ion-datetime presentation="date" [(ngModel)]="date"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Certification(s)</ion-label>
+            <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Zone d'influence géographique</ion-label>
+          <ion-select [interfaceOptions]="customAlertOptions" interface="alert" multiple="true" placeholder="Select One">
+            <ion-select-option value="bacon">Bacon</ion-select-option>
+            <ion-select-option value="olives">Black Olives</ion-select-option>
+            <ion-select-option value="xcheese">Extra Cheese</ion-select-option>
+            <ion-select-option value="peppers">Green Peppers</ion-select-option>
+            <ion-select-option value="mushrooms">Mushrooms</ion-select-option>
+            <ion-select-option value="onions">Onions</ion-select-option>
+            <ion-select-option value="pepperoni">Pepperoni</ion-select-option>
+            <ion-select-option value="pineapple">Pineapple</ion-select-option>
+            <ion-select-option value="sausage">Sausage</ion-select-option>
+            <ion-select-option value="Spinach">Spinach</ion-select-option>
+          </ion-select>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label>Mon/mes secteur(s) d'activité(s)</ion-label>
+          <ion-select interface="popover" multiple="true" placeholder="Select multiple">
+            <ion-select-option value="nes">NES</ion-select-option>
+            <ion-select-option value="n64">Nintendo64</ion-select-option>
+            <ion-select-option value="ps">PlayStation</ion-select-option>
+            <ion-select-option value="genesis">Sega Genesis</ion-select-option>
+            <ion-select-option value="saturn">Sega Saturn</ion-select-option>
+            <ion-select-option value="snes">SNES</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+
+        <p >&nbsp; Je souhaite être évalué par Gaea21 : (voir tableau ci-dessous)</p>
+        <ion-item>
+          <ion-label>Oui</ion-label>
+          <ion-checkbox color="primary" checked slot="start"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Non</ion-label>
+          <ion-checkbox color="primary" slot="start" ></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Description de votre entreprise</ion-label>
+          <ion-textarea></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Votre vision du Développement Durable : <br>
+            Comment résumeriez-vous votre philosophie <br> d’entreprise au sujet du Développement Durable ?</ion-label>
+          <ion-textarea></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <p>Téléchargez votre logo (jpeg/png)</p>
+          <ion-button color="dark" size="default">Parcourir</ion-button>
+          <ion-button color="light" size="default">Supprimez l'image</ion-button>
+        </ion-item>
+        
+      </div>
+      <!-- Input with placeholder 
+      <ion-input placeholder=" Enter Input">Nom d'utilisateur :</ion-input>
+      <ion-input placeholder=" Enter Input">Nom de l'entreprise :</ion-input>
+      <ion-input placeholder=" Enter Input">Description :</ion-input>
+      
+      Number type input 
+      <ion-input type="number" placeholder=" km">Zone d'influence : </ion-input>
+      <ion-input type="number">Numéro de téléphone : </ion-input>
+      
+      URL Input 
+      <ion-input placeholder=" Enter URL">URL Site Web :</ion-input>
+      <ion-input placeholder=" Enter URL">URL Facebook :</ion-input>
+      <ion-input placeholder=" Enter URL">URL Twitter :</ion-input>
+      <ion-input placeholder=" Enter URL">URL LinkedIn :</ion-input> -->
+
+      <ion-item>
+        <ion-button color="success" shape="rectangular" size="large">Enregistrer</ion-button>
+        <ion-button color="light" shape="rectangular" size="large">Annuler</ion-button>
+      </ion-item>
+      
+      <ion-item>
+        <ion-tabs>
+          <ion-tab-bar slot="bottom">
+            <ion-tab-button tab="menu">
+              <ion-icon name="grid-outline"></ion-icon>
+              <ion-label>Accueil</ion-label>
+            </ion-tab-button>
+            
+            <ion-tab-button tab="profile">
+              <ion-icon name="person-outline"></ion-icon>
+              <ion-label>Profil</ion-label>
+            </ion-tab-button>
+        
+            <ion-tab-button tab="search">
+              <ion-icon name="search-outline"></ion-icon>
+              <ion-label>Recherche</ion-label>
+            </ion-tab-button>
+          </ion-tab-bar>
+        </ion-tabs>
+      </ion-item>
+
+        
+      
+    </ion-content>
+  </ion-app>
+</body>
+
+
+

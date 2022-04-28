@@ -1,0 +1,16 @@
+<ion-button 
+  [color]="loggedIn ? 'white' : color"  
+  [ngClass]="loggedIn ? 'isLogged' : 'notLogged'">
+  <ion-grid>
+    <ion-row class="icon-row ion-align-items-center">
+      <ion-col size="12" class="icon-col">
+        <ion-img [src]="icon"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row class="text-row">
+      <ion-col size="12" class="ion-text-center">
+        <ion-text [translate]="'homepage.' + label"></ion-text> 
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-button>

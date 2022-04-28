@@ -1,0 +1,77 @@
+
+<ion-item>
+  <ion-grid *ngIf="comment">
+    <ion-row>
+      <ion-col class="avatar-col" size="10">
+        <ion-avatar>
+          <img src="../../../../../assets/imgs/avatar.png">
+        </ion-avatar>
+        <ion-label>
+          @{{ creator.username }}
+        </ion-label>
+      </ion-col>
+
+      <!-- Options col -->
+      <ion-col size="2" class="button-col">
+        <ion-button fill="clear" (click)="presentPopover($event)">...</ion-button>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col size="12" class="comment-col">
+        <ion-text>
+          {{ comment.comment }}
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="date-col" size="12">
+        <ion-text>
+          {{ 'forum.publishDate' | translate: {date: date, time: time} }}
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" class="button-col">
+        <ion-button fill="clear" (click)="handleReply()">
+          {{ 'forum.reply' | translate}}
+        </ion-button>
+
+        <div class="like-section">
+          <!-- Dislike button-->
+          <ion-button fill="clear" (click)="handleClick('dislike')" 
+            class="dislike-button">
+            <ion-icon 
+              *ngIf="!disliked"
+              src="../../../../../assets/imgs/thumbs-down.svg">
+            </ion-icon>
+            <ion-icon 
+              *ngIf="disliked"
+              src="../../../../../assets/imgs/thumbs-down-red.svg">
+            </ion-icon>
+          </ion-button>
+
+          <!-- Comment score -->
+          <ion-text class="score">
+            {{ nbLikes - nbDislikes }}
+          </ion-text>
+
+          <!-- Like button -->
+          <ion-button fill="clear" (click)="handleClick('like')" 
+            class="like-button">
+            <ion-icon 
+              *ngIf="!liked"
+              src="../../../../../assets/imgs/thumbs-up.svg">
+            </ion-icon>
+            <ion-icon 
+              *ngIf="liked"
+              src="../../../../../assets/imgs/thumbs-up-green.svg">
+            </ion-icon>
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-item>

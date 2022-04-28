@@ -1,0 +1,27 @@
+<!--<ion-card>
+  <ion-card-header class="ion-text-center">
+    Balance CO2
+  </ion-card-header>
+  <ion-card-content>
+    <canvas #barCanvas style="position: relative; height:20vh; width:40vw"></canvas>
+  </ion-card-content>
+</ion-card>-->
+
+<ng-container *ngIf="loaded">
+  <div id="chart">
+    <apx-chart
+      [series]="_series"
+      [chart]="chartOptions.chart"
+      [dataLabels]="chartOptions.dataLabels"
+      [plotOptions]="chartOptions.plotOptions"
+      [yaxis]="chartOptions.yaxis"
+      [fill]="chartOptions.fill"
+      [stroke]="chartOptions.stroke"
+      [tooltip]="chartOptions.tooltip"
+      [xaxis]="_xaxis"
+      [legend]="chartOptions.legend"
+    ></apx-chart>
+  </div>
+</ng-container>
+
+

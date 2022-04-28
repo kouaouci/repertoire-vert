@@ -1,0 +1,89 @@
+@import "../../../../global.scss";
+
+ion-row {
+  margin-bottom: 15px;
+}
+
+ion-label,
+ion-text,
+ion-button {
+  font-size: min(3.5vw, 18px);
+}
+
+ion-label {
+  font-weight: bold;
+}
+
+.modify-btn-col {
+  ion-button {
+    box-shadow: lightgrey 1px 1px 5px 3px;
+    border-radius: 10px;
+  }
+}
+
+.info-col {
+  ion-label {
+    padding-bottom: 5px;
+  }
+}
+
+.recommendation-container {
+  background-color: $gaea-green-grass;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-around;
+  padding: 3px 5vw;
+}
+
+.separation-line {
+  border-top: 1px solid lightgray;
+  width: 90%;
+  margin-right: 0;
+}
+
+.contact-row {
+  ion-col {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+  }
+
+  ion-icon {
+    font-size: 20px;
+  }
+
+  .phone-col, .email-col {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.social-col {
+  text-align: end;
+  ion-icon {
+    margin-left: 5px;
+  }
+}
+
+.categories-row {
+  justify-content: center;
+  
+  ion-col {
+    text-align: center;
+    padding-top: 0;
+  }
+  ion-text {
+    font-size: min(2.5vw, 12px);
+    color: $gaea-gray;
+  }
+}
+
+.map-row {
+  ion-col {
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+  }
+}

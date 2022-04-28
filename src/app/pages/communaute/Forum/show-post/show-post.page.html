@@ -1,0 +1,66 @@
+<app-toolbar-with-back title="forum.postTitle"> </app-toolbar-with-back>
+
+<ion-content force-overscroll="false" #content>
+  <ion-grid *ngIf="post">
+    <!-- Post creator row -->
+    <ion-row>
+      <!-- Avatar col -->
+      <ion-col size="2">
+        <ion-avatar>
+          <img src="../../../../../assets/imgs/avatar.png" />
+        </ion-avatar>
+      </ion-col>
+
+      <!-- info col -->
+      <ion-col size="8">
+        <ion-row>
+          <ion-col size="12">
+            <ion-label>@{{ post.creator.username }}</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-text class="date-text">
+              {{ 'forum.publishDate' | translate: {date: date, time: time} }}
+            </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+      <!-- Options col -->
+      <ion-col size="2" class="button-col">
+        <ion-button fill="clear" (click)="presentPopover($event)">...</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!-- Post title row -->
+    <ion-row class="title-row">
+      <ion-col size="12">
+        <ion-label>{{ post?.title }}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <!-- Post comments row -->
+    <ion-row class="comments-row">
+      <ion-col size="12" class="ion-text-center no-comments-col">
+        <ion-text *ngIf="post.comments?.length === 0">
+          {{ 'forum.noComments' | translate }}
+        </ion-text>
+      </ion-col>
+
+      <ion-list *ngIf="post.comments?.length > 0">
+        <app-post-comment *ngFor="let comment of post.comments" [comment]="comment"
+          (replyEvent)="replyComment($event)"
+          (deleteEvent)="deleteComment($event)">
+        </app-post-comment>
+      </ion-list>
+
+      <ion-col size="12" class="comment-form-col">
+        <ion-text *ngIf="replyText!==''">{{ replyText }}</ion-text>
+        <app-comment-form 
+          [postId]="post?.id"
+          [commentForm]="commentForm"
+          (newCommentEvent)="addComment($event)">
+        </app-comment-form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

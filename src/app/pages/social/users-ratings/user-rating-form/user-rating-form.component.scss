@@ -1,0 +1,12 @@
+.title-col {
+  ion-label {
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+ion-textarea {
+  border: 1px solid lightgray;
+  padding: 9px;
+  font-size: min(3.5vw, 18px);
+}

@@ -1,0 +1,58 @@
+<!--
+    Generated template for the CategoryPage page.
+
+    See http://ionicframework.com/docs/components/#navigation for more info on
+    Ionic pages and navigation.
+  -->
+  <ion-header>
+
+    <ion-title>Pricing des produits</ion-title>
+
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-searchbar placeholder="Cherchez votre produit" [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
+  
+  <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="brand_select">Par région:</label>
+        <ion-select
+          class="form-control"
+          name=""
+          id="brand_select"
+          [(ngModel)]="selectedBrand"
+        >
+          <ion-select-option *ngFor="let region of regions" [value]="region">{{
+            region
+          }}</ion-select-option>
+        </ion-select>
+      </div>
+    </div>
+  </div>
+
+  <ion-grid >
+    <ion-row >
+      <ion-col *ngFor="let pro of products | filter:filterTerm ; let i = index; " size="6"  routerDirection="forward" >
+        <ion-card>
+          <ion-card-subtitle>
+  <p>{{products[i].name}}</p>
+</ion-card-subtitle>
+<ion-card-content>
+  <img src="{{products[i].image}}">
+  <p>Region: {{products[i].company.region}}</p>
+  <p>Entreprise: {{products[i].company.name}}</p>
+
+  <ion-icon slot="start" color="danger" name="heart"></ion-icon>
+</ion-card-content>
+</ion-card>
+      </ion-col>
+     
+   
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+

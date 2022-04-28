@@ -1,0 +1,133 @@
+<ion-grid>
+  <ion-row>
+    <ion-col size="2">
+      <ion-avatar>
+        <img src="../../../assets/imgs/avatar.png" />
+      </ion-avatar>
+    </ion-col>
+    <ion-col [size]="type==='offer'? 10 : 6">
+      <!-- User info -->
+      <ion-row class="name-row">
+        <ion-col size="12">
+          <ion-text class="username">{{ username }}</ion-text>
+        </ion-col>
+        <ion-col size="12">
+          <div *ngFor="let star of stars" class="star">
+            <ion-icon
+              src="../../../assets/icon/star.svg"
+              *ngIf="star === 'full'"
+              color="gaea-yellow-light"
+            >
+            </ion-icon>
+            <ion-icon
+              src="../../../assets/icon/half_star.svg"
+              *ngIf="star === 'half'"
+              color="gaea-yellow-light"
+            >
+            </ion-icon>
+            <ion-icon
+              src="../../../assets/icon/star_empty.svg"
+              *ngIf="star === 'none'"
+              color="gaea-gray-deep"
+            >
+            </ion-icon>
+          </div>
+          <ion-text class="avis">5 avis</ion-text>
+        </ion-col>
+
+        <ion-col size="12" *ngIf="host">
+          <ion-text>
+            {{ 'invitedBy' | translate }} {{ host.firstname + ' ' + host.lastname }}
+          </ion-text>
+        </ion-col>
+      </ion-row>
+
+      <!-- Covoiturage info -->
+      <ion-row *ngIf="type === 'offer'" class="covoiturage-row">
+        <ion-col size="12">
+          <ion-label>{{ 'carpool.dateTimeDeparture' | translate }} : </ion-label>
+          <ion-text>{{ depDate + ' à ' + depTime }}</ion-text>
+        </ion-col>
+        <ion-col size="12">
+          <ion-label>{{ 'carpool.dateTimeArrival' | translate }} : </ion-label>
+          <ion-text>{{ arrDate + ' à ' + arrTime }}</ion-text>
+        </ion-col>
+        <ion-col size="12">
+          <ion-label>{{ 'carpool.departure' | translate }} : </ion-label>
+          <ion-text>{{ covoiturage.departure }}</ion-text>
+        </ion-col>
+        <ion-col size="12">
+          <ion-label>{{ 'carpool.destination' | translate }} : </ion-label>
+          <ion-text>{{ covoiturage.destination }}</ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+
+    <!-- Pending reservation -->
+    <ion-col
+      size="4"
+      class="buttons-col reservation"
+      *ngIf="type === 'reservation'">
+      <!-- Accept reservation -->
+      <ion-button color="gaea-green-grass" (click)="handleAccept()">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </ion-button>
+      <!-- Delete reservation -->
+      <ion-button color="gaea-red" (click)="handleDelete()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+
+    <!-- Confirmed reservation -->
+    <ion-col
+      size="4"
+      class="buttons-col reservation"
+      *ngIf="type === 'reservation-confirmed' && !isFriend">
+      <!-- Add to favorites -->
+      <ion-button color="light" (click)="handleFavorite()">
+        <ion-icon name="star" 
+          [color]="isFavorite? 'gaea-yellow-light' : 'gaea-gray-deep'">
+        </ion-icon>
+      </ion-button>
+    </ion-col>
+
+    <!-- Friend or favorite invitation -->
+    <ion-col
+      size="4"
+      class="buttons-col invite"
+      *ngIf="type === 'friend-invite' && participating === 'no'">
+      <ion-button
+        class="btn-invitation"
+        [color]="invited? 'light' : 'gaea-green-grass'"
+        [disabled]="invited? true : false"
+        (click)="handleInvite()"
+        [translate]="invited? 'invited' : 'invite'">
+      </ion-button>
+    </ion-col>
+
+    <!-- Friend or favorite who is already participating -->
+    <ion-col
+      size="4"
+      class="buttons-col invite"
+      *ngIf="type === 'friend-invite' && participating !== 'no'">
+      <ion-button
+        class="btn-invitation"
+        color="light"
+        disabled=true
+        [translate]="participating === 'confirmed'? 'confirmed' : 'pending'">
+      </ion-button>
+    </ion-col>
+
+    <!-- Sent friend or favorite invitation -->
+    <ion-col
+      size="4"
+      class="buttons-col invite"
+      *ngIf="type === 'invitation'">
+      <!-- Cancel invitation -->
+      <ion-button color="light" class="btn-invitation"
+        (click)="handleCancelInvite()">
+        {{ 'cancel' | translate }}
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

@@ -1,0 +1,56 @@
+<app-toolbar-with-back title="userStats.title"></app-toolbar-with-back>
+
+<ion-content [forceOverscroll]="false">
+  <ion-grid class="content-grid">
+
+    <!-- CO2 -->
+    <ion-row>
+      <ion-col size="12" class="ion-text-center label-col">
+        <ion-label [translate]="'userStats.co2Balance'"></ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <app-co2-balance [activities]="activities"></app-co2-balance>
+      </ion-col>
+    </ion-row>
+
+    <!-- Activities -->
+    <ion-row>
+      <ion-col size="12" class="ion-text-center label-col">
+        <ion-label [translate]="'userStats.latestActivities'"></ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <app-activities [activities]="activities"></app-activities>
+      </ion-col>
+    </ion-row>
+
+    <!-- Orders -->
+    <ion-row>
+      <ion-col size="12" class="ion-text-center label-col">
+        <ion-label [translate]="'userStats.latestPurchases'"></ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <app-products [carts]="carts"></app-products>
+      </ion-col>
+    </ion-row>
+
+    <!-- Conseil vert -->
+    <ion-row>
+      <ion-col size="12" class="ion-text-center label-col">
+        <ion-label [translate]="'userStats.greenCoaching'"></ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <app-conseil-vert></app-conseil-vert>
+      </ion-col>
+    </ion-row>
+
+    <!-- Promo codes -->
+    <ion-row>
+      <ion-col size="12" class="ion-text-center label-col">
+        <ion-label [translate]="'userStats.promoCodes'"></ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <app-promo-codes></app-promo-codes>
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
+</ion-content>

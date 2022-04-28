@@ -1,0 +1,31 @@
+@import '../../../global.scss';
+
+ion-content::part(scroll) {
+  background-color: $gaea-green-light;
+  display: flex;
+  flex-direction: column;
+  padding: 8vw 5vw 0 5vw;
+}
+
+ion-grid {
+  flex: 1;
+  width: 100%;
+  background-color: white;
+  padding: 40px 16px 16px 16px;
+}
+
+.company-row {
+  margin-bottom: 20px;
+}
+
+.label-col {
+  padding-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: min(4vw, 20px);
+  
+  ion-label {
+    color: $gaea-green-grass;
+  }
+}

@@ -1,0 +1,21 @@
+<ion-grid *ngIf="review">
+  <ion-row>
+    <ion-col size="12" class="user-col">
+      <ion-label>
+        {{ owner.firstname + ' ' + owner.lastname }}
+      </ion-label>
+      <ion-avatar>
+        <img src="../../../../../assets/imgs/avatar.png">
+      </ion-avatar>
+    </ion-col>
+    <ion-col size="12" class="rating-col">
+      <app-review-stars [stars]="review.value"></app-review-stars>
+    </ion-col>
+    <ion-col size="12" class="comment-col" *ngIf="review.comment !== ''">
+      <ion-text>{{ review.comment }}</ion-text>
+    </ion-col>
+    <ion-col size="12" class="date-col">
+      <ion-text>{{ date + ' à ' + time}}</ion-text>
+    </ion-col>
+  </ion-row>
+</ion-grid>

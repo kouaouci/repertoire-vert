@@ -1,0 +1,283 @@
+@import '../../../global.scss';
+
+ion-content {
+  --background: #F6F8F2;
+}
+
+.map {
+  z-index: -1;
+}
+
+.content-grid{
+  position: absolute;
+  bottom: 0;
+  top: 33%;
+  width: 100%;
+  background-color: $gaea-green-light;
+  z-index: 1;
+  border-radius: 14px;
+  padding: 0;
+  display: flex;
+  flex-flow: column;
+}
+
+ion-segment, ion-segment-button {
+  background-color: transparent;
+}
+
+ion-segment-button {
+  --indicator-color: none;
+  --indicator-box-shadow: none;
+  --color-checked: #618226;
+}
+
+ion-slides {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+ion-slide {
+  align-items: flex-start;
+}
+
+app-cov-details-travel,
+app-cov-details-invites, 
+app-cov-details-invites-creator {
+  width: 100%;
+  height: 100%;
+}
+
+
+super-tabs {
+
+  super-tabs-toolbar {
+    padding: 0;
+    border-radius: 8px;
+    background-color: transparent;
+    --st-indicator-color: transparent;
+
+    super-tab-button {
+      font-size: min(3vw, 14px);
+      justify-content: center;
+      transition: all 200ms;
+      height: 30px;
+
+      &.active {
+        color:$gaea-green-grass;
+        border-radius: 1em;
+      }
+    }
+
+    .button-not-last {
+      border-right: 1px solid $tab-border-color;
+      border-width: thin;
+      position: absolute;
+      width: 100%;
+      top: 20%;
+      bottom: 20%;
+    }
+  }
+
+  super-tabs-container, super-tab {
+    width: 100%;
+  }
+}
+
+
+/*.welcome-card ion-img {
+    max-height: 35vh;
+    overflow: hidden;
+}
+.fixed {
+    position: fixed;
+}
+
+.textBold {
+    font-weight: bold;
+}
+.dFlex {
+    display: flex;
+}
+
+.borderBottom {
+    border-bottom: 1px solid #e8e4e4;
+}
+.textColor {
+    color: #000;
+}
+
+agm-map {
+    height: calc(100vh - 64px);
+}
+
+agm-map {
+    .gm-svpc {
+        display: none;
+    }
+}
+.gmnoprint {
+    display: none !important;
+}
+.nightModeIcon {
+    border: 3px dotted #000;
+    padding: 3px;
+}
+.driverlocationIcon {
+    top: 100px;
+
+    .locationIcon {
+        font-size: 26px;
+    }
+    ion-fab-button {
+        --background: #fff;
+        --color: #000;
+        height: 40px;
+        width: 40px;
+    }
+}
+
+.driverCard {
+   
+    width: 90%;
+
+    background: #F6F8F2;
+   
+    overflow: scroll;
+
+}
+.cardContent {
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 6px;
+  
+
+    .driverDetails {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .driverStatusIcons {
+        font-size: 26px;
+        color: darkolivegreen;
+    }
+    .detailText {
+        color: darkolivegreen;
+        font-size: 10px;
+    }
+    .detailsLabel {
+        font-size: 18px;
+    }
+}
+
+.userlocationIcon {
+    bottom: 300px;
+
+    ion-fab-button {
+        --background: #fff;
+        --color: #000;
+        height: 40px;
+        width: 40px;
+    }
+}
+
+
+.userCard {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background: #fff;
+    border-radius: 11px;
+    padding-bottom: 5%;
+    margin: 10px;
+    animation: mymove 2s;
+
+    .userCardHeader {
+        box-shadow: 2px 2px 2px #e8e4e4;
+    }
+
+    .userDetails {
+        background: #ffd524;
+        border-radius: 90px;
+        display: flex;
+        height: 21px;
+        padding-left: 12px;
+        padding-right: 14px;
+        padding-top: 3px;
+        padding-bottom: 0;
+    }
+    .userIcon {
+        // width: 40px;
+        // height: 40px;
+        margin: 2%;
+        margin-left: 9%;
+        border: 1px solid #b9b1b1;
+    }
+    .userCardFooter {
+        float: right;
+    }
+
+    .paddingVertical {
+        padding: 10px 0px;
+    }
+}
+
+.sc-ion-modal-md-h {
+    margin-top: 13%;
+}
+
+.card-Chip {
+    font-size: 11px;
+    --border-radius: 18px;
+    height: 1.8em;
+}
+.requestAll {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.userCard-conetnt {
+    padding-bottom: 0;
+    padding-top: 10px;
+}
+
+@-webkit-keyframes mymove {
+    from {
+        bottom: -200px;
+    }
+    to {
+        bottom: 20px;
+    }
+}
+
+@keyframes mymove {
+    from {
+        bottom: -200px;
+    }
+    to {
+        bottom: 20px;
+    }
+}
+
+ion-fab-button[data-desc] {
+    position: relative;
+  }
+  
+  ion-fab-button[data-desc]::after {
+    position: absolute;
+    content: attr(data-desc);
+    z-index: 1;
+    right: 55px;
+    bottom: 4px;
+    background-color: var(--ion-color-light);
+    padding: 9px;
+    border-radius: 15px;
+    color: black;
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12);
+  }
+
+  .invite {
+    background: white;
+  }*/

@@ -1,0 +1,151 @@
+<app-toolbar-with-back title="subcategory" backUrl="tabs/category">
+</app-toolbar-with-back>
+
+<ion-content forceOverscroll="false">
+  <ion-grid *ngIf="subcategory" class="content-grid">
+
+    <!-- Image row -->
+    <ion-row>
+      <ion-col size="12" class="subcategory-img">
+        <ion-img [src]="imgUrl" [alt]="subcategory.name"></ion-img>
+      </ion-col>
+    </ion-row>
+
+    <!-- Subcategory name row -->
+    <ion-row class="subcategory-name-row">
+      <ion-col size="12" class="ion-text-center">
+        <ion-text>{{ subcategory.name }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <!-- Filter & search -->
+    <ion-row class="filter-row" *ngIf="companiesN0.length > 0 || 
+      companiesN1.length > 0 || companiesN2.length > 0 || 
+      companiesN3.length > 0">
+
+      <!-- Alphabetical and proximity filter -->
+      <ion-col size="12" class="ion-text-center" class="proximity-col">
+        <ion-text>{{ 'sort' | translate }}: </ion-text>
+        <ion-radio-group [(ngModel)]="orderFilter" (ngModelChange)="handleChange($event)">
+          <ion-radio value="alphabetical"></ion-radio>
+          <ion-label translate="alphabetical"></ion-label>
+          <ion-radio value="proximity"></ion-radio>
+          <ion-label translate="proximity"></ion-label>
+        </ion-radio-group>
+      </ion-col>
+
+      <!-- Search toggle -->
+      <ion-col size="12" class="ion-text-center search-toggle-col">
+        <ion-button 
+          color="light"
+          [translate]="showSearch? 'subcategoriesPage.hideSearch': 'subcategoriesPage.showSearch'"
+          (click)="showSearch = !showSearch">
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!-- Search row -->
+    <ion-row class="search-row" *ngIf="showSearch">
+      <ion-col size="12">
+        <ion-text [translate]="'city'"></ion-text>
+      </ion-col>
+      <ion-col size="12" class="input-col">
+        <ion-input class="city-input" [(ngModel)]="cityInput"></ion-input>
+      </ion-col>
+      <ion-col size="12">
+        <ion-text>{{ 'product' |translate }} / {{ 'service' |translate }}</ion-text>
+      </ion-col>
+      <ion-col size="12" class="input-col">
+        <ion-input class="product-input" [(ngModel)]="productInput">
+          <ion-icon name="search-outline" color="gaea-yellow-deep"></ion-icon>
+        </ion-input>
+      </ion-col>
+      <ion-col size="12" class="btn-submit ion-text-center">
+        <ion-button color="dark" (click)="filterCompanies()">{{ 'submit' |translate }}</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!-- No companies row -->
+    <ion-row class="results-row" *ngIf="companiesN0.length === 0 && 
+      companiesN1.length === 0 && companiesN2.length === 0 && 
+      companiesN3.length === 0">
+      <ion-col size="12" class="ion-text-center">
+        <ion-text translate="subcategoriesPage.noCompanies"></ion-text>
+      </ion-col>
+    </ion-row>
+
+    <!-- Review labels row -->
+    <!--<ion-row *ngIf="companies.length > 0">
+      <ion-col size="12" class="review-label-col">
+        <div class="review-label-div">
+          <ion-text>Avis consommateur</ion-text>
+          <ion-icon name="star" color="gaea-green-grass"></ion-icon>
+        </div>
+        <div class="review-label-div">
+          <ion-text>Avis entreprise</ion-text>
+          <ion-icon name="star" color="gaea-yellow-deep"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>-->
+
+    <!-- Companies row -->
+    <ion-row class="companies-row" *ngIf="companiesN0.length > 0 || 
+      companiesN1.length > 0 || companiesN2.length > 0 || 
+      companiesN3.length > 0">
+      <ion-col size="12">
+        <ion-list>
+          <ion-item class="company-labels">
+            <ion-col size="6">
+              <ion-label translate="companyName"></ion-label>
+            </ion-col>
+            <ion-col size="4">
+              <ion-label translate="city"></ion-label>
+            </ion-col>
+            <ion-col size="2">
+              <ion-label translate="level"></ion-label>
+            </ion-col>
+          </ion-item>
+          <ng-container *ngFor="let c of companiesN3" class="company-card">
+            <ion-item *ngIf="showCompany(c)">
+              <app-subcategory-company [company]="c">
+              </app-subcategory-company>
+            </ion-item>
+          </ng-container>
+          <ng-container *ngFor="let c of companiesN2" class="company-card">
+            <ion-item *ngIf="showCompany(c)">
+              <app-subcategory-company [company]="c">
+              </app-subcategory-company>
+            </ion-item>
+          </ng-container>
+          <ng-container *ngFor="let c of companiesN1" class="company-card">
+            <ion-item *ngIf="showCompany(c)">
+              <app-subcategory-company [company]="c">
+              </app-subcategory-company>
+            </ion-item>
+          </ng-container>
+          <ng-container *ngFor="let c of companiesN0" class="company-card">
+            <ion-item *ngIf="showCompany(c)">
+              <app-subcategory-company [company]="c">
+              </app-subcategory-company>
+            </ion-item>
+          </ng-container>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <!--<div *ngFor="let item of category; let i = index">
+      <ion-row *ngIf="category">
+        <div>
+          <img src="../../assets/imgs/cat/{{item.slug}}.jpg" />
+          <h3>{{item.name}}</h3>
+        </div>
+      </ion-row>
+      <ion-row style="padding-top: 25px">
+        <ion-col *ngFor="let subs of item.subcategories; let index i">
+          <img src="../../assets/imgs/subcat/{{item.slug}}/{{subs.slug}}.jpg" />
+          <p>{{subs.name}}</p>
+        </ion-col>
+      </ion-row>
+    </div>-->
+  </ion-grid>
+</ion-content>

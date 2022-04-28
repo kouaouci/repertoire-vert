@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Vos demandes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-down-outline"></ion-refresher-content>
+  </ion-refresher>
+  <ion-list lines="none">
+    <ion-list-header lines="none">
+      <ion-label>
+       Mes demandes de devis
+        <small>
+          <ion-text color="medium">{{numberOfQuotes}}</ion-text>
+        </small>
+      </ion-label>
+    </ion-list-header>
+
+    <ion-button fill="clear" color="medium" style="height: 32px;">
+      Filtrer par date
+      <ion-icon name="swap-vertical-outline" size="small" style="margin-left: 8px;"></ion-icon>
+    </ion-button>
+<div *ngFor="let quote of quotes"  >
+
+
+    <ion-card  [routerLink]="['/quote-detailsuser', quote.id]" routerDirection="forward"  button detail="false"  color="light" >
+   
+        <ion-card-content>Entreprise : {{quote.company.firstname}}  {{quote.company.lastname}}
+
+          <p>Demande : {{quote.service.description}}</p>
+          <p>Question devis : {{quote.devis}}</p>
+          <p>Date de la demande : {{quote.date.date| date}}</p>
+        </ion-card-content>
+      
+
+
+  
+    </ion-card>
+  
+  </div>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,23 @@
+<app-toolbar title="orders.title"></app-toolbar>
+
+<ion-content forceOverscroll="false">
+  <ion-grid class="content-grid">
+
+    <!-- If no orders from user yet -->
+    <ion-row *ngIf="orders.length === 0">
+      <ion-col size="12" class="ion-text-center">
+        <ion-text>{{ 'orders.noOrders' | translate }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <!-- if user has orders -->
+    <ion-row class="orders-row" *ngIf="orders.length > 0">
+      <ion-col size="12">
+        <app-order 
+          *ngFor="let order of orders"
+          [order]="order">
+        </app-order>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

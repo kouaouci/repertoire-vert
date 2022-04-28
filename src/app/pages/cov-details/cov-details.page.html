@@ -1,0 +1,68 @@
+
+<app-toolbar-with-back *ngIf="backUrl" title="carpool.title" [backUrl]="backUrl">
+</app-toolbar-with-back>
+<app-toolbar-with-back *ngIf="!backUrl" title="carpool.title">
+</app-toolbar-with-back>
+
+<!-- Informations -->
+<ion-content forceOverscroll="false">
+  <div [id]="mapId" class="map" style="width: 100%; height: 35%"></div>
+
+  <!-- Information -->
+  <ion-grid class="content-grid" *ngIf="covoiturage">
+
+    <!-- Profil contenu par Tab -->
+    <super-tabs [config]="{ nativeSmoothScroll: false }">
+      <super-tabs-toolbar 
+        [scrollablePadding]="true" 
+        [showIndicator]="true" 
+        no-border>
+        <super-tab-button>
+          {{ 'informations' | translate }}
+          <div class="button-not-last"></div>
+        </super-tab-button>
+        <super-tab-button>
+          {{ 'reservations' | translate }}
+          <div class="button-not-last"></div>
+        </super-tab-button>
+        <super-tab-button>
+          {{ 'invitations' | translate }}
+        </super-tab-button>
+      </super-tabs-toolbar>
+
+      <super-tabs-container autoScrollTop>
+        <super-tab>
+          <app-cov-details-travel 
+            [covoiturage]="covoiturage"
+            [creator]="creator"
+            [favorite]="isFavorite()"
+            (addFavoriteEvent)="addFavorite()"
+            (removeFavoriteEvent)="removeFavorite()"
+          ></app-cov-details-travel>
+          <!--<ion-nav [root]="TravelDetails"></ion-nav>-->
+        </super-tab>
+        <super-tab>
+          <app-cov-details-reservations
+            [covoiturageId]="covoiturage?.id"
+            [nbPlaces]="covoiturage?.groupmaxsize"
+            [isCreator]="isCreator"
+            [friends]="friends"
+            [favorites]="favorites"
+            [participations]="covoiturage?.participations"
+            [invitations]="covoiturage?.invitations">
+          </app-cov-details-reservations>
+        </super-tab>
+        <super-tab>
+          <app-cov-details-invites 
+            [creatorId]="creator?.id"
+            [covoiturageId]="covoiturage?.id"
+            [participations]="covoiturage?.participations"
+            [invitations]="invitations"
+            [friends]="friends"
+            [favorites]="favorites">
+          </app-cov-details-invites>
+        </super-tab>
+      </super-tabs-container>
+    </super-tabs>
+  </ion-grid>
+</ion-content>

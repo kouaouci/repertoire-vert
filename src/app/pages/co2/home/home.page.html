@@ -1,0 +1,166 @@
+<app-toolbar title="co2Activity.ongoingActivity"></app-toolbar>
+
+<ion-content forceOverscroll="false">
+  <ion-grid class="content-grid" *ngIf="activity">
+    <!-- Buttons row -->
+    <ion-row class="buttons-row">
+      <ion-col size="12">
+        <ion-button fill="outline" color="gaea-green-grass" 
+          *ngIf="!activityStarted"
+          [disabled]="activityStarted"
+          (click)="start()"
+          [translate]="'co2Activity.beginActivity'">
+        </ion-button>
+        <ion-button fill="outline" color="gaea-green-grass" 
+          *ngIf="activityStarted && !activityPaused"
+          (click)="pause()"
+          [translate]="'co2Activity.pauseActivity'">
+        </ion-button>
+        <ion-button fill="outline" color="gaea-green-grass" 
+          *ngIf="activityStarted && activityPaused"
+          (click)="unpause()"
+          [translate]="'co2Activity.resumeActivity'">
+        </ion-button>
+        <ion-button fill="outline" color="gaea-gray-deep" 
+          (click)="handleCancel()"
+          [translate]="'co2Activity.cancelActivity'">
+        </ion-button>
+        <ion-button fill="outline" color="gaea-red-deep" 
+          [disabled]="!activityStarted"
+          (click)="stop()"
+          [translate]="'co2Activity.finishActivity'">
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!-- Activity row -->
+    <ion-row class="activity-row info-row">
+      <ion-col size="12">
+        <ion-label [translate]="'co2Activity.activity'"></ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <ion-text 
+          [translate]="activity.activityType.approved? 'activityTypes.' + activity.activityType.name : activity.activityType.name">
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <!-- Date and time activity start row -->
+    <ion-row class="date-start-row info-row">
+      <ion-col size="12">
+        <ion-label [translate]="'co2Activity.activityBegan'"></ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <ion-text *ngIf="dateStart && timeStart">
+          {{ 'dateTime' | translate:{date:dateStart, time:timeStart} }}
+        </ion-text>
+        <ion-text *ngIf="!dateStart && !timeStart">N/A</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <!-- Transport row -->
+    <ion-row class="transport-row info-row">
+      <ion-col size="12">
+        <ion-label [translate]="'co2Activity.meansTransport'"></ion-label>
+      </ion-col>
+      <ion-col size="12" *ngIf="transports">
+        <ion-select [value]="activity.transport || 1" okText="Valider" 
+          cancelText="Annuler" (ionChange)="changeTransport($event)">
+          <ion-select-option *ngFor="let t of transports" [value]="t.id">
+            {{ 'transports.' + t.name | translate }}
+          </ion-select-option>
+        </ion-select>
+        <ion-text class="hint-text">({{ 'co2Activity.dontForget' | translate }})</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <!-- Date and time activity stop row -->
+    <!--<ion-row class="date-end-row info-row">
+      <ion-col size="12">
+        <ion-label>Date et heure de l'arrêt de l'activité</ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <ion-text *ngIf="dateEnd && timeEnd">
+          {{ dateEnd }} à {{ timeEnd }}
+        </ion-text>
+        <ion-text *ngIf="!dateEnd && !timeEnd">N/A</ion-text>
+      </ion-col>
+    </ion-row>-->
+
+
+    <!-- Detail labels-->
+    <ion-row *ngIf="activity.activityTransports.length >= 2">
+      <ion-col size="12">
+        <ion-list>
+          <ion-item>
+            <ion-col size="4">
+              <ion-text [translate]="'co2Activity.meansTransport'"></ion-text>
+            </ion-col>
+            <ion-col size="4">
+              <ion-text [translate]="'co2Activity.distanceTraveled'"></ion-text>
+            </ion-col>
+            <ion-col size="4">
+              <ion-text [translate]="'co2Activity.co2Emissions'"></ion-text>
+            </ion-col>
+          </ion-item>
+          <ion-item *ngFor="let t of activity.activityTransports">
+            <ion-col size="4">
+              <ion-text>{{ 'transports.' + t.transport.name | translate}}</ion-text>
+            </ion-col>
+            <ion-col size="4">
+              <ion-text>{{ t.distance | number:'1.1-2' }}</ion-text>
+            </ion-col>
+            <ion-col size="4">
+              <ion-text>{{ t.c02Emissions | number:'1.1-2' }}</ion-text>
+            </ion-col>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <!-- Details-->
+    <!--<ion-row *ngFor="let t of activity.transports">
+      <ion-col size="4">
+        <ion-text>{{ t.transport.name }}</ion-text>
+      </ion-col>
+      <ion-col size="4">
+        <ion-text>{{ t.distance | number:'1.1-2' }}</ion-text>
+      </ion-col>
+      <ion-col size="4">
+        <ion-text>{{ t.c02Emissions | number:'1.1-2' }}</ion-text>
+      </ion-col>
+    </ion-row>-->
+
+
+    <!-- Stats -->
+    <app-stat-row 
+      *ngIf="isOnFoot()"
+      [title]="'co2Activity.nbSteps' | translate"
+      color="#E2051A"
+      icon="../../../../assets/imgs/co2/pas-rouge.svg"
+      [number]="displayedSteps">
+    </app-stat-row>
+    <app-stat-row 
+      *ngIf="isOnFoot()"
+      [title]="'co2Activity.caloriesBurned' | translate"
+      color="#F4B00F"
+      icon="../../../../assets/imgs/co2/flame-yellow.svg"
+      [number]="displayedCalories">
+    </app-stat-row>
+    <app-stat-row 
+    [title]="'co2Activity.distanceTraveled' | translate"
+      color="#618226"
+      icon="../../../../assets/imgs/co2/distance.svg"
+      [number]="displayedDistance">
+    </app-stat-row>
+    <app-stat-row
+    [title]="'co2Activity.co2Emissions' | translate"
+      color="#526CAC"
+      icon="../../../../assets/imgs/co2/cloud-blue.svg"
+      [number]="displayedC02Emissions">
+    </app-stat-row>
+
+    <!-- Row to fill void -->
+    <ion-row class="void-row"></ion-row>
+  </ion-grid>
+</ion-content>

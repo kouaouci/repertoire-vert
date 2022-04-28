@@ -1,0 +1,88 @@
+<!-- Top navbar -->
+<app-toolbar></app-toolbar>
+
+<ion-grid>
+
+  <!-- Icons row -->
+  <ion-row>
+    <ion-col size="12">
+      <ion-text [translate]="'menu.menu'"></ion-text>
+    </ion-col>
+    <ion-col size="12" class="icon-col">
+      <ion-row class="icon-row">
+        <ion-col size="4">
+          <app-menu-icon 
+            link="/tabs/category"
+            icon="../../../assets/imgs/menu/folder.svg" 
+            name="homepage.categories">
+          </app-menu-icon>
+        </ion-col>
+        <ion-col size="4">
+          <app-menu-icon 
+            link="/tabs/pricing"
+            icon="../../../assets/imgs/menu/pricetag.svg" 
+            name="homepage.price">
+          </app-menu-icon>
+        </ion-col>
+        <ion-col size="4">
+          <app-menu-icon 
+            link="/tabs/form-options-co2"
+            icon="../../../assets/imgs/menu/leaf.svg" 
+            name="homepage.co2">
+          </app-menu-icon>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row class="icon-row">
+        <ion-col size="4">
+          <app-menu-icon 
+            link="/tabs/lieux"
+            icon="../../../assets/imgs/menu/map-pin.svg" 
+            name="homepage.places">
+          </app-menu-icon>
+        </ion-col>
+        <ion-col size="4">
+          <app-menu-icon
+            link="/tabs/qrcode"
+            icon="../../../assets/imgs/menu/qr-scanner.svg" 
+            name="homepage.qrcode">
+          </app-menu-icon>
+        </ion-col>
+        <ion-col size="4">
+          <app-menu-icon
+            link="/tabs/communaute"
+            icon="../../../assets/imgs/menu/people.svg" 
+            name="homepage.community">
+          </app-menu-icon>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+  <!-- Empreinte row -->
+  <ion-row>
+    <ion-col size="12">
+      <app-empreinte-co2></app-empreinte-co2>
+    </ion-col>
+  </ion-row>
+
+  <!-- Catégories favoris row -->
+  <ion-row>
+    <ion-col size="12">
+      <ion-text [translate]="'menu.favoriteCategories'"></ion-text>
+    </ion-col>
+    <ion-col class="categories-col">
+      <ion-row *ngIf="favorites">
+        <ion-col *ngIf="favorites.length === 0" size="12" class="no-favorites-col">
+          <ion-label translate="menu.noFavorites"></ion-label>
+        </ion-col>
+        <ion-col size="4" *ngFor="let favorite of favorites">
+          <app-category-card
+            [name]="favorite.category.name">
+          </app-category-card>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+</ion-grid>

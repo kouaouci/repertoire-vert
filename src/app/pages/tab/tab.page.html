@@ -1,0 +1,88 @@
+
+<!-- TabBar si non conncecté -->
+<ion-tabs *ngIf="!isAuthenticated" class="not-logged" #tabs (ionTabsDidChange)="setCurrentTab()">
+  <ion-tab-bar style="width: 100%;" slot="bottom">
+    <ion-tab-button tab="category">
+      <ion-icon name="folder"></ion-icon>
+      <ion-label >Catégories</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="showOfflineMessage()">
+      <ion-icon 
+        *ngIf="!co2Selected"
+        src="../../../assets/imgs/home/pas.svg">
+      </ion-icon>
+      <ion-icon 
+        *ngIf="co2Selected"
+        src="../../../assets/imgs/home/pas_green.svg">
+      </ion-icon>
+      <ion-label>CO2</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="qrcode">
+      <ion-icon 
+        *ngIf="!qrcodeSelected"
+        src="../../../assets/imgs/home/qr_code.svg">
+      </ion-icon>
+      <ion-icon 
+        *ngIf="qrcodeSelected"
+        src="../../../assets/imgs/home/qr_code_green.svg">
+      </ion-icon>
+      <ion-label>QR Code</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="communaute">
+      <ion-icon name="people"></ion-icon>
+      <ion-label>Communauté</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="lieux">
+      <ion-icon name="search"></ion-icon>
+      <ion-label>Recherche</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+
+<!-- TabBar si connecté -->
+<ion-tabs *ngIf="isAuthenticated" class="logged" #tabs (ionTabsDidChange)="setCurrentTab()">
+  <ion-tab-bar style="width: 100%;" slot="bottom">
+
+    <!-- Profile user -->
+    <ion-tab-button [tab]="isHomepage? 'tabs/profile' : 'profile'" *ngIf="!isCompany">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label translate="tabBar.profile"></ion-label>
+    </ion-tab-button>
+
+    <!-- Profile company -->
+    <ion-tab-button 
+      *ngIf="isCompany"
+      [tab]="isHomepage? 'tabs/company-profile/' + companyId 
+      : 'company-profile/' + companyId">
+      <ion-icon name="business-outline"></ion-icon>
+      <ion-label translate="tabBar.company"></ion-label>
+    </ion-tab-button>
+
+    <!-- Menu -->
+    <ion-tab-button [tab]="isHomepage? 'tabs/menu' : 'menu'">
+      <ion-icon *ngIf="!menuSelected" src="../../../assets/imgs/home/home.svg"></ion-icon>
+      <ion-icon *ngIf="menuSelected" src="../../../assets/imgs/home/home_green.svg"></ion-icon>
+      <ion-label translate="tabBar.menu"></ion-label>
+    </ion-tab-button>
+
+    <!-- Cart -->
+    <ion-tab-button [tab]="isHomepage? 'tabs/shop-cart' : 'shop-cart'">
+      <ion-icon name="cart-outline"></ion-icon>
+      <ion-label translate="tabBar.cart"></ion-label>
+      <div class="nb-products" *ngIf="nbProducts > 0">{{ nbProducts }}</div>
+    </ion-tab-button>
+
+    <!-- Search -->
+    <ion-tab-button [tab]="isHomepage? 'tabs/lieux' : 'lieux'">
+      <ion-icon name="search"></ion-icon>
+      <ion-label translate="tabBar.search"></ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
+
+
+

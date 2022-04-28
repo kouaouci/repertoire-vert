@@ -1,0 +1,39 @@
+@import '../../../../../../global.scss';
+
+ion-grid {
+  padding: 0;
+  padding-top: min(3vw, 20px);
+  padding-bottom: min(3vw, 20px);
+}
+
+ion-row {
+  width: 100%;
+}
+
+.info-col {
+  ion-col {
+    padding: 0 5px 5px 0;
+  }
+}
+
+ion-label {
+  white-space: pre-wrap !important;
+  font-size: min(4.5, 20px);
+}
+
+ion-avatar {
+  margin: 0 auto;
+}
+
+.last {
+  --border-color: transparent;
+}
+
+.date-text {
+  font-size: min(2.8vw, 10px);
+  color: $gaea-gray;
+}
+
+.author-text {
+  font-size: min(3vw, 14px);
+}

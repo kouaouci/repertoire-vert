@@ -1,0 +1,229 @@
+<app-toolbar-with-back title="carpool.title"> </app-toolbar-with-back>
+
+<ion-content forceOverscroll="false">
+  <ion-grid class="content-grid">
+    <!-- Info -->
+    <ion-row>
+      <ion-col size="12" class="avatar-col">
+        <ion-avatar>
+          <img src="../../../../../assets/imgs/avatar.png" />
+        </ion-avatar>
+      </ion-col>
+      <!--<ion-col size="12" class="ion-text-center star-col">
+        <ion-icon src="../../../../../assets/icon/star.svg"></ion-icon>
+        <ion-icon src="../../../../../assets/icon/star.svg"></ion-icon>
+        <ion-icon src="../../../../../assets/icon/star.svg"></ion-icon>
+        <ion-icon src="../../../../../assets/icon/star.svg"></ion-icon>
+        <ion-icon src="../../../../../assets/icon/star.svg"></ion-icon>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center avis-col">
+        <ion-text>2 avis</ion-text>
+      </ion-col>-->
+
+      <ion-col size="12" class="info-col">
+        <ion-list>
+          <form [formGroup]="covoiturageForm">
+            <!-- Departure -->
+            <ion-item>
+              <ion-grid>
+                <ion-row class="info-row">
+                  <ion-col size="3">
+                    <ion-label [translate]="'carpool.departure'"></ion-label>
+                  </ion-col>
+                  <ion-col size="9" class="info-value">
+                    <ion-text>{{ covoiturage?.departure }}</ion-text>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+
+            <!-- Destination -->
+            <ion-item>
+              <ion-grid>
+                <ion-row class="info-row">
+                  <ion-col size="3">
+                    <ion-label [translate]="'carpool.destination'"></ion-label>
+                  </ion-col>
+                  <ion-col size="9" class="info-value">
+                    <ion-text>{{ covoiturage?.destination }}</ion-text>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+
+            <!-- Date & Time of departure  -->
+            <ion-item>
+              <ion-grid>
+                <ion-row class="info-row">
+                  <ion-col size="3">
+                    <!--<ion-icon
+                      name="time-outline"
+                      color="gaea-gray-deep"
+                    ></ion-icon>-->
+                    <ion-label [translate]="'carpool.departureTime'"></ion-label>
+                  </ion-col>
+                  <ion-col size="9" class="info-value">
+                    <ion-datetime
+                      displayFormat="DD-MM-YYYY HH:mm"
+                      [placeholder]="covoiturageForm.controls['dateTime'].value"
+                      formControlName="dateTime"
+                    ></ion-datetime>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+
+            <!-- Round-trip -->
+            <ion-item>
+              <ion-grid>
+                <ion-row class="info-row">
+                  <ion-col size="3">
+                    <ion-label [translate]="'carpool.return'"></ion-label>
+                  </ion-col>
+                  <ion-col size="9" class="info-value">
+                    <ion-select
+                      okText="Confirmer"
+                      cancelText="Annuler"
+                      formControlName="return"
+                    >
+                      <ion-select-option [value]="true" [translate]="'yes'"></ion-select-option>
+                      <ion-select-option [value]="false" [translate]="'no'"></ion-select-option>
+                    </ion-select>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+
+            <!-- Date & Time of departure  -->
+            <ion-item *ngIf="covoiturageForm.controls['return'].value">
+              <ion-grid>
+                <ion-row class="info-row">
+                  <ion-col size="3">
+                    <ion-label [translate]="'carpool.returnTime'"></ion-label>
+                  </ion-col>
+                  <ion-col size="9" class="info-value">
+                    <ion-datetime
+                      displayFormat="DD-MM-YYYY HH:mm"
+                      [placeholder]="covoiturageForm.controls['dateTime'].value"
+                      formControlName="dateTimeReturn"
+                    ></ion-datetime>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+
+            <!-- Number of places -->
+            <ion-item>
+              <ion-grid>
+                <ion-row class="info-row">
+                  <ion-col size="3">
+                    <ion-icon name="people" color="gaea-gray-deep"></ion-icon>
+                  </ion-col>
+                  <ion-col size="9" class="info-value">
+                    <ion-select
+                      value="1"
+                      [interfaceOptions]="passengerOptions"
+                      okText="Confirmer"
+                      cancelText="Annuler"
+                      formControlName="passengers"
+                    >
+                      <ion-select-option
+                        *ngFor="let number of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+                        [value]="number"
+                      >
+                        {{ number }}
+                      </ion-select-option>
+                    </ion-select>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+
+            <!-- Trunk size -->
+            <ion-item>
+              <ion-grid>
+                <ion-row class="info-row">
+                  <ion-col size="3">
+                    <ion-label [translate]="'carpool.trunk'"></ion-label>
+                  </ion-col>
+                  <ion-col size="9" class="info-value">
+                    <ion-select
+                      okText="Confirmer"
+                      cancelText="Annuler"
+                      formControlName="trunk">
+                      <ion-select-option value="none" [translate]="'none'"></ion-select-option>
+                      <ion-select-option value="small" [translate]="'small'"></ion-select-option>
+                      <ion-select-option value="medium" [translate]="'medium'"></ion-select-option>
+                      <ion-select-option value="large" [translate]="'big'"></ion-select-option>
+                    </ion-select>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+
+            <!-- Roof -->
+            <ion-item>
+              <ion-grid>
+                <ion-row class="info-row">
+                  <ion-col size="3">
+                    <ion-label [translate]="'carpool.roofBox'"></ion-label>
+                  </ion-col>
+                  <ion-col size="9" class="info-value">
+                    <ion-select
+                      okText="Confirmer"
+                      cancelText="Annuler"
+                      formControlName="roof">
+                      <ion-select-option [value]="true" [translate]="'yes'"></ion-select-option>
+                      <ion-select-option [value]="false" [translate]="'no'"></ion-select-option>
+                    </ion-select>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+
+            <!-- Trailer -->
+            <ion-item class="last-item">
+              <ion-grid>
+                <ion-row class="info-row">
+                  <ion-col size="3">
+                    <ion-label [translate]="'carpool.trailer'"></ion-label>
+                  </ion-col>
+                  <ion-col size="9" class="info-value">
+                    <ion-select
+                      okText="Confirmer"
+                      cancelText="Annuler"
+                      formControlName="trailer">
+                      <ion-select-option [value]="true" [translate]="'yes'"></ion-select-option>
+                      <ion-select-option [value]="false" [translate]="'no'"></ion-select-option>
+                    </ion-select>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+          </form>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <!-- Map -->
+    <ion-row class="map-row">
+      <ion-col size="12">
+        <div [id]="mapId" class="map"
+        style="width: 100%; height: 35vh"></div>
+      </ion-col>
+    </ion-row>
+
+    <!-- Submit button -->
+    <ion-row>
+      <ion-col size="12" class="button-col">
+        <ion-button
+          color="gaea-green-grass"
+          expand="full"
+          (click)="createOffer()"
+          [translate]="'carpool.confirmOffer'"
+        >
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

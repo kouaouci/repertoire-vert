@@ -1,0 +1,57 @@
+@import '../../../../global.scss';
+
+.outer-grid {
+  height: 100%;
+  padding: 5vw 5vw 0 5vw;
+  display: flex;
+  flex-flow: column;
+  overflow: auto;
+}
+
+ion-row {
+  background-color: white;
+}
+
+ion-text {
+  font-size: min(3.5vw, 18px);
+}
+
+.button-col {
+  text-align: center;
+  padding-top: 5vw;
+  ion-button {
+    border-radius: 5px;
+  }
+}
+
+.btn-shadow {
+  box-shadow: 2px 2px 5px #888888;
+}
+
+.pending-row {
+  border-radius: 3px 3px 0 0;
+}
+
+.confirmed-row {
+  flex: 1;
+  align-content: start;
+}
+
+.text-col {
+  padding: 3vw 0 0 3vw;
+}
+
+.participant-col {
+  padding: 3vw 4.5vw 3vw 4.5vw;
+}
+
+.buttons-col {
+  text-align: end;
+}
+
+ion-button {
+  --padding-start: 20px;
+  --padding-end: 20px;
+  margin-left: 1.5vw;
+}
+

@@ -1,0 +1,130 @@
+#container {
+    text-align: center;
+  
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: #8c8c8c;
+  
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+  
+
+  .slides-wrapper {
+    height: 100%;
+  }
+  .swiper-slide {
+    overflow-y: scroll;    
+    display: block;    
+  }
+  #map{
+    height: 85%;
+  }
+  .leaflet-marker-pane > * {
+    -webkit-transition: transform .3s linear;
+    -moz-transition: transform .3s linear;
+    -o-transition: transform .3s linear;
+    -ms-transition: transform .3s linear;
+    transition: transform .3s linear;
+  }
+  
+  .autocomplete-address-list {
+    width: 100% ;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 58px;
+    left: 0;
+    z-index: 1010;
+    max-height: 200px;
+    overflow-y: auto;
+  
+    ion-item {
+      font-size: 14px;
+
+   
+    }
+    ion-col{
+      --background: #df1021
+    }
+  }
+
+  super-tabs-toolbar{
+    background-color:transparent ;
+}
+
+ion-button{
+      background-color: white;
+      
+}
+.roundedInput {
+    --border-color: var(--ion-color-medium-shade);
+    --border-radius: 3px;
+    --border-width: 1px;
+    --box-shadow: 2px gray;
+    --highlight-height: 0;
+    --background: #f8f9fa;
+   }
+.divide1 {
+  height: 40px;
+
+  font-size: 0.9em;
+}
+.rounded2{
+    -moz-border-radius: 5px 0;
+    -webkit-border-radius: 5px 0;
+    border-radius: 5px 5px 5px 5px;
+    background-color: gray;
+  }
+.rounded1 {
+  width: 250px;
+  height: 10px;
+  text-align: center;
+  padding: 0px;
+  background-color: rgba(0, 0, 0, 0);
+}
+.bottomRow4
+{
+  margin-top: 5px;
+}
+
+ion-tab-bar {
+  bottom: 20px;
+  border-radius: 16px;
+  width: 92%;
+  margin: 0 auto;
+}
+
+ion-tab-button {
+  --color: var(--ion-color-medium);
+  --color-selected: var(--ion-color-primary);
+
+  &::before {
+    background-color: transparent;
+    display: block;
+    content: "";
+    margin: 0 auto;
+    width: 20px;
+    height: 2px;
+  }
+
+  &.tab-selected::before {
+    background-color: var(--ion-color-primary);
+  }
+}

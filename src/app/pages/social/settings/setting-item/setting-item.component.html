@@ -1,0 +1,36 @@
+
+<ion-item>
+  <ion-grid class="inner-grid">
+    <ion-row>
+      <ion-label [translate]="title"></ion-label>
+    </ion-row>
+
+    <!-- Toggle option -->
+    <ion-row *ngIf="!onBoarding">
+      <ion-col size="9">
+        <ion-text [translate]="text"></ion-text>
+      </ion-col>
+      <ion-col size="3">
+        <ion-row class="toggle-text-row">
+          <ion-text *ngIf="activated" [translate]="'settings.activated'"></ion-text>
+          <ion-text *ngIf="!activated" [translate]="'settings.deactivated'"></ion-text>
+        </ion-row>
+        <ion-row class="toggle-text-button">
+          <app-toggle
+            [checked]="activated"
+            (changeEvent)="handleToggle()">
+          </app-toggle>                    
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <!-- OnBoarding -->
+    <ion-row *ngIf="onBoarding">
+      <ion-col size="12" class="onboarding-col">
+        <ion-button color="gaea-green-grass" [routerLink]="['/welcome']">
+          {{ 'settings.displayOnboarding' | translate }}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-item>

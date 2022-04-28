@@ -1,0 +1,13 @@
+{
+  "name": "AppRepVert",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "*/api",
+      "proxyUrl": "https://www.repertoirevert.org/api"
+    }
+  ]
+}

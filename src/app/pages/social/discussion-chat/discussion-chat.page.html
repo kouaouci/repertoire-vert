@@ -1,0 +1,100 @@
+
+
+
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+  
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-item lines="none" >
+      <ion-avatar slot="start">
+       
+      </ion-avatar>
+      <ion-label class="ion-no-margin">
+       <div class="ion-text-center">
+<ion-title>{{username}}</ion-title>
+       </div> 
+        
+      </ion-label>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" >
+  <ion-item-group class="messages-item-group">
+
+   
+    
+
+    <ion-item-sliding class="message-item-sliding"
+   >
+ 
+      <!-- User message
+       -->
+       <ng-container  *ngFor="let messager of recipientMessages; let index
+       ">
+        <ion-item lines="none" class="message-user">
+          <ion-avatar slot="start" class="ion-align-self-end user-avatar"
+           >
+          
+          </ion-avatar>
+          <div class="message-container"
+          >
+            <span class="text" >{{messager.message}}</span>
+            <small class="time">12:45</small>
+          </div>
+        </ion-item>
+      </ng-container>
+
+      <!-- My message -->
+      <ng-container  *ngFor="let message of messages; let index
+      " >
+        <ion-item lines="none" class="message-me">
+          <div class="message-container" slot="end">
+            <span class="text" >{{message.message}}</span>
+            <small class="time">{{message.sentAt.date|  date:"HH:mm" }}</small>
+            
+          </div>
+          
+        </ion-item>
+      </ng-container>
+
+      <!-- Reply slide -->
+      <ion-item-options side="end" class="no-border">
+        <ion-item-option disabled style="--background: var(--ion-item-background);">
+          <ion-icon slot="icon-only" name="arrow-undo-outline" color="primary"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-item-group>
+</ion-content>
+
+
+    <form [formGroup]="MessageForm" (ngSubmit)="onFormSubmit(id)">
+      <ion-footer class="ion-no-border">
+        <ion-toolbar style="height: auto;">
+        
+   
+   
+
+    
+<ion-textarea rows="6" color="dark" formControlName="message" placeholder="Tapez votre message" type="message"  ></ion-textarea>
+
+<ion-buttons slot="end">
+
+  <ion-button type="submit" [disabled]="!MessageForm.valid"  >
+    <ion-icon slot="icon-only" name="send-outline" color="primary"></ion-icon>
+  </ion-button>
+ 
+</ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+
+</form>
+
+ 
+

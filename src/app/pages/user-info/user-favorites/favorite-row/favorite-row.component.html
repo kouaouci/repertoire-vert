@@ -1,0 +1,16 @@
+<ion-item [routerLink]="company? ['/tabs/company-profile', id] 
+  : ['/tabs/product-details/', id]">
+  <ion-row>
+    <ion-col class="avatar-col">
+      <ion-avatar>
+        <img [src]="image"
+        onerror="this.onerror=null;this.src='../../../../../assets/imgs/no_product.jpg';"/>
+      </ion-avatar>
+    </ion-col>
+    <ion-col class="info-col ion-text-center">
+      <ion-text>
+        {{ name }}
+      </ion-text>
+    </ion-col>
+  </ion-row>
+</ion-item>

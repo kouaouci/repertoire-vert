@@ -1,0 +1,48 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+
+        <ion-list no-lines>
+          <ion-list-header>Menu</ion-list-header>
+
+          <div *ngIf="!(isAuthenticated)">
+            <app-toolbar-item
+              *ngFor="let p of pagesLoggedOut; let i = index"
+              [icon]="p.icon" 
+              [title]="p.title"
+              (click)="openPage(p, i)">
+            </app-toolbar-item>
+          </div>
+
+          <div *ngIf="isAuthenticated">
+            <app-toolbar-item
+              *ngFor="let p of pagesLoggedIn; let i = index"
+              [icon]="p.icon" 
+              [title]="p.title"
+              [notifications]="notifications && notifications"
+              (click)="openPage(p, i)">
+            </app-toolbar-item>
+            <app-toolbar-item
+              icon="log-out"
+              title="logout"
+              (click)="logout()">
+            </app-toolbar-item>
+          </div>
+        </ion-list>
+
+        <!-- Language dropdown -->
+        <div class="language-select">
+          <ion-select [(ngModel)]="language" (ionChange)="changeLanguage($event)">
+            <ion-select-option value="en">EN</ion-select-option>
+            <ion-select-option value="fr">FR</ion-select-option>
+            <ion-select-option value="ge">GE</ion-select-option>
+            <ion-select-option value="it">IT</ion-select-option>
+          </ion-select>
+        </div>
+
+    </ion-menu>
+
+    <!-- Contenu de la page -->
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

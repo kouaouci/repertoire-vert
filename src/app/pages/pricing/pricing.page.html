@@ -1,0 +1,63 @@
+<!--
+  Generated template for the PricingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!--<ion-header>
+
+  <ion-toolbar  color="translucent">
+    <ion-title>
+      Pricing
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: empreinte;"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+    </ion-title>
+  </ion-toolbar>
+
+
+</ion-header>-->
+
+<app-toolbar></app-toolbar>
+
+<ion-content>
+  <!-- à voir car ça bug-->
+  <super-tabs [config]="{ debug: true, nativeSmoothScroll: true }">
+    <super-tabs-toolbar slot="top">
+      <super-tab-button>
+  
+        <ion-label>Prix</ion-label>
+      </super-tab-button>
+      
+      <super-tab-button>
+  
+        <ion-label>Information</ion-label>
+      </super-tab-button>
+    </super-tabs-toolbar>
+  
+    <super-tabs-container autoScrollTop>
+ 
+      <super-tab>
+        <ion-nav [root]="PricingPage"></ion-nav>
+      </super-tab>
+    
+      <super-tab>
+        <ion-nav [root]="mapInfo"></ion-nav>
+      </super-tab>
+    </super-tabs-container>
+  </super-tabs>
+  <div  *ngIf="user_did_tutorial=='true'"  class="scroll-item">
+ 
+    <ion-fab vertical="center" horizontal="center" slot="fixed">
+      <ion-fab-button  (click)="PricingTips()">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  
+  </div>
+</ion-content>

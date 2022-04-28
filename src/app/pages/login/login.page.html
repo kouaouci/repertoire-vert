@@ -1,0 +1,194 @@
+<app-toolbar *ngIf="isLogin"></app-toolbar>
+<app-toolbar-with-back
+  *ngIf="!isLogin"
+  backUrl="/login"
+></app-toolbar-with-back>
+
+<ion-content force-overscroll="false" class="gaea21home">
+  <ion-grid>
+    <!-- Logo répertoire vert-->
+    <ion-row *ngIf="isLogin" class="logo-row ion-align-items-center">
+      <ion-col class="ion-text-center">
+        <ion-img src="../assets/imgs/logo_repertoire_vert_ok.png"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="!isLogin" class="no-logo-row"></ion-row>
+
+    <ion-row class="gray-row">
+      <!-- Login label-->
+      <ion-col size="12" class="ion-text-center label-column">
+        <ion-text *ngIf="isLogin" translate="login.login"></ion-text>
+        <ion-text *ngIf="!isLogin" translate="login.createAccount"></ion-text>
+      </ion-col>
+
+      <!-- Login form --->
+      <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+        <ion-row>
+          <!-- Nom d'utilisateur input -->
+          <ion-col size="12" *ngIf="!isLogin">
+            <ion-item>
+              <ion-label position="stacked" translate="username"></ion-label>
+              <ion-input
+                id="username"
+                name="username"
+                class="login-input"
+                type="text"
+                formControlName="username"
+              >
+              </ion-input>
+            </ion-item>
+          </ion-col>
+
+          <!-- Nom input -->
+          <ion-col size="12" *ngIf="!isLogin">
+            <ion-item>
+              <ion-label position="stacked" translate="lastname"></ion-label>
+              <ion-input
+                id="lastname"
+                name="lastname"
+                class="login-input"
+                type="text"
+                formControlName="lastname"
+              >
+              </ion-input>
+            </ion-item>
+          </ion-col>
+
+          <!-- Prénom input -->
+          <ion-col size="12" *ngIf="!isLogin">
+            <ion-item>
+              <ion-label position="stacked" translate="firstname"></ion-label>
+              <ion-input
+                id="lastname"
+                name="lastname"
+                class="login-input"
+                type="text"
+                formControlName="firstname"
+              >
+              </ion-input>
+            </ion-item>
+          </ion-col>
+
+          <!-- Date de naissance -->
+          <ion-col size="12" *ngIf="!isLogin">
+            <ion-item>
+              <ion-label position="stacked" translate="dateBirth"></ion-label>
+              <ion-datetime
+                displayFormat="YYYY-MM-DD"
+                formControlName="dateBirth"
+                class="dateInput"
+              >
+              </ion-datetime>
+            </ion-item>
+          </ion-col>
+
+          <!-- Ville input -->
+          <ion-col size="12" *ngIf="!isLogin">
+            <ion-item>
+              <ion-label position="stacked" translate="city"></ion-label>
+              <ion-input
+                id="city"
+                name="city"
+                class="login-input"
+                type="text"
+                formControlName="city"
+              >
+              </ion-input>
+            </ion-item>
+          </ion-col>
+
+          <!-- Email input -->
+          <ion-col size="12">
+            <ion-item>
+              <ion-label position="stacked"
+                [translate]="isLogin? 'login.emailOrUsername' : 'email'">
+              </ion-label>
+              <ion-input
+                id="email"
+                name="email"
+                class="login-input"
+                type="email"
+                formControlName="email"
+              >
+              </ion-input>
+            </ion-item>
+          </ion-col>
+
+          <!-- Password input -->
+          <ion-col size="12">
+            <ion-item>
+              <ion-label position="stacked" translate="login.password"></ion-label>
+              <ion-input
+                id="motDePasse"
+                name="motDePasse"
+                class="password-input"
+                [type]="showPassword? 'text':'password'"
+                formControlName="motDePasse"
+              ></ion-input>
+              <ion-button
+                fill="clear"
+                ion-item
+                class="eye-button"
+                (click)="toggleShowPassword()"
+              >
+                <ion-icon
+                  class="show-option"
+                  [name]="showPassword? 'eye-off-outline':'eye-outline'"
+                >
+                </ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-col>
+
+          <!-- Password Confirm input -->
+          <ion-col size="12" *ngIf="!isLogin">
+            <ion-item>
+              <ion-label position="stacked" translate="login.repeatPassword"></ion-label>
+              <ion-input
+                id="motDePasseConfirm"
+                name="motDePasseConfirm"
+                class="password-input"
+                [type]="showPasswordConfirm? 'text':'password'"
+                formControlName="motDePasseConfirm"
+              ></ion-input>
+              <ion-button
+                fill="clear"
+                ion-item
+                class="eye-button"
+                (click)="toggleShowPasswordConfirm()"
+              >
+                <ion-icon
+                  class="show-option"
+                  [name]="showPasswordConfirm? 'eye-off-outline':'eye-outline'"
+                >
+                </ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-col>
+
+          <!-- Login / Register button -->
+          <ion-col size="12" class="ion-text-center">
+            <ion-button color="gaea-green" *ngIf="isLogin" type="submit">
+              {{ isLoading? '' : 'login.login' | translate}}
+              <ion-spinner *ngIf="isLoading"></ion-spinner>
+            </ion-button>
+            <ion-button color="gaea-green" *ngIf="!isLogin" type="submit">
+              {{ isLoading? '' : 'login.createAccount' | translate}}
+              <ion-spinner *ngIf="isLoading"></ion-spinner>
+            </ion-button>
+          </ion-col>
+
+          <!-- Loading spinner -->
+          <ion-col size="12" *ngIf="isLoading" class="ion-text-center">
+          </ion-col>
+        </ion-row>
+      </form>
+
+      <!-- Forgot password -->
+      <ion-col size="12" class="ion-text-center links-column" *ngIf="isLogin">
+        <ion-nav-link translate="login.forgotPassword"></ion-nav-link>
+        <ion-nav-link routerLink="/identification" translate="login.createAccount"></ion-nav-link>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

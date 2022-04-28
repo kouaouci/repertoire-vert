@@ -1,0 +1,62 @@
+@import '../../../../global.scss';
+
+ion-toolbar {
+  ion-title {
+    font-weight: normal;
+    text-align: center;
+  }
+}
+
+ion-content {
+  --background: #f2f7ea;
+}
+
+.content-grid {
+  padding: $grid-padding;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+ion-row {
+  background-color: white;
+  padding: 0 5vw 0 5vw;
+}
+
+ion-button {
+  width: 100%;
+  font-size: min(3.5vw, 18px);
+}
+
+ion-label {
+  font-size: min(4vw, 20px);
+}
+
+ion-text {
+  font-size: min(3.5vw, 18px);
+}
+
+ion-select {
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  color: black;
+}
+
+.buttons-row {
+  padding-top: 5vw;
+}
+
+.info-row {
+  text-align: center;
+  padding-bottom: 3vw;
+}
+
+.void-row {
+  flex-grow: 1;
+}
+
+.hint-text {
+  color: $gaea-gray-deep;
+  font-size: min(3vw, 16px);
+  font-style: italic;
+}

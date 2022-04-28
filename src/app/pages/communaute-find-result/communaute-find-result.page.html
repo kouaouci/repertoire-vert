@@ -1,0 +1,51 @@
+<app-toolbar-with-back title="carpool.title" backUrl="tabs/covoiturage">
+</app-toolbar-with-back>
+
+<ion-content forceOverscroll="false">
+  <ion-grid class="content-grid">
+
+    <ion-row *ngIf="isLoading">
+      <ion-col size="12" class="ion-text-center">
+        <ion-spinner></ion-spinner>
+      </ion-col>
+    </ion-row>
+
+    <!-- Disponibilités label -->
+    <ion-row class="dispo-row" *ngIf="!isLoading">
+      <ion-col size="2">
+        <ion-icon name="car" color="white"></ion-icon>
+      </ion-col>
+      <ion-col size="8">
+        <ion-text>{{ 'carpool.availableCars' | translate:{number:covoiturages?.length} }}</ion-text>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon name="location-sharp" color="gaea-yellow-light"></ion-icon>
+      </ion-col>
+    </ion-row>
+
+    <!-- Voitures disponibles -->
+    <ion-row
+      *ngFor="let cov of covoiturages; let i = index"
+      class="offre-row"
+      [routerLink]="['/tabs/covoiturage-details/', cov.id]"
+    >
+      <ion-col size="12">
+        <app-user-offer-card
+          type="offer"
+          [covoiturage]="cov"
+        ></app-user-offer-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--<ion-fab
+    *ngIf="user_did_tutorial=='true'"
+    vertical="bottom"
+    horizontal="center"
+    slot="fixed"
+  >
+    <ion-fab-button color="light" (click)="CommunauteTips()">
+      <ion-icon name="alert-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>-->
+</ion-content>

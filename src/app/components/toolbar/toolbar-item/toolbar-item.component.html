@@ -1,0 +1,14 @@
+<ion-item no-padding *ngIf="title">
+  <ion-row>
+    <!-- Parent Pages  -->
+    <ion-col size="12">
+      <span ion-text>
+        <ion-icon slot="start" [name]="icon"></ion-icon>
+        {{ 'sidebar.' + title | translate:{} }}
+      </span>
+      <div class="notification-number" *ngIf="title === 'Notifications' && notifications > 0">
+        <span>{{ notifications }}</span>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-item>

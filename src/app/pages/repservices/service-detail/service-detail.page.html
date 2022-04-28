@@ -1,0 +1,52 @@
+
+<ion-header>
+
+  <ion-toolbar  color="translucent">
+  
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: empreinte;"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="services"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+    </ion-title>
+  </ion-toolbar>
+
+
+</ion-header>
+<ion-content>
+  <ng-container *ngFor="let item of service" >
+    <ion-card class="card">
+      <ion-card-content class="ion-text-left">
+
+        <div class="img-wrapper">
+          <ion-img src="https://seagatestructures.com/wp-content/uploads/2020/01/Seagate2020jan_306949487-scaled.jpg"></ion-img>
+        </div>
+        
+        <ion-card-title class="title">Domaine: {{item.field}}</ion-card-title>
+        <ion-card-subtitle><strong>Contact :</strong> {{item.company.email}}</ion-card-subtitle>
+        <ion-card-subtitle><strong>Service offert :</strong> {{item.field}}</ion-card-subtitle>
+        
+        <ion-card-subtitle>
+  <p><strong>Description du service :</strong> {{item.description}}</p>
+        </ion-card-subtitle>
+      </ion-card-content>
+    </ion-card>
+
+
+  </ng-container>
+  <!--
+  Vous voulez demander un devis ?
+<h4><strong>Veuillez saisir plus d'informations</strong></h4>
+  <form [formGroup]="DevisForm" (ngSubmit)="onFormSubmit()" >
+      
+    <ion-textarea formControlName="devis" placeholder="Ajouter info"></ion-textarea>    
+      
+      
+    
+      <ion-button class="btn btn-primary" size="small" fill="outline" color="info" type="submit"   [disabled]="!DevisForm.valid">Demander Devis</ion-button>
+    
+    </form>
+     -->
+</ion-content>

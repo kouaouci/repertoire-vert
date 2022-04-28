@@ -1,0 +1,40 @@
+@import '../../../../../global.scss';
+
+ion-card {
+  padding: 5vw 3vw 5vw 3vw;
+}
+
+.old {
+  //background-color: $gaea-green-light;
+}
+
+.text-col {
+  padding-left: 15px;
+  align-self: center;
+}
+
+.icon-col {
+  align-self: center;
+  text-align: center;
+}
+
+ion-avatar {
+  max-width: 100%;
+  height: auto;
+}
+
+ion-icon {
+  font-size: min(6vw, 30px);
+}
+
+.new-icon {
+  font-size: 12px;
+  position: absolute;
+  right: 3%;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.name {
+  font-weight: bold;
+}

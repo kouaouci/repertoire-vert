@@ -1,0 +1,27 @@
+<ion-grid>
+  <ion-row>
+    <!-- Labels -->
+    <ion-col size="12" class="label-col">
+      <ion-label translate="profile.newThisWeek"></ion-label>
+      <ion-text translate="seeAll" [routerLink]="['/tabs/news']"></ion-text>
+    </ion-col>
+
+    <!-- News slide -->
+    <ion-col size="12" class="swiper-col" (touchstart)="touchStart()" (touchend)="touchEnd()">
+      <swiper
+        [slidesPerView]="1.2"
+        [freeMode]="true"
+        class="mySwiper"
+      >
+      <!-- New companies -->
+        <ng-template swiperSlide *ngFor="let c of companies">
+          <app-news-card size="small" [company]="c"></app-news-card>
+        </ng-template>
+      <!-- New products -->
+        <ng-template swiperSlide *ngFor="let p of products">
+          <app-news-card size="small" [product]="p"></app-news-card>
+        </ng-template>
+      </swiper>
+    </ion-col>
+  </ion-row>
+</ion-grid>

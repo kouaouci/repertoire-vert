@@ -1,0 +1,141 @@
+<app-toolbar-with-back 
+  title="user.title">
+</app-toolbar-with-back>
+
+<ion-content forceOverscroll="false">
+  <ion-grid class="content-grid" *ngIf="user">
+    <!-- basic info row -->
+    <ion-row>
+      <ion-col size="12" class="avatar-col">
+        <ion-avatar>
+          <img src="../../../../assets/imgs/avatar.png" />
+        </ion-avatar>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <ion-label class="name">
+          {{ user.firstname + ' ' + user.lastname | titlecase}}
+        </ion-label>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <ion-text class="username">@{{ user.username }}</ion-text>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <ion-text class="age">{{ 'user.age' | translate: {age: age} }}</ion-text>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <ion-button 
+          fill="clear" color="gaea-green-grass" 
+          class="btn-statistics"
+          [routerLink]="['/tabs/users-stats/' + user.id]"
+          [state]="user"
+          [translate]="'user.statistics'">
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!-- Trajets & Aides row -->
+    <ion-row class="trajets-aides-row">
+      <ion-col size="6">
+        <ion-row>
+          <ion-col size="12" class="ion-text-center">
+            <ion-text [translate]="'user.rides'"></ion-text>
+          </ion-col>
+          <ion-col size="12" class="ion-text-center trajets-col">
+            <ion-text class="nb-green">{{ covoiturages }}</ion-text>
+            <ion-icon
+              src="../../../../assets/imgs/profile_autre/route.svg"
+            ></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col size="6">
+        <ion-row>
+          <ion-col size="12" class="ion-text-center">
+            <ion-text [translate]="'user.peopleHelped'"></ion-text>
+          </ion-col>
+          <ion-col size="12" class="ion-text-center aides-col">
+            <ion-text class="nb-green">{{ passengers }}</ion-text>
+            <ion-icon
+              class="people-icon"
+              src="../../../../assets/imgs/profile_autre/people.svg"
+            ></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <!-- Niveau row -->
+    <!--<ion-row class="niveau-row">
+      <ion-col size="12">
+        <ion-text>Niveau d'expérience: niveau expert</ion-text>
+      </ion-col>
+    </ion-row>-->
+
+    <!-- Avis row -->
+    <ion-row class="avis-row">
+      <ion-col size="12" class="avis-col"
+        [routerLink]="['/tabs/users-ratings/' + user.id]" [state]="user">
+        <ion-icon
+          src="../../../../assets/imgs/profile_autre/etoile.svg"
+        ></ion-icon>
+        <ion-label class="rating-label">{{ rating | number:'1.0-1' }}/5 - {{ nbReviews }}</ion-label>
+        <ion-label class="avis-label" [translate]="nbReviews === 1? 'user.review' : 'user.reviews'"></ion-label>
+        <ion-label class="avis-arrow">></ion-label>
+      </ion-col>
+    </ion-row>
+
+    <!-- Preferences row -->
+    <ion-row class="preferences-row">
+      <ng-container *ngFor="let userPreference of user.userPreferences">
+        <ion-col size="1">
+          <ion-icon
+            [src]="getIcon(userPreference.preference.id)"
+          ></ion-icon>
+        </ion-col>
+        <ion-col size="11" class="text-col">
+          <ion-text>{{ 'preferences.' + userPreference.preference.name | translate }}</ion-text>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+
+    <!-- Verification row -->
+    <ion-row class="verification-row">
+      <div class="border-div"></div>
+      <ion-col size="1">
+        <ion-icon
+          src="../../../../assets/imgs/profile_autre/check.svg"
+        ></ion-icon>
+      </ion-col>
+      <ion-col size="11" class="text-col">
+        <ion-text [translate]="'user.phoneVerified'"></ion-text>
+      </ion-col>
+      <ion-col size="1">
+        <ion-icon
+          src="../../../../assets/imgs/profile_autre/check.svg"
+        ></ion-icon>
+      </ion-col>
+      <ion-col size="11" class="text-col">
+        <ion-text [translate]="'user.emailVerified'"></ion-text>
+      </ion-col>
+    </ion-row>
+
+    <!-- Inscription row -->
+    <ion-row class="inscription-row">
+      <div class="border-div"></div>
+      <ion-col size="1">
+        <ion-icon src="../../../../assets/imgs/profile_autre/voiture.svg"></ion-icon>
+      </ion-col>
+      <ion-col size="11" class="text-col">
+        <ion-text>{{ 'user.memberSince' | translate: {year: inscriptionYear} }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <!-- Signaler row -->
+    <ion-row class="signaler-row">
+      <ion-col size="1"></ion-col>
+      <ion-col size="11" class="text-col">
+        <ion-text class="signaler-text" [translate]="'user.reportMember'"></ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

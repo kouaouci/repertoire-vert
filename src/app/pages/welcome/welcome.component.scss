@@ -1,0 +1,40 @@
+.content-grid {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+.content-row {
+  flex-grow: 1;
+}
+
+.buttons-col {
+  ion-icon {
+    margin-left: 8px;
+    font-size: 13px;
+  }
+}
+
+.content-col {
+  height: 85%;
+}
+
+ion-slides {
+  height: 100%;
+  padding-bottom: 8vw;
+}
+
+app-welcome-slide {
+  height: 100%;
+}
+
+.right-button {
+  font-weight: bold;
+  float: right;
+}
+
+.commencer-col {
+  ion-button {
+    font-weight: bold;
+  }
+}

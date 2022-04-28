@@ -1,0 +1,53 @@
+@import "../../../../../../global.scss";
+
+ion-grid {
+  height: 100%;
+  padding-top: 10vw;
+}
+
+.grid {
+  width: 85%;
+}
+
+.autre-list {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.select-row {
+  ion-select {
+    --placeholder-color: #aaaaaa;
+    --placeholder-opacity: 1;
+    font-size: min(3vw, 18px);
+    font-weight: normal;
+    margin: 0 auto;
+    width: min(70%, 250px);
+  }
+}
+
+.button-row {
+  ion-button {
+    color: $gaea-yellow;
+    //width: min(28vw, 110px);
+    font-size: min(4vw, 20px);
+  }
+}
+
+.ajouter-button {
+  height: 36px;
+  --border-radius: 7px;
+  margin-top: 10vw;
+  margin-bottom: 10vw;
+}
+
+.searchbar-col {
+  padding-top: 7vw;
+  padding-bottom: 10vw;
+}
+
+.close-button {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  font-size: min(8vw, 45px);
+}

@@ -1,0 +1,70 @@
+@import '../../../../global.scss';
+
+ion-label, .niveau-container {
+  font-size: min(4.5vw, 22px);
+}
+
+ion-text {
+  font-size: min(3.5vw, 18px);
+}
+
+ion-icon {
+  font-size: min(5.5vw, 25px);
+}
+
+.basic-info-col ion-col {
+  padding-top: 0;
+}
+
+.niveau-col {
+  display: flex;
+  align-items: center;
+}
+
+.cat-subcat-icons-col {
+
+  .icons-col {
+    padding: 0;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-around;
+  }
+
+  ion-button {
+    max-width: 40%;
+    height: auto;
+    --padding-start: 15%;
+    --padding-end: 15%;
+    border-radius: 5px;
+    box-shadow: 1px 3px 5px 1px lightgrey;
+  }
+}
+
+.reviews-col {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.company-page-btn-col {
+  padding-top: min(10vw,40px);
+  padding-bottom: min(5vw,20px);
+}
+
+.niveau-container {
+  background-color: $gaea-green-grass;
+  padding: 5px;
+  border-radius: 5px;
+  margin-left: auto;
+  color: white;
+}
+
+.review-btn {
+  height: 25px;
+  --border-radius: 5px;
+}
+
+.show-more-btn {
+  height: 25px;
+  --border-radius: 30px;
+}

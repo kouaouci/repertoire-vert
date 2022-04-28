@@ -1,0 +1,43 @@
+@import '../../../global.scss';
+
+ion-toolbar {
+  text-align: center;
+}
+
+form, ion-grid {
+  height: 100%;
+}
+
+ion-label, ion-button {
+  font-size: min(3.5vw, 18px) !important;
+}
+
+ion-button {
+  box-shadow: lightgrey 1px 1px 5px 3px;
+  border-radius: 8px;
+}
+
+.list-row {
+  height: 85%;
+  overflow: scroll;
+  border: 1px solid lightgray;
+}
+
+.btn-row {
+  height: 15%;
+
+  .btn-col {
+    align-self: center;
+  }
+}
+
+.category-label-col {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.category-label {
+  color: $gaea-green-grass;
+  font-weight: bold;
+}

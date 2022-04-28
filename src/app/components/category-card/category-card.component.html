@@ -1,0 +1,14 @@
+<ion-card>
+  <ion-card-content>
+    <ion-img
+      [src]="imgUrl"
+      (ionError)="handleImageError(img)" #img
+      [alt]="name"
+    ></ion-img>
+  </ion-card-content>
+  <ion-card-header>
+    <ion-card-title>
+      {{ name }}
+    </ion-card-title>
+  </ion-card-header>
+</ion-card>

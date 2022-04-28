@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="21" height="23" viewBox="0 0 21 23">
+  <g id="Group_546" data-name="Group 546" transform="translate(-105 -440)">
+    <g id="Rectangle_1071" data-name="Rectangle 1071" transform="translate(105 442)" fill="none" stroke="#618226" stroke-width="1">
+      <rect width="21" height="21" rx="3" stroke="none"/>
+      <rect x="0.5" y="0.5" width="20" height="20" rx="2.5" fill="none"/>
+    </g>
+    <path id="Union_2" data-name="Union 2" d="M0,3.34V.66A.6.6,0,0,1,.5,0,.6.6,0,0,1,1,.66V3.34A.6.6,0,0,1,.5,4,.6.6,0,0,1,0,3.34Z" transform="translate(109 440)" fill="#618226"/>
+    <path id="Union_3" data-name="Union 3" d="M0,3.34V.66A.6.6,0,0,1,.5,0,.6.6,0,0,1,1,.66V3.34A.6.6,0,0,1,.5,4,.6.6,0,0,1,0,3.34Z" transform="translate(121 440)" fill="#618226"/>
+    <rect id="Rectangle_1074" data-name="Rectangle 1074" width="4" height="4" transform="translate(109 446)" fill="#aaa"/>
+    <rect id="Rectangle_1079" data-name="Rectangle 1079" width="4" height="4" transform="translate(109 451)" fill="#aaa"/>
+    <rect id="Rectangle_1082" data-name="Rectangle 1082" width="4" height="4" transform="translate(109 456)" fill="#aaa"/>
+    <rect id="Rectangle_1075" data-name="Rectangle 1075" width="4" height="4" transform="translate(114 446)" fill="#aaa"/>
+    <rect id="Rectangle_1078" data-name="Rectangle 1078" width="4" height="4" transform="translate(114 451)" fill="#618226"/>
+    <rect id="Rectangle_1081" data-name="Rectangle 1081" width="4" height="4" transform="translate(114 456)" fill="#aaa"/>
+    <rect id="Rectangle_1076" data-name="Rectangle 1076" width="4" height="4" transform="translate(119 446)" fill="#618226"/>
+    <rect id="Rectangle_1077" data-name="Rectangle 1077" width="4" height="4" transform="translate(119 451)" fill="#aaa"/>
+    <rect id="Rectangle_1080" data-name="Rectangle 1080" width="4" height="4" transform="translate(119 456)" fill="#618226"/>
+  </g>
+</svg>

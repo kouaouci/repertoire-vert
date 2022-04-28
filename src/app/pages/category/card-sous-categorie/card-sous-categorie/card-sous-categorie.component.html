@@ -1,0 +1,11 @@
+<ion-card>
+  <ion-card-content>
+    <ion-img [src]="imageUrl" [alt]="subcategory.name"
+    (ionError)="handleImageError(img)" #img
+    [routerLink]="['/tabs/categories/' + categoryId + '/subcategories/' + subcategory.id]">
+  </ion-img>
+  </ion-card-content>
+  <!--<ion-card-header>
+    <ion-card-subtitle>{{ truncatedName }}</ion-card-subtitle>
+  </ion-card-header>-->
+</ion-card>

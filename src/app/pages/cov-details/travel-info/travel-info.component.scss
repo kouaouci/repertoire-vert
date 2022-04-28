@@ -1,0 +1,22 @@
+@import '../../../../global.scss';
+
+.info-voyage-row {
+  background-color: white;
+  text-align: center;
+  padding-top: 2vw;
+  border-radius: 3px;
+
+  ion-row {
+    justify-content: center;
+    margin-bottom: 2.5vw;
+  }
+}
+
+ion-icon {
+  font-size: min(6vw, 35px);
+}
+
+ion-text {
+  color: $gaea-gray-deep;
+  font-size: min(3.5vw, 18px);
+}

@@ -1,0 +1,56 @@
+<ion-content forceOverscroll="false">
+  <ion-grid class="content-grid">
+    <ion-row class="content-row">
+
+      <!-- Slides -->
+      <ion-col size="12" class="content-col">
+        <ion-slides
+          [options]="options"
+          pager="true"
+          (ionSlideDidChange)="slideDidChange()"
+          #slides
+        >
+          <ion-slide *ngFor="let page of pages">
+            <app-welcome-slide
+              [title]="page.title"
+              [text]="page.text"
+              [image]="page.image"
+            >
+            </app-welcome-slide>
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+
+      <!-- Buttons -->
+      <ion-col class="buttons-col" size="12" *ngIf="!lastSlide">
+        <ion-button 
+          fill="clear" color="gaea-gray-deep"
+          [routerLink]="['/']">
+          Passer
+        </ion-button>
+        <ion-button
+          fill="clear"
+          class="right-button"
+          color="gaea-green-grass"
+          (click)="next()"
+        >
+          Suivant
+          <ion-icon
+            src="../../../assets/imgs/welcome/arrow_right.svg"
+          ></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col
+        size="12"
+        *ngIf="lastSlide"
+        class="ion-text-center commencer-col"
+      >
+        <ion-button
+          color="gaea-green-grass"
+          [routerLink]="['/']">
+          Commencer
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

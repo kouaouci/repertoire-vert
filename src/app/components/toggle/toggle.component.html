@@ -1,0 +1,13 @@
+<ion-toggle
+  *ngIf="!platform.is('mobileweb')"
+  color="gaea-green-grass"
+  [checked]="checked"
+  (ionChange)="handleChange()">
+</ion-toggle>
+
+<ion-toggle
+  *ngIf="platform.is('mobileweb')"
+  color="gaea-green-half"
+  [checked]="checked"
+  (ionChange)="handleChange()">
+</ion-toggle>

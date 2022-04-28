@@ -1,0 +1,175 @@
+@import "../../../../global.scss";
+
+.content-grid {
+  background-color: $gaea-green-light;
+  padding: $grid-padding;
+  min-height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+.content-row {
+  flex-grow: 1;
+  background-color: white;
+  border-radius: 3px;
+  text-align: start;
+  padding: 5vw;
+}
+
+ion-label,
+ion-text,
+ion-button {
+  font-size: min(3.5vw, 18px);
+}
+
+ion-label, .name-col ion-input {
+  color: $gaea-green-grass;
+}
+
+ion-input, ion-textarea {
+  border: 1px solid lightgray;
+  border-radius: 8px;
+}
+
+ion-button {
+  box-shadow: lightgrey 1px 1px 5px 3px;
+  border-radius: 8px;
+}
+
+ion-input, ion-textarea {
+  --padding-start: 10px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.label-col {
+  margin-top: 15px;
+}
+
+.name-col {
+  ion-icon {
+    position: absolute;
+    right: 0;
+    font-size: 24px;
+  }
+}
+
+.image-col {
+  ion-img {
+    width: 75%;
+    margin: 0 auto;
+  }
+}
+
+.btn-col {
+  display: flex;
+  place-content: space-around;
+}
+
+.price-col ion-label,
+.product-title,
+.quantity-col ion-text {
+  font-size: min(5vw, 24px);
+}
+
+.price-col ion-label, .cart-col ion-button {
+  font-weight: bold;
+}
+
+.price-col {
+  ion-input, ion-select {
+    width: 80px;
+    display: inline-flex;
+  }
+}
+
+.quantity-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ion-text {
+    margin-left: 23px;
+    margin-right: 23px;
+  }
+
+  ion-icon {
+    font-size: 27px;
+  }
+}
+
+.customer-review-col,
+.company-review-col {
+
+  ion-text {
+    margin-left: 5px;
+    font-size: min(3vw, 16px);
+    color: black;
+  }
+
+  .rating-col {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.customer-review-col {
+  border-right: 1px solid lightgray;
+}
+
+.cart-col {
+
+  ion-button {
+    box-shadow: none;
+    letter-spacing: 0.5px;
+  }
+
+  ion-icon {
+    font-size: 26px;
+    margin-right: 15px;
+  }
+}
+
+.dimension-col {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  ion-input {
+    flex: inherit;
+  }
+
+  ion-input {
+    width: 60px; 
+  }
+}
+
+.recommendation-col {
+  display: flex;
+  align-items: center;
+}
+
+.subcategory-selection-col {
+  ion-item {
+    display: flex;
+    ion-text {
+      flex: 1;
+    }
+  }
+}
+
+.subcategory-icon-row {
+  justify-content: center;
+}
+
+.subcategory-icon-col {
+  ion-text {
+    font-size: min(2.5vw, 12px);
+  }
+}
+
+.confirm-btn-col {
+  margin-top: 20px;
+}

@@ -1,0 +1,67 @@
+@import "../../../../global.scss";
+
+ion-grid {
+  overflow: auto;
+}
+
+.info-driver-row {
+  padding-bottom: 3.5vw;
+  margin-bottom: 3vw;
+
+  ion-col {
+    display: inline-flex;
+
+    ion-label,
+    ion-button {
+      align-self: center;
+    }
+  }
+
+  .note {
+    justify-content: flex-end;
+  }
+}
+
+.info-voyage-row {
+  padding-left: 5vw;
+  padding-right: 5vw;
+  text-align: start;
+}
+
+ion-item {
+  --background: $gaea-green-light;
+  width: 100%;
+  padding-top: 7vw;
+}
+
+ion-avatar,
+.note-label {
+  margin-right: 2vw;
+}
+
+ion-avatar {
+  width: min(13vw, 55px);
+  height: min(13vw, 55px);
+}
+
+ion-label,
+ion-button {
+  font-size: min(4.5vw, 20px);
+}
+
+ion-text {
+  font-size: min(3.5vw, 14px);
+  color: $gaea-gray-deep;
+}
+
+ion-button {
+  --padding-start: 15px;
+  --padding-end: 15px;
+  --padding-top: 15px;
+  height: 25px;
+  --padding-bottom: 15px;
+}
+
+.delete-col {
+  margin-top: 20px;
+}

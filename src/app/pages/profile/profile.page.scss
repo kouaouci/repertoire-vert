@@ -1,0 +1,93 @@
+@import "../../../global.scss";
+
+// ion-content properties
+ion-content::part(scroll) {
+  display: flex;
+  flex-direction: column;
+}
+
+ion-grid,
+super-tabs {
+  padding: 15px 15px 0 15px;
+}
+
+ion-grid {
+  background-color: $gaea-green-light;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  //height: 15%;
+}
+
+.header-row {
+  ion-avatar {
+    margin: 0 auto;
+    --border-radius: 50%;
+    background-color: white;
+  }
+
+  .name-col {
+    padding-top: 15px;
+    display: grid;
+
+    ion-button {
+      width: fit-content;
+      box-shadow: 2px 2px 2px lightgrey;
+      border-radius: 8px;
+      font-size: min(3vw, 16px);
+      border: 1px solid lightgray;
+    }
+  }
+
+  ion-text {
+    font-size: min(3vw, 14px);
+  }
+}
+
+.preferences-row {
+  flex-grow: 1;
+  background-color: white;
+}
+
+super-tabs {
+  order: 2;
+  background-color: $gaea-green-light;
+  //height: 85%;
+
+  super-tabs-toolbar {
+    padding: 0;
+    border-radius: 8px;
+    background-color: white;
+    --st-indicator-color: transparent;
+
+    super-tab-button {
+      font-size: min(3vw, 14px);
+      justify-content: center;
+      height: 30px;
+
+      &.active {
+        background: #608125;
+        color: cornsilk;
+        border-radius: 1em;
+      }
+    }
+
+    .button-not-last {
+      border-right: 1px solid $tab-border-color;
+      border-width: thin;
+      position: absolute;
+      width: 100%;
+      top: 20%;
+      bottom: 20%;
+    }
+  }
+
+  super-tabs-container,
+  super-tab {
+    width: 100%;
+  }
+
+  ion-nav {
+    overflow: auto;
+  }
+}

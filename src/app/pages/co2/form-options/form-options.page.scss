@@ -1,0 +1,111 @@
+@import '../../../../global.scss';
+
+ion-content{
+  --background:#F6F8F3;
+
+
+  ion-grid, ion-row, ion-col {
+    height: 100%;
+  }
+
+  ion-grid {
+    padding: 3vw;
+    padding-bottom: 0;
+  }
+
+  ion-card {
+    margin: 0 auto;
+
+    ion-slides {
+      height: 100%;
+    }
+
+    app-second-page, app-third-page {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.swiper-slide {
+  overflow-y: scroll;    
+  display: block;    
+}
+
+.slides-md {
+  --bullet-background-active: #F2B21B !important;
+  --bullet-background: #AAAAAA;
+}
+
+/**ion-slide img {
+    padding: 15%;
+}
+
+.slider-text {
+    padding-top: 20%;
+}
+
+.slider-text h2 {
+    font-family: 'SF UI Display Semibold';
+}
+p{
+    color:black
+}
+.navigator {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+ion-toolbar {
+  border-radius: 5px;
+  --color: black;
+}*/
+
+
+/* Set the width to the full container and center the content */
+ion-select {
+    width: 100%;
+  
+    justify-content: center;
+  }
+  
+  /* Set the flex in order to size the text width to its content */
+  ion-select::part(placeholder),
+  ion-select::part(text) {
+    flex: 0 0 auto;
+  }
+  
+  /* Set the placeholder color and opacity */
+  ion-select::part(placeholder) {
+    color: black;
+    opacity: 1;
+  }
+  
+  /*
+   * Set the font of the first letter of the placeholder
+   * Shadow parts work with pseudo-elements, too!
+   * https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements
+   */
+  ion-select::part(placeholder)::first-letter {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  
+  /* Set the text color */
+  ion-select::part(text) {
+    color: black;
+  }
+  
+  /* Set the icon color and opacity */
+  ion-select::part(icon) {
+    color: black;
+    opacity: 1;
+  }
+  ion-card{
+    height: 100%;
+    margin: 20px 20px 20px 20px ;
+  }

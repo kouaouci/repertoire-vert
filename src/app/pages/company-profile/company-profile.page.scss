@@ -1,0 +1,156 @@
+@import "../../../global.scss";
+
+ion-content {
+  --ion-background-color: #f6f8f2;
+}
+
+.content-grid {
+  margin: 5vw;
+  background-color: white;
+}
+
+.avatar-col,
+.niveau-col {
+  align-self: center;
+}
+
+.avatar-col {
+  ion-avatar {
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.info-col {
+
+  ion-col {
+    padding-bottom: 0;
+  }
+
+  .company-name {
+    font-size: min(5.5vw, 24px);
+  }
+
+  .company-avis {
+    font-size: min(3vw, 16px);
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+    ion-text {
+      margin-left: 5px;
+      color: $gaea-gray;
+    }
+  }
+}
+
+.niveau-col {
+  text-align: center;
+  ion-icon {
+    margin-bottom: 10px;
+    font-size: 25px;
+  }
+}
+
+.niveau-square {
+  background-color: $gaea-green-grass;
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+
+  ion-text {
+    color: white;
+  }
+}
+
+.buttons-col {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+
+  ion-button {
+    width: min(30vw, 150px);
+  }
+}
+
+
+ion-button, .company-city {
+  font-size: min(3.5vw, 18px);
+}
+
+ion-button {
+  height: auto;
+  margin: 0;
+  --padding-start: 5px;
+  --padding-end: 5px;
+  --padding-top: 5px;
+  --padding-bottom: 5px;
+  --border-radius: 5px;
+}
+
+.unselected-button {
+  color: $gaea-green-grass;
+  border: 1px solid #618226;
+  border-radius: 5px;
+}
+
+ion-toolbar {
+  --background: transparent;
+}
+
+ion-chip {
+  --background: #618226;
+  --color: #fff;
+}
+
+.card {
+  margin: 0 auto;
+
+  .header {
+    .avatar {
+      width: 160px; //40vw
+      height: 160px;
+      position: relative;
+      margin: 0 auto;
+
+      img {
+        display: block;
+        border-radius: 50%;
+        position: absolute;
+        bottom: calc(-1 * (80px + 4px)); // -42px;
+        border: 8px solid #618226;
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+.card-body {
+  background-color: #ffffff;
+  padding: 30px;
+
+  overflow: hidden;
+
+  .user-meta {
+    padding-top: 40px;
+
+    .playername {
+      font-size: 24px;
+      font-weight: 600;
+      color: #303940;
+    }
+
+    .country {
+      font-size: 90%;
+      color: #949ea6;
+      text-transform: uppercase;
+      margin: 0 auto;
+    }
+  }
+}

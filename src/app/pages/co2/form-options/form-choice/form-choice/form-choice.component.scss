@@ -1,0 +1,48 @@
+@import '../../../../../../global.scss';
+
+.not-last {
+  margin-bottom: 5vw;
+}
+
+ion-item {
+  --border-style: none;
+  --ripple-color: transparent;
+  --background-hover: transparent;
+  --min-height: 0;
+  --padding-start: 0;
+  --background-activated: none;
+}
+
+ion-radio {
+  --color: #618226;
+  --color-checked: #618226;
+  --border-radius: 0;
+  --inner-border-radius: 0;
+  height: min(5vw, 24px);
+  width: min(5vw, 24px);
+  margin-right: 5vw;
+  border: 1px solid $gaea-green-grass;
+}
+
+.radio-checked {
+  background-color: $gaea-green-grass;
+}
+
+.text-col {
+  text-align: start;
+}
+
+ion-label {
+  font-size: min(4vw, 20px);
+  color: black;
+}
+
+.icon-col {
+  text-align: end;
+}
+
+ion-icon {
+  height: 100%;
+  font-size: min(9vw, 40px);
+  color: $gaea-green-grass;
+}

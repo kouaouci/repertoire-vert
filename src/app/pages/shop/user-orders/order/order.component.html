@@ -1,0 +1,41 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>
+      {{ 'orders.orderDate' | translate: {date: date, time: time} }}
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-grid class="content-grid">
+
+      <!-- Status -->
+      <ion-row class="status-row">
+        <ion-col size="12">
+          <ion-text>{{ 'orders.status' | translate }} : </ion-text>
+          <ion-text class="status-text">{{ 'orders.' + status | translate}}</ion-text>
+        </ion-col>
+        <!--<ion-col size="7" class="status-col">
+          <ion-text class="status-text">{{ status | titlecase}}</ion-text>
+        </ion-col>-->
+      </ion-row>
+
+      <!-- Products -->
+      <ion-row>
+        <ion-list>
+          <ion-item *ngFor="let cartline of order.cartlines">
+            <app-order-item [cartline]="cartline"></app-order-item>
+          </ion-item>
+        </ion-list>
+      </ion-row>
+
+      <!-- Total -->
+      <ion-row class="total-row">
+        <ion-col size="5">
+          <ion-text>{{ 'orders.total' | translate }}</ion-text>
+        </ion-col>
+        <ion-col size="7" class="total-col">
+          <ion-text class="total-text">{{ order.total | number:'1.2' }} CHF</ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>

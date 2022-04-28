@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Identification
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row> 
+      <h1>Etes-vous une entreprise ou un particulier ?</h1>
+    </ion-row>
+    <ion-button (click)="gotoLoginPage()" color= "success">Particulier</ion-button>
+    <ion-button (click)="gotoCompanyPage()" color="success">Entreprise</ion-button>
+  </ion-grid>
+</ion-content>

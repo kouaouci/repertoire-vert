@@ -1,0 +1,53 @@
+@import '../../../../../global.scss';
+
+ion-grid {
+  padding: 8vw;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+ion-col {
+  padding: 0;
+}
+
+.img-row {
+  flex: 1 1 auto;
+}
+
+.img-col {
+  padding-bottom: 4vw;
+}
+
+ion-img {
+  min-height: 160px;
+  height: 100%;
+  width: min(60%, 200px);
+  border-radius: 7px;
+  margin: 0 auto;
+  box-shadow: 3px 3px 13px #ccc;
+}
+
+.text-col {
+  align-self: center;
+}
+
+.button-col {
+  text-align: end;
+}
+
+ion-label {
+  font-size: min(5vw, 25px);
+}
+
+ion-text {
+  color: $gaea-gray;
+  font-size: min(3.5vw, 18px);
+}
+
+ion-button {
+  height: 35px;
+  width: 35px;
+  --padding-start: 0;
+  --padding-end: 0;
+}

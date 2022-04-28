@@ -1,0 +1,43 @@
+
+
+.content-grid, ion-list ion-grid, ion-list ion-row {
+  padding: 0;
+}
+
+ion-card {
+  margin-top: 0;
+}
+
+ion-card-title {
+  font-size: min(4vw, 20px);
+}
+
+ion-list, app-order-item {
+  width: 100%;
+}
+
+ion-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+}
+
+.total-row {
+  margin-top: 3vw;
+}
+
+.quantity-col, .status-col, .total-col {
+  text-align: end;
+}
+
+ion-text {
+  font-size: min(3.5vw, 16px);
+}
+
+.status-text, .total-text {
+  color: black;
+}
+
+.total-text {
+  font-size: min(4.5vw, 20px);
+  font-weight: bold;
+}

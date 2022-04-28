@@ -1,0 +1,12 @@
+<ion-list lines="none">
+  <ion-item>
+    <ion-button fill="clear" class="report-button" (click)="reportEvent()">
+      {{ 'forum.report' | translate }}
+    </ion-button>
+  </ion-item>
+  <ion-item *ngIf="ownPost">
+    <ion-button fill="clear" class="delete-button" (click)="deleteEvent()">
+      {{ 'forum.delete' | translate }}
+    </ion-button>
+  </ion-item>
+</ion-list>

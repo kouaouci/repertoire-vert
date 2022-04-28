@@ -1,0 +1,61 @@
+
+ion-button {
+  height: 100%;
+  width: 100%;
+}
+
+.notLogged {
+  max-width: 115px;
+  //height: 123px;
+
+  ion-img {
+    width: 60%;
+    color: white;
+  }
+
+  ion-text {
+    color: white;
+  }
+}
+
+.isLogged {
+  max-width: 171px;
+  //height: 183px;
+  .icon-col {
+    height: 100%;
+    display: flex;
+  }
+
+  ion-img {
+    max-width: 70%;
+  }
+
+  ion-text {
+    color: black;
+  }
+}
+
+ion-grid {
+  height: 100%;
+
+  .icon-row {
+    align-content: center;
+    height: 75%;
+  } 
+
+  .text-row {
+    height: 25%;
+  }
+}
+
+ion-img {
+  margin: 0 auto;
+}
+
+ion-button {
+  --border-radius: 7px;
+}
+
+ion-text {
+  font-size: 16px;
+}

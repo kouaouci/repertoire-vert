@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Détails devis</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card *ngFor="let item of quotedetails" >
+  <ion-card-content>
+    <h3><strong>Demande </strong></h3>{{item.devis}}
+<h3><strong>Service</strong></h3> {{item.service.field}}
+<h3><strong>Description du service</strong></h3> {{item.service.description}}
+  </ion-card-content>
+
+</ion-card>
+
+Autre inf
+{{userId}}
+servie id {{serviceId}}
+<div *ngFor="let message of questions" >
+<p>{{message.question}}</p> <strong>{{message.sender.firstname }} {{message.sender.lastname }}</strong> 
+
+</div>
+<div *ngFor="let messagee of messagess" >
+  <p>{{messagee.question}}</p> <strong>{{messagee.sender.firstname }} {{messagee.sender.lastname }}</strong>
+  {{messagee.date.date|date}} 
+  </div>
+<form [formGroup]="DevisForm" >
+  <ion-footer class="ion-no-border">
+    <ion-toolbar style="height: auto;">
+      <ion-buttons slot="start">
+        <ion-button>
+          <ion-icon slot="icon-only" name="add-circle-outline" color="primary"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+
+
+
+<ion-textarea rows="6" color="dark" formControlName="question" placeholder="Enter more information here..." type="text"  ></ion-textarea>
+
+<ion-buttons slot="end">
+<ion-button>
+<ion-icon slot="icon-only" name="happy-outline" color="primary"></ion-icon>
+</ion-button>
+<ion-button type="submit" [disabled]="!DevisForm.valid"  >
+<ion-icon slot="icon-only" name="send-outline" color="primary"></ion-icon>
+</ion-button>
+<ion-button>
+<ion-icon slot="icon-only" name="mic-outline" color="primary"></ion-icon>
+</ion-button>
+</ion-buttons>
+</ion-toolbar>
+</ion-footer>
+
+</form>
+</ion-content>

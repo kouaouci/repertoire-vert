@@ -1,0 +1,14 @@
+@import '../../../global.scss';
+
+ion-searchbar {
+  padding: 0;
+  border: 1px solid $gaea-green-grass;
+  width: auto;
+  --icon-color: #618226;
+  --background: white;
+  height: 35px;
+
+  .searchbar-input {
+    height: 100%;
+  }
+}

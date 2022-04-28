@@ -1,0 +1,147 @@
+@import "../../../global.scss";
+
+ion-content {
+  --padding-top: 5vw;
+  --padding-start: 3vw;
+  --padding-end: 3vw;
+  --background: #f6f8f2;
+}
+
+.content-grid {
+  background-color: white;
+  padding-top: 5vw;
+  min-height: 100%;
+  display: flex;
+  flex-flow: column;
+}
+
+.search-row ion-text, .review-label-div ion-text, 
+.filter-col ion-text, .filter-row ion-button {
+  font-size: min(3.5vw, 18px);
+}
+
+.subcategory-name-row {
+
+  padding-top: 3vw;
+  padding-bottom: 3vw;
+
+  ion-text{
+    font-size: min(4.5vw, 24px);
+  }
+}
+
+.search-row {
+  margin: 0 auto;
+  margin-bottom: 5vw;
+  width: 60%;
+  min-width: 200px;
+  max-width: 250px;
+  
+  ion-input {
+    border: 1px solid black;
+    border-radius: 8px;
+  }
+
+  .city-input {
+    --padding-start: 10px;
+  }
+
+  .product-input {
+    ion-icon {
+      padding-right: 5px;
+    }
+  }
+
+  ion-icon {
+    font-size: min(7vw, 28px);
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.filter-row {
+  margin-bottom: 3vw;
+
+  ion-button {
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px lightgrey;
+  }
+}
+
+.proximity-col , ion-radio-group {
+  display: flex;
+  align-items: center;
+}
+
+.proximity-col {
+  justify-content: center;
+
+  ion-label {
+    font-size: min(3.5vw, 18px);
+  }
+
+  ion-checkbox {
+    margin-left: 5px;
+    margin-right: 5px;
+    --border-radius: 0;
+    --size: 20px;
+    --background-checked: #618226;
+    --border-color-checked: lightgrey;
+  }
+}
+
+.review-label-col {
+  display: flex;
+  justify-content: space-around;
+
+  .review-label-div {
+    display: flex;
+    align-items: center;
+  
+    ion-icon {
+      margin-left: 10px;
+    }
+  }
+}
+
+.subcategory-img ion-img {
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.input-col {
+  margin-bottom: 3vw;
+}
+
+.btn-submit ion-button{
+  height: 25px;
+  --border-radius: 30px;
+}
+
+.companies-row {
+  flex-grow: 1;
+}
+
+.company-card {
+  margin-top: 10px;
+}
+
+app-subcategory-company {
+  width: 100%;
+}
+
+.company-labels {
+  font-size: min(3.5vw, 18px);
+  font-weight: bold;
+}
+
+ion-radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid lightgray;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+

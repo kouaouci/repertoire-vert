@@ -1,0 +1,345 @@
+<app-toolbar-with-back *ngIf="!merchandise && !service"></app-toolbar-with-back>
+<app-toolbar-with-back *ngIf="merchandise" title="shop.titleProduct"></app-toolbar-with-back>
+<app-toolbar-with-back *ngIf="service" title="shop.titleService"></app-toolbar-with-back>
+
+<ion-content forceOverscroll="false">
+  <form [formGroup]="productForm">
+    <ion-grid class="content-grid">
+
+      <ion-row *ngIf="product" class="content-row">
+
+        <!-- Modify or delete -->
+        <ion-col size="12" class="btn-col" *ngIf="ownProduct">
+          <ion-button 
+            [translate]="editing? 'cancel' : 'modify'" 
+            color="light" (click)="toggleEdit()">
+          </ion-button>
+          <ion-button 
+            translate="delete" 
+            color="gaea-red-deep" (click)="handleDelete()">
+          </ion-button>
+        </ion-col>
+
+        <!-- Name + favorite -->
+        <ion-col size="12" class="ion-text-center name-col">
+          <ion-label 
+            *ngIf="!editing"
+            class="bold product-title">{{product?.name | titlecase}}
+          </ion-label>
+          <ion-input 
+            *ngIf="editing"
+            formControlName="name"
+            class="bold product-title" 
+            [placeholder]="product?.name | titlecase">
+          </ion-input>
+          <ion-icon
+            *ngIf="!ownProduct"
+            [name]="isFavorite? 'heart' : 'heart-outline'" 
+            [color]="isFavorite? 'danger' : 'dark'"
+            (click)="addOrRemoveFavorite()">
+          </ion-icon>
+        </ion-col>
+
+        <!-- Image -->
+        <ion-col size="12" class="image-col label-col">
+          <ion-img [src]="image" (ionError)="handleImageError(img)" #img>
+          </ion-img>
+        </ion-col>
+
+        <!-- Price -->
+        <ion-col size="12" class="price-col label-col">
+          <ion-label *ngIf="!editing">{{product?.price | number:'1.2'}}</ion-label>
+          <ion-input 
+            *ngIf="editing" type="number"
+            formControlName="price"
+            [placeholder]="product?.price | number:'1.2'">
+          </ion-input>
+          <ion-label
+            name="logo-euro"
+            *ngIf="(product.currency.toUpperCase() === 'EURO'
+            || product.currency.toUpperCase() === 'EUR') && !editing">
+            €
+          </ion-label>
+          <ion-label *ngIf="product.currency.toUpperCase() === 'CHF' && !editing">
+            CHF
+          </ion-label>
+          <ion-select 
+            *ngIf="editing" 
+            formControlName="currency"
+            [placeholder]="currency"
+            [cancelText]="'cancel' | translate"
+            [value]="currency">
+              <ion-select-option value="CHF">CHF</ion-select-option>
+              <ion-select-option value="EUR">EUR</ion-select-option>
+          </ion-select>
+
+          <!-- Sell type for merchandise -->
+          <ng-container *ngIf="merchandise && !editing">
+            <ion-text *ngIf="merchandise.sellType === 'kg'">
+              {{ ' / Kg' }}
+            </ion-text>
+            <ion-text *ngIf="merchandise.sellType === 'liter'">
+              {{ ' / L' }}
+            </ion-text>
+          </ng-container>    
+        </ion-col>
+
+        <!-- Sell type -->
+        <ion-col size="12" class="label-col" *ngIf="merchandise && editing">
+          <ion-label class="bold">{{ 'sellType' | translate }}</ion-label>
+        </ion-col>
+        <ion-col size="12" *ngIf="merchandise && editing">
+          <ion-select 
+            [placeholder]="'per' + (merchandise.sellType | titlecase) | translate"
+            [cancelText]="'cancel' | translate"
+            formControlName="sellType">
+            <ion-select-option value="unit" translate="perUnit"></ion-select-option>
+            <ion-select-option value="kg" translate="perKg"></ion-select-option>
+            <ion-select-option value="liter" translate="perLiter"></ion-select-option>
+          </ion-select>   
+        </ion-col>
+
+        <!-- Quantity label -->
+        <ion-col size="12" class="ion-text-center" *ngIf="!ownProduct">
+          <ion-text translate="quantity"></ion-text>
+        </ion-col>
+
+        <!-- Quantity -->
+        <ion-col size="12" class="quantity-col" *ngIf="!ownProduct">
+          <ion-icon src="../../../../assets/icon/icon minus.svg"
+            (click)="decreaseQuantity()"></ion-icon>
+          <ion-text>{{ quantity }}</ion-text>
+          <ion-icon src="../../../../assets/icon/icon plus.svg"
+            (click)="increaseQuantity()"></ion-icon>
+        </ion-col>
+
+        <!-- Panier -->
+        <ion-col size="12" class="cart-col label-col" *ngIf="!ownProduct">
+          <ion-button color="gaea-green-grass" (click)="addToCart()" expand="block">
+            <ion-icon name="cart-outline"></ion-icon>
+            {{ 'shop.addToCart' | translate }}
+            {{ isInCart ? '(' + cartline?.quantity + ')' : '' }}
+          </ion-button>
+        </ion-col>
+
+        <!-- Avis Consommateurs-->
+        <ion-col size="6" class="customer-review-col label-col"
+          [routerLink]="['/tabs/products/'+ product.id+'/reviews']">
+          <ion-row>
+            <ion-col size="12" class="review-label-col">
+              <ion-text>{{ 'shop.consummerReviews' | translate }}</ion-text>
+            </ion-col>
+            <ion-col size="12" class="rating-col" *ngIf="userReviewsTotal">
+              <app-review-stars [stars]="userReviewsAverage"></app-review-stars>
+              <ion-text>{{userReviewsTotal }}</ion-text>
+              <ion-text 
+                [translate]="userReviewsTotal === 1? 'shop.review': 'shop.reviews'">
+              </ion-text>
+            </ion-col>
+            <ion-col size="12" class="rating-col" *ngIf="!userReviewsTotal">
+              <ion-text>{{ 'shop.noReviews' | translate }}</ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+        <!-- Avis Entreprises-->
+        <ion-col size="6" class="company-review-col label-col"
+          [routerLink]="['/tabs/products/'+ product.id+'/reviews']">
+          <ion-row>
+            <ion-col size="12" class="review-label-col">
+              <ion-text>{{ 'shop.companyReviews' | translate }}</ion-text>
+            </ion-col>
+            <ion-col size="12" class="rating-col" *ngIf="companyReviewsTotal">
+              <app-review-stars [stars]="companyReviewsAverage"
+                color="gaea-blue-star"></app-review-stars>
+              <ion-text>{{ companyReviewsTotal }}</ion-text>
+              <ion-text 
+                [translate]="companyReviewsTotal === 1? 'shop.review': 'shop.reviews'">
+              </ion-text>          
+            </ion-col>
+            <ion-col size="12" class="rating-col" *ngIf="!companyReviewsTotal">
+              <ion-text>{{ 'shop.noReviews' | translate }}</ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+        <!-- Description -->
+        <ion-col size="12" class="label-col">
+          <ion-label class="bold">{{ 'shop.description' | translate }}</ion-label>
+        </ion-col>
+        <ion-col size="12">
+          <ion-text *ngIf="!editing">{{product?.description}}</ion-text>
+          <ion-textarea 
+            *ngIf="editing"
+            formControlName="description"
+            [placeholder]="product?.description">
+          </ion-textarea>
+        </ion-col>
+
+        <!-- Dimensions -->
+        <ion-col size="12" *ngIf="merchandise">
+          <ion-row>
+            <ion-col size="12"  class="label-col">
+              <ion-label class="bold">{{ 'shop.dimensions' | translate }}</ion-label>
+            </ion-col>
+            <ion-col size="7" *ngIf="merchandise.height || editing" class="dimension-col">
+              <ion-text translate="height"></ion-text>
+              <ion-text *ngIf="!editing">{{ merchandise.height + ' cm' }}</ion-text>
+              <ion-input 
+                *ngIf="editing" 
+                type="number"
+                formControlName="height"
+                [placeholder]="merchandise.height? merchandise.height + ' cm' : 'inCm' | translate">
+              </ion-input>
+            </ion-col>
+            <ion-col size="7" *ngIf="merchandise.width || editing" class="dimension-col">
+              <ion-text translate="width"></ion-text>
+              <ion-text *ngIf="!editing">{{ merchandise.width + ' cm' }}</ion-text>
+              <ion-input 
+                *ngIf="editing" 
+                type="number"
+                formControlName="width"
+                [placeholder]="merchandise.width? merchandise.width + ' cm' : 'inCm' | translate">
+              </ion-input>
+            </ion-col>
+            <ion-col size="7" *ngIf="merchandise.depth || editing" class="dimension-col">
+              <ion-text translate="depth"></ion-text>
+              <ion-text *ngIf="!editing">{{ merchandise.depth + ' cm' }}</ion-text>
+              <ion-input 
+                *ngIf="editing"
+                type="number"
+                formControlName="depth"
+                [placeholder]="merchandise.depth? merchandise.depth + ' cm' : 'inCm' | translate">
+              </ion-input>
+            </ion-col>
+            <ion-col size="7" *ngIf="merchandise.weight || editing" class="dimension-col">
+              <ion-text translate="weight"></ion-text>
+              <ion-text *ngIf="!editing">{{ merchandise.weight + ' kg' }}</ion-text>
+              <ion-input 
+                *ngIf="editing" 
+                type="number"
+                formControlName="weight"
+                [placeholder]="merchandise.weight? merchandise.weight + ' kg' : 'inKg' | translate">
+              </ion-input>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+        <!-- Service duration -->
+        <ion-col size="12" class="label-col" *ngIf="service && service?.serviceduration">
+          <ion-label class="bold">{{ 'duration' | translate }}</ion-label>
+        </ion-col>
+        <ion-col size="12" *ngIf="service">
+          <ion-text *ngIf="!editing && service.serviceduration">
+            {{service.serviceduration}}
+          </ion-text>
+          <ion-input 
+            *ngIf="editing"
+            formControlName="serviceduration"
+            [placeholder]="service.serviceduration">
+          </ion-input>
+        </ion-col>
+
+        <!-- Vendeur -->
+        <ion-col size="12" class="label-col">
+          <ion-label class="bold">{{ 'shop.seller' | translate }}</ion-label>
+        </ion-col>
+        <ion-col size="12">
+          <ion-text>{{product?.company.name}}</ion-text>
+        </ion-col>
+
+        <!-- Certification -->
+        <ion-col size="12" class="label-col">
+          <ion-label class="bold">{{ 'shop.certification' | translate }}</ion-label>
+        </ion-col>
+        <ion-col size="12">
+          <ion-text *ngIf="product?.certification && !editing">
+            {{product?.certification}}
+          </ion-text>
+          <ion-input 
+            *ngIf="editing" 
+            formControlName="certification"
+            [placeholder]="product?.certification">
+          </ion-input>
+        </ion-col>
+
+        <!-- Origin -->
+        <ion-col size="12" class="label-col" *ngIf="merchandise">
+          <ion-label class="bold">{{ 'shop.origin' | translate }}</ion-label>
+        </ion-col>
+        <ion-col size="12" *ngIf="merchandise">
+          <ion-text *ngIf="product?.origin && !editing">{{product?.origin}}</ion-text>
+          <ion-input 
+            *ngIf="editing" 
+            formControlName="origin"
+            [placeholder]="product?.origin"></ion-input>
+        </ion-col>
+
+        <!-- Recommandation -->
+        <ion-col size="12" class="recommendation-col label-col">
+          <ion-label class="bold">{{ 'shop.recommendation' | translate }}</ion-label>
+        </ion-col>
+        <ion-col size="12">
+          <ion-text [translate]="product?.gaearecommanded? 'yes' : 'no'"></ion-text>
+        </ion-col>
+
+        <!-- Niveau -->
+        <ion-col size="12" class="label-col">
+          <ion-label class="bold">{{ 'level' | translate }}</ion-label>
+        </ion-col>
+        <ion-col size="12">
+          <ion-text>{{product?.niveau}}</ion-text>
+        </ion-col>
+
+        <!-- Subcategories -->
+        <ion-col size="12" class="label-col">
+          <ion-label class="bold" translate="subcategories"></ion-label>
+        </ion-col>
+        <ion-col size="12" *ngIf="product?.subcategories && !editing">
+          <ion-row class="subcategory-icon-row">
+            <ion-col size="3" class="ion-text-center subcategory-icon-col"
+              *ngFor="let subcategory of product?.subcategories">
+              <ion-img 
+                [src]="subcategoryImgBaseUrl + subcategory.categories[0].name +
+                 '/Icônes sous-catégories/' + subcategory.name + '.png'">
+              </ion-img>
+              <ion-text>{{ subcategory.name }}</ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+        <!-- Button subcategory selection -->
+        <ion-col size="12" class="ion-text-center" *ngIf="editing">
+          <ion-button
+            color="light"
+            translate="selectSubcategories" 
+            (click)="presentModal()">
+          </ion-button>
+        </ion-col>
+
+        <!-- Selected subcategories -->
+        <ion-col size="12" class="subcategory-selection-col" *ngIf="editing">
+          <ion-label>Sous-catégories choisie(s)</ion-label>
+          <ion-item *ngFor="let s of selectedSubcategories">
+            <ion-text>{{ s.name }}</ion-text>
+            <ion-icon 
+              name="close-circle-outline" color="gaea-red-deep"
+              (click)="removeSubcategory(s.id)">
+            </ion-icon>
+          </ion-item>
+        </ion-col>
+
+        <!-- Submit -->
+        <ion-col size="12" class="ion-text-center confirm-btn-col" *ngIf="editing">
+          <ion-button 
+            [disabled]="loading? true : false"
+            color="gaea-green-grass"
+            (click)="handleConfirm()">
+            {{ loading? '' : 'confirm' | translate }}
+            <ion-spinner *ngIf="loading"></ion-spinner>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

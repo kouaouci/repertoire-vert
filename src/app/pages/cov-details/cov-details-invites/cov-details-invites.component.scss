@@ -1,0 +1,59 @@
+@import '../../../../global.scss';
+
+ion-grid {
+  padding: 7vw 5vw 0 5vw;
+  background-color: $gaea-green-light;
+  overflow: auto;
+}
+
+ion-grid > ion-row {
+  background-color: white;
+  margin-bottom: min(3vw, 14px);
+}
+
+.invites-row {
+  text-align: start;
+  padding-bottom: 2vw;
+  border-radius: 3px;
+
+  ion-button {
+    color: $gaea-gray;
+    border: 1px solid $gaea-gray;
+    --padding-start: 20px;
+    --padding-end: 20px;
+    margin-right: 3.5vw;
+  }
+}
+
+.label-col {
+  padding-top: min(3vw, 14px);
+  padding-left: min(3vw, 14px);
+}
+
+.searchbar-col {
+  padding: min(10vw, 40px) !important;
+}
+
+ion-list {
+  padding-left: 4vw;
+}
+
+.last-item {
+    --border-color: transparent;
+}
+
+ion-text, ion-icon {
+  font-size: min(3vw, 14px);
+}
+
+ion-icon {
+  margin-right: 3.5vw;
+}
+
+ion-text { 
+  color: $gaea-gray-deep;
+}
+
+.friend-col {
+  padding: 3vw 4.5vw 3vw 4.5vw!important;
+}

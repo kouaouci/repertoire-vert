@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border">
+  <ion-item lines="none">
+  
+    <ion-label>
+      <h2>Vos Services</h2>
+    </ion-label>
+  </ion-item>
+</ion-header>
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button  color="light" >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button [routerLink]="['/add-service']"  data-desc="Ajouter un service">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button   [routerLink]="['/add-servicescategory']" routerDirection="forward"  data-desc="Ajouter vos catégories">
+        <ion-icon name="folder-open-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button   [routerLink]="['/company-categories']" routerDirection="forward"  data-desc="Vos Catégories">
+        <ion-icon name="file-tray-stacked-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+  <ion-slides [options]="slideOptions ">
+
+
+          
+
+    <ion-slide *ngFor="let item of services"  >
+      <ion-card class="card">
+        <ion-card-content class="ion-text-left">
+
+          <div class="img-wrapper">
+            <ion-img src={{item.company.avatar}}></ion-img>
+          </div>
+          
+          <ion-card-title class="title"><strong>Domaine:</strong> {{item.field}}</ion-card-title>
+          <ion-card-title class="title"><strong>Catégorie:</strong> {{item.category.name}}</ion-card-title>
+          <ion-card-title class="title"><strong>Description: </strong>{{item.description}}</ion-card-title>
+          <ion-card-subtitle><strong>Type :</strong>{{item.type}}</ion-card-subtitle>
+          <ion-card-subtitle>
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star"></ion-icon>
+            <ion-icon name="star-outline"></ion-icon>
+            <ion-icon name="star-outline"></ion-icon>
+          </ion-card-subtitle>
+        
+        </ion-card-content>
+        <ion-button size="small" color="danger"  (click)="deleteService(item.id)">Supprimer ce service</ion-button>
+      </ion-card>
+    
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

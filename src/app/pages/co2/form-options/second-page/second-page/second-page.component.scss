@@ -1,0 +1,19 @@
+@import '../../../../../../global.scss';
+
+ion-grid {
+  width: 85%;
+  height: 100%;
+  padding-top: 10vw;
+}
+
+.select-row {
+  padding-bottom: 10vw;
+  ion-select {
+    --placeholder-color: #AAAAAA;
+    --placeholder-opacity: 1;
+    font-size: min(3vw, 18px);
+    font-weight: normal;
+    margin: 0 auto;
+    width: min(70%, 250px);
+  }
+}

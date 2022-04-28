@@ -1,0 +1,94 @@
+<app-toolbar-with-back title="news.title"></app-toolbar-with-back>
+
+<ion-content [forceOverscroll]="false">
+  <ion-grid>
+    <!-- Toggler -->
+    <ion-row class="label-row">
+      <ion-col size="6" class="ion-text-center" (click)="togglePage()">
+        <ion-label translate="companies" [class]="type==='companies'? 'active':''"></ion-label>
+      </ion-col>
+      <ion-col size="6" class="ion-text-center" (click)="togglePage()">
+        <ion-label translate="products" [class]="type==='products'? 'active':''"></ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="registrations-row">
+      <!-- Filter -->
+      <ion-col size="12" class="filter-col">
+        <ion-select 
+          value="week" 
+          (ionChange)="handleChange($event)" 
+          [cancelText]="'cancel' | translate">
+          <ion-select-option translate="today" value="today"></ion-select-option>
+          <ion-select-option translate="thisWeek" value="week"></ion-select-option>
+          <ion-select-option translate="thisMonth" value="month"></ion-select-option>
+          <ion-select-option translate="last3Months" value="threeMonths"></ion-select-option>
+          <ion-select-option translate="last6Months" value="sixMonths"></ion-select-option>
+        </ion-select>
+      </ion-col>
+
+      <!-- Label -->
+      <ion-col size="12" class="label-col">
+        <ion-label [translate]="registrationLabel" *ngIf="type==='companies'"></ion-label>
+        <ion-label [translate]="addedLabel" *ngIf="type==='products'"></ion-label>
+      </ion-col>
+
+      <!-- Swiper companies -->
+      <ion-col size="12" class="swiper-col" *ngIf="type==='companies'">
+        <swiper
+          [config]="config"
+          *ngIf="companies?.length > 0"
+        >
+          <ng-template swiperSlide *ngFor="let c of companies">
+            <app-news-card size="medium" [company]="c"></app-news-card>
+          </ng-template>
+        </swiper>
+        <ion-label 
+          translate="news.noNewCompanies"
+          *ngIf="companies?.length === 0"></ion-label>
+      </ion-col>
+
+      <!-- Swiper companies -->
+      <ion-col size="12" class="swiper-col" *ngIf="type==='products'">
+        <swiper
+          [config]="config"
+          *ngIf="products?.length > 0"
+        >
+          <ng-template swiperSlide *ngFor="let p of products">
+            <app-news-card size="medium" [product]="p"></app-news-card>
+          </ng-template>
+        </swiper>
+        <ion-label 
+          translate="news.noNewProducts"
+          *ngIf="products?.length === 0"></ion-label>
+      </ion-col>
+
+      <!-- Label -->
+      <ion-col size="12" class="label-col">
+        <ion-label 
+          translate="news.registrationsCategory" 
+          *ngIf="type==='companies' && companies?.length > 0"></ion-label>
+        <ion-label 
+          translate="news.addedCategory" 
+          *ngIf="type==='products' && products?.length > 0"></ion-label>
+      </ion-col>
+
+      <!-- Categories --> 
+      <ion-col size="12" class="swiper-col" >
+        <!-- Company Category list -->
+        <ion-row *ngIf="type==='companies'">
+          <ion-col size="6" *ngFor="let category of companyCategories">
+            <app-category-card [name]="category.name"></app-category-card>
+          </ion-col>
+        </ion-row>
+
+        <!-- Product Category list -->
+        <ion-row *ngIf="type==='products'">
+          <ion-col size="6" *ngFor="let category of productCategories">
+            <app-category-card [name]="category.name"></app-category-card>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

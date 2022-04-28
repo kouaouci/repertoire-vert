@@ -1,0 +1,53 @@
+<ion-grid>
+  <ion-row>
+    
+    <!-- Title -->
+    <ion-col size="12" class="title-col">
+      <ion-label>Laissez un avis</ion-label>
+    </ion-col>
+
+    <!-- Stars -->
+    <ion-col size="12" class="ion-text-center">
+      <ion-icon
+        [name]="review.value >= 1 ? 'star' : 'star-outline'"
+        color="gaea-yellow-deep"
+        (click)="updateStars(1)">
+      </ion-icon>
+      <ion-icon
+        [name]="review.value >= 2 ? 'star' : 'star-outline'"
+        color="gaea-yellow-deep"
+        (click)="updateStars(2)">
+      </ion-icon>
+      <ion-icon
+        [name]="review.value >= 3 ? 'star' : 'star-outline'"
+        color="gaea-yellow-deep"
+        (click)="updateStars(3)">
+      </ion-icon>
+      <ion-icon
+        [name]="review.value >= 4 ? 'star' : 'star-outline'"
+        color="gaea-yellow-deep"
+        (click)="updateStars(4)">
+      </ion-icon>
+      <ion-icon
+        [name]="review.value >= 5 ? 'star' : 'star-outline'"
+        color="gaea-yellow-deep"
+        (click)="updateStars(5)">
+      </ion-icon>
+    </ion-col>
+
+    <!-- Comment -->
+    <ion-col size="12">
+      <ion-textarea 
+        placeholder="Votre commentaire (optionnel)"
+        [formControl]="comment"></ion-textarea>
+    </ion-col>
+
+    <!-- Confirm button -->
+    <ion-col size="12" class="ion-text-center">
+      <ion-button color="gaea-green-grass"
+        (click)="handleSubmit()">
+        Confirmer
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

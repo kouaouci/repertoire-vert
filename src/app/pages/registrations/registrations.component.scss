@@ -1,0 +1,66 @@
+@import '../../../global.scss';
+
+ion-grid {
+  background-color: $gaea-green-light;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 16px;
+}
+
+.label-row {
+
+  ion-col {
+    padding-bottom: 20px;
+  }
+  
+  ion-label {
+    font-size: min(4vw, 20px);
+    font-weight: bold;
+    color: $gaea-green-grass;
+    opacity: 0.5;
+  }
+}
+
+.active {
+  border-bottom: 3px solid $gaea-green-grass;
+  padding-bottom: 5px;
+  opacity: 1 !important;
+}
+
+.registrations-row {
+  flex-grow: 1;
+  background-color: white;
+  align-content: start;
+  padding: 5vw 3vw;
+
+  ion-select {
+    --background: white;
+    color: black;
+    width: fit-content;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    float: right;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+}
+
+.filter-col {
+  padding-bottom: 15px;
+}
+
+.label-col {
+  ion-label {
+    font-size: min(4vw, 20px);
+    font-weight: bold;
+    color: $gaea-green-grass;
+  }
+}
+
+.swiper-col {
+  margin-bottom: 20px;
+  text-align: center;
+}

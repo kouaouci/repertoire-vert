@@ -1,0 +1,28 @@
+<ion-content forceOverscroll="false">
+  <ion-grid class="content-grid">
+
+    <!-- Searchbar-->
+    <ion-row>
+      <ion-col class="searchbar-col" size="12">
+        <app-searchbar
+          text="users.findUser"
+          (searchEvent)="handleSearch($event)"
+        >
+        </app-searchbar>
+      </ion-col>
+    </ion-row>
+
+    <!-- Friends -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-list>
+          <app-user-row
+            *ngFor="let friend of friends | filter: filterTerm"
+            [user]="friend"
+            [addable]="false">
+          </app-user-row>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
