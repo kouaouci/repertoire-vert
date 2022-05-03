@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AnimationBuilder } from '@ionic/angular';
-import {Camera, CameraResultType} from '@capacitor/camera';
+import { IonTabs, ToastController } from '@ionic/angular';
+import { AnimationBuilder, IonLabel } from '@ionic/angular';
+import { Camera, CameraResultType } from '@capacitor/camera';
+import { ToolbarComponent } from 'src/app/components/toolbar/toolbar.component';
 
 @Component({
   selector: 'app-company',
@@ -11,7 +13,8 @@ export class CompanyPage implements OnInit {
   picture: string;
   date: Date;
   customAlertOptions: any;
-  constructor() { }
+  constructor(
+    private toastController: ToastController) {}
 
   async takePicture() {
     const image = await Camera.getPhoto({
@@ -25,6 +28,14 @@ export class CompanyPage implements OnInit {
   
   btnClicked() {
     alert("Votre compte entreprise vient d'être crée")
+  }
+
+  async showOfflineMessage() {
+    const toast = await this.toastController.create({
+      message: 'Vous n\'êtes pas connecté(e)',
+      duration: 5000
+    });
+    toast.present();
   }
 
   allFieldsValidate() {

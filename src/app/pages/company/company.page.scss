@@ -1,25 +1,61 @@
-.label {
-    width: 100%;
+@import '../../../global.scss';
+
+ion-icon {
+    font-size: min(6vw, 20px);
 }
 
-.toolbar {
-    height: 100%;
-    width: 100%;
+ion-label {
+    font-size: min(3vw, 12px);
 }
 
-ion-modal {
-    --width: 290px;
-    --height: 382px;
-    --border-radius: 8px;
+.not-logged {
+    ion-tab-button {
+      width: 20%;
+    }
+  
+    .icon-row {
+      height: 55%;
+    }  
+  
+    ion-img {
+      height: 20px;
+    }
+  
+    ion-icon {
+      color: #4E4E4E;
+    }
 }
 
-ion-modal ion-datetime {
-    height: 382px;
+.tab-selected {
+    color: $gaea-green-grass;
+    ion-icon {
+      color: $gaea-green-grass;
+    }
 }
 
-ion-datetime {
-    height: auto;
-    width: auto;
 
-    max-width: 350px;
-  }
+//.label {
+//    width: 100%;
+//}
+
+//.toolbar {
+//    height: 100%;
+//    width: 100%;
+//}
+//
+//ion-modal {
+//    --width: 290px;
+//    --height: 382px;
+//    --border-radius: 8px;
+//}
+//
+//ion-modal ion-datetime {
+//    height: 382px;
+//}
+//
+//ion-datetime {
+//    height: auto;
+//    width: auto;
+//
+//    max-width: 350px;
+//} 
