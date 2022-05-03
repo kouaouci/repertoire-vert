@@ -11,8 +11,8 @@ export const environment = {
   //authApiUrl: 'https://www.repertoirevert.org/api/'
 
   // Repertoire vert url / 
-  url: 'https://www.repertoirevert.org/',
-  //url: 'https://dev.repertoirevert.org/',
+  // url: 'https://www.repertoirevert.org/',
+  url: 'https://dev.repertoirevert.org/',
   //url: 'https://localhost:8000/',
 
   // Geocodeapi

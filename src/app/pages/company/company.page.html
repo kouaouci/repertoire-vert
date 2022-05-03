@@ -31,7 +31,7 @@
   </div>
   
   <ion-app>
-    <ion-menu side="start" contentId="main-content">
+     <ion-menu side="start" contentId="main-content">
       <ion-header>
         <ion-toolbar translucent>
           <ion-title>Menu</ion-title>
@@ -58,114 +58,132 @@
       </ion-content>
     </ion-menu>
 
-    <ion-content force-overscroll="false"> <!--[scrollEvents]="true"-->  
+    <ion-content force-overscroll="true"> <!--[scrollEvents]="true"-->  
+      <form [formGroup]="companyForm"
+            (ngSubmit)="companyForm.valid && submitForm()"
+            #formCompany="ngForm"
+      >
+
       <div class="label">
         <!-- Inputs with labels -->
 
+        <!--N'est pas visible sur la view -->
         <ion-item>
           <ion-label position="stacked">Pseudo</ion-label>
-            <ion-input></ion-input>
+            <ion-input name="gaeaUserId" formControlName="gaeaUserId"></ion-input>
         </ion-item>
+
 
         <ion-item>
           <ion-label position="stacked">Nom, Prénom du contact*</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="username"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Mot de passe</ion-label>
-            <ion-input></ion-input>
+            <ion-input type="password" formControlName="password"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Confirmer le mot de passe</ion-label>
-            <ion-input></ion-input>
+            <ion-input type="password" formControlName="passwordConfirm" ></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Adresse mail</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="email"></ion-input>
         </ion-item>
+          <app-error-message
+            message="*Email is invalid"
+            [field]="companyForm.get('email')"
+            error="email"
+          ></app-error-message>
+          <app-error-message
+            message="*Email is mandatory"
+            [field]="companyForm.get('email')"
+            error="required" 
+          ></app-error-message>
 
         <ion-item>
           <ion-label position="stacked">Confirmer l'adresse mail</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="emailConfirm"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Nom de l'entreprise</ion-label>
-          <ion-input></ion-input>
+          <ion-input formControlName="name"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Raison sociale</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="socialreason"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Adresse</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="street"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Ville</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="city"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Code postal</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="postcode"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Canton, département</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="region"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Pays</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="country"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Téléphone</ion-label>
-          <ion-input></ion-input>
+          <ion-input formControlName="phone" ></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Site Web</ion-label>
-          <ion-input>http://</ion-input>
+          <ion-input formControlName="urlwebsite">http://</ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Lien Facebook</ion-label>
-          <ion-input>http://</ion-input>
+          <ion-input formControlName="urlfacebook">http://</ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Lien Twitter</ion-label>
-          <ion-input>http://</ion-input>
+          <ion-input formControlName="urltwitter">http://</ion-input>
         </ion-item>
+
         <ion-item>
           <ion-label position="stacked">Lien LinkedIn</ion-label>
-          <ion-input>http://</ion-input>
+          <ion-input formControlName="urllinkedin" >http://</ion-input>
         </ion-item>
 
         
 
         <ion-item>
           <ion-label>Début de l'activité</ion-label>
-          <ion-datetime presentation="date" [(ngModel)]="date"></ion-datetime>
+          <ion-datetime formControlName="startingdate" presentation="date" [(ngModel)]="date"></ion-datetime>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Certification(s)</ion-label>
-            <ion-input></ion-input>
+            <ion-input formControlName="certification" ></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label>Zone d'influence géographique</ion-label>
-          <ion-select [interfaceOptions]="customAlertOptions" interface="alert" multiple="true" placeholder="Select One">
+          <ion-select formControlName="influencezone" [interfaceOptions]="customAlertOptions" interface="alert" multiple="true" placeholder="Select One">
             <ion-select-option value="bacon">Bacon</ion-select-option>
             <ion-select-option value="olives">Black Olives</ion-select-option>
             <ion-select-option value="xcheese">Extra Cheese</ion-select-option>
@@ -181,7 +199,7 @@
       
         <ion-item>
           <ion-label>Mon/mes secteur(s) d'activité(s)</ion-label>
-          <ion-select interface="popover" multiple="true" placeholder="Select multiple">
+          <ion-select formControlName="categories" interface="popover" multiple="true" placeholder="Select multiple">
             <ion-select-option value="nes">NES</ion-select-option>
             <ion-select-option value="n64">Nintendo64</ion-select-option>
             <ion-select-option value="ps">PlayStation</ion-select-option>
@@ -192,7 +210,8 @@
         </ion-item>
         
 
-        <p >&nbsp; Je souhaite être évalué par Gaea21 : (voir tableau ci-dessous)</p>
+        <p> &nbsp; Je souhaite être évalué par Gaea21 : (voir tableau ci-dessous)</p>
+        <ion-radio-group formControlName="wantevaluation"  value="Oui">
         <ion-item>
           <ion-label>Oui</ion-label>
           <ion-radio color="primary" slot="start" value="Oui"></ion-radio>
@@ -201,16 +220,17 @@
           <ion-label>Non</ion-label>
           <ion-radio color="primary" slot="start" value="Non"></ion-radio>
         </ion-item>
+      </ion-radio-group>
 
         <ion-item>
           <ion-label position="stacked">Description de votre entreprise</ion-label>
-          <ion-textarea></ion-textarea>
+          <ion-textarea formControlName="description" ></ion-textarea>
         </ion-item>
 
         <ion-item>
           <ion-label position="stacked">Votre vision du Développement Durable : <br>
             Comment résumeriez-vous votre philosophie <br> d’entreprise au sujet du Développement Durable ?</ion-label>
-          <ion-textarea></ion-textarea>
+          <ion-textarea formControlName="vision" ></ion-textarea>
         </ion-item>
 
         <ion-item>
@@ -237,10 +257,15 @@
       <ion-input placeholder=" Enter URL">URL LinkedIn :</ion-input> -->
 
       <ion-item>
-        <ion-button color="gaea-green-deep" shape="rectangular" size="large" (click)='btnClicked()' (click)="allFieldsValidate()">Enregistrer</ion-button>
+        <ion-button color="gaea-green-deep" shape="rectangular" size="large" type="submit" (click)='btnClicked()'
+        
+         >Enregistrer</ion-button>
         <ion-button color="light" shape="rectangular" size="large" routerLink= "/login">Annuler</ion-button>
       </ion-item>
       
+  </form>
+
+
       <ion-item>
         <ion-tabs>
           <ion-tab-bar style="width: 100%;" slot="bottom">
