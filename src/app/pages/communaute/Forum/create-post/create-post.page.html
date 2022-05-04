@@ -1,0 +1,67 @@
+<app-toolbar-with-back title="forum.newPostTitle"> </app-toolbar-with-back>
+
+<ion-content forceOverscroll="false">
+  <form [formGroup]="postForm" (submit)="handleForm()">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-label [translate]="'forum.titleLabel'"></ion-label>
+          <ion-input
+            formControlName="title"
+            [placeholder]="'forum.titleText' | translate"
+            type="text"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-label [translate]="'forum.categoryLabel'"></ion-label>
+          <ion-select
+            formControlName="category"
+            [placeholder]="'forum.select' | translate"
+          >
+            <ion-select-option
+              *ngFor="let category of categories; let index"
+              [value]="category.id"
+              >{{ category.name }}</ion-select-option
+            >
+          </ion-select>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-label [translate]="'forum.contentLabel'"></ion-label>
+          <ion-textarea
+            rows="6"
+            color="dark"
+            formControlName="body"
+            [placeholder]="'forum.contentText' | translate"
+            type="text"
+          ></ion-textarea>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="last-row">
+        <ion-col size="12" class="ion-text-center">
+          <ion-button
+            *ngIf="!isLoading"
+            type="submit"
+            expand="block"
+            color="gaea-green-grass"
+            [disabled]="!postForm.valid"
+            [translate]="'forum.publish'">
+          </ion-button>
+
+          <ion-button 
+            *ngIf="isLoading" 
+            expand="block" 
+            color="gaea-green-grass">
+            <ion-spinner></ion-spinner>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

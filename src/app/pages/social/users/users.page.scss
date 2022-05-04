@@ -1,0 +1,70 @@
+@import "../../../../global.scss";
+
+:host.ion-page {
+  background-color: var(--ion-item-background);
+  --ion-background-color: var(--ion-item-background);
+}
+
+ion-grid {
+  height: 100%;
+  padding: $grid-padding;
+  display: flex;
+  flex-flow: column;
+}
+
+ion-row {
+  background-color: white;
+}
+
+.results-row {
+  flex: 1;
+}
+
+ion-content {
+  --background: #f6f8f3;
+}
+ion-card {
+  height: 100%;
+  width: 92%;
+  margin: 50 50 50 50;
+}
+
+.searchbar-col {
+  padding: min(10vw, 40px);
+}
+
+ion-tab-bar {
+  bottom: 20px;
+  border-radius: 16px;
+  width: 92%;
+  margin: 0 auto;
+}
+
+ion-tab-button {
+  --color: var(--ion-color-medium);
+  --color-selected: var(--ion-color-primary);
+
+  &::before {
+    background-color: transparent;
+    display: block;
+    content: "";
+    margin: 0 auto;
+    width: 20px;
+    height: 2px;
+  }
+
+  &.tab-selected::before {
+    background-color: var(--ion-color-primary);
+  }
+}
+
+ion-tab-bar.my-custom-tab-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  --background: rgba(255, 255, 255, 0.8);
+
+  ion-tab-button {
+    --background: transparent;
+  }
+}

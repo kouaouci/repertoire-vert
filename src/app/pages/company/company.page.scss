@@ -1,0 +1,63 @@
+@import '../../../global.scss';
+
+
+
+ion-icon {
+    font-size: min(6vw, 20px);
+}
+
+ion-label {
+    font-size: min(3vw, 12px);
+}
+
+.not-logged {
+    ion-tab-button {
+      width: 20%;
+    }
+  
+    .icon-row {
+      height: 55%;
+    }  
+  
+    ion-img {
+      height: 20px;
+    }
+  
+    ion-icon {
+      color: #4E4E4E;
+    }
+}
+
+.tab-selected {
+    color: $gaea-green-grass;
+    ion-icon {
+      color: $gaea-green-grass;
+    }
+}
+
+
+//.label {
+//    width: 100%;
+//}
+
+//.toolbar {
+//    height: 100%;
+//    width: 100%;
+//}
+//
+//ion-modal {
+//    --width: 290px;
+//    --height: 382px;
+//    --border-radius: 8px;
+//}
+//
+//ion-modal ion-datetime {
+//    height: 382px;
+//}
+//
+//ion-datetime {
+//    height: auto;
+//    width: auto;
+//
+//    max-width: 350px;
+//} 

@@ -1,0 +1,16 @@
+@import '../../../../../global.scss';
+
+.label-col {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: min(4vw, 20px);
+
+  ion-label {
+    color: $gaea-green-grass;
+  }
+}
+
+.swiper-col {
+  padding-top: 15px;
+}

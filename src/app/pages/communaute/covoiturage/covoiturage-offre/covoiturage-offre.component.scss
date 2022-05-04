@@ -1,0 +1,95 @@
+@import "../../../../../global.scss";
+
+.content-grid,
+.button-col,
+.star-col,
+.avis-col {
+  padding: 0;
+}
+
+.content-grid {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.map-row {
+  flex-grow: 1;
+  ion-col {
+    height: 100% !important;
+  }
+}
+
+ion-avatar {
+  margin: 0 auto;
+  width: 10vw;
+  height: auto;
+}
+
+.avatar-col {
+  padding-bottom: 0;
+}
+
+.star-col {
+  ion-icon {
+    font-size: min(3.5vw, 20px);
+  }
+}
+
+.avis-col {
+  display: flex;
+  place-content: center;
+  ion-text {
+    font-size: min(2.8vw, 14px);
+    color: $gaea-gray-deep;
+  }
+}
+
+.info-col {
+  padding-bottom: 0;
+  ion-label {
+    font-size: min(3.3vw, 16px);
+    font-weight: bold;
+    color: $gaea-gray-deep;
+  }
+
+  ion-text {
+    font-size: min(3vw, 14px);
+    color: $gaea-gray;
+  }
+}
+
+.info-row {
+  align-items: center;
+
+  ion-col {
+    padding: 0;
+  }
+}
+
+.info-value {
+  display: flex;
+  padding-left: 2vw !important;
+}
+
+ion-item {
+  width: 90%;
+  ion-grid {
+    padding: 0;
+  }
+}
+
+.last-item {
+  --border-color: transparent;
+}
+
+ion-button {
+  margin: 0;
+  height: 50px;
+}
+
+ion-select, ion-datetime {
+  padding: 0 5px 0 0;
+  color: $gaea-gray;
+  font-size: min(3vw, 14px);
+}

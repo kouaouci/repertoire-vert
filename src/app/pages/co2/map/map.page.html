@@ -1,0 +1,90 @@
+
+<app-toolbar-with-back 
+  title="activityDetails.title"
+  backUrl="/tabs/profile">
+</app-toolbar-with-back>
+
+<ion-content forceOverscroll="false">
+
+  <!-- Map -->
+  <div id="co2map" style="width: 100%; height: 35%;"></div>
+
+  <!-- Results -->
+  <ion-grid class="content-grid">
+
+    <!-- Statistiques row -->
+    <ion-row class="padded-row" *ngIf="activity">
+      <ion-col size="3" class="ion-text-center">
+        <app-stats-card 
+          icon="../../../../../assets/imgs/co2/distance.svg"
+          [number]="activity.totalDistance"
+          [text]="'activityDetails.distance' | translate">
+        </app-stats-card>
+      </ion-col>
+      <ion-col size="3" class="ion-text-center">
+        <app-stats-card 
+          icon="../../../../../assets/imgs/profile/pas-outline.svg"
+          [number]="activity.steps"
+          [text]="'steps' | translate">
+        </app-stats-card>
+      </ion-col>
+      <ion-col size="3" class="ion-text-center">
+        <app-stats-card 
+          icon="../../../../../assets/imgs/profile/goutte.svg"
+          [number]="activity.calories"
+          [text]="'activityDetails.calories' | translate">
+        </app-stats-card>
+      </ion-col>
+      <ion-col size="3" class="ion-text-center">
+        <app-stats-card 
+          icon="../../../../../assets/imgs/co2/cloud-green.svg"
+          [number]="activity.totalC02"
+          [text]="'activityDetails.co2' | translate">
+        </app-stats-card>
+      </ion-col>
+    </ion-row>
+
+    <!-- Reload button -->
+    <ion-row class="reload-row" *ngIf="!activity">
+      <ion-col size="12" class="ion-text-center">
+        <ion-button color="light" (click)="reload()">
+          {{ 'reloadPage' | translate}}
+          <ion-icon name="reload-outline" class="reload-icon"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!-- Tracking row -->
+    <ion-row class="padded-row tracking-row" *ngIf="activity">
+      <ion-col size="12">
+        <ion-text [translate]="'activityDetails.yourTracking'"></ion-text>
+      </ion-col>
+      <ion-col size="12">
+        <ion-list>
+          <ion-item>
+            <ion-col size="5">
+              <ion-text [translate]="'activityDetails.meansTransport'"></ion-text>
+            </ion-col>
+            <ion-col size="4">
+              <ion-text [translate]="'activityDetails.distanceTraveled'"></ion-text>
+            </ion-col>
+            <ion-col size="4">
+              <ion-text [translate]="'activityDetails.co2Emissions'"></ion-text>
+            </ion-col>
+          </ion-item>
+          <ion-item *ngFor="let t of activity.activityTransports">
+            <ion-col size="5">
+              <ion-text>{{ 'transports.' + t.transport.name | translate }}</ion-text>
+            </ion-col>
+            <ion-col size="4">
+              <ion-text>{{ t.distance | number:'1.1-2' }}</ion-text>
+            </ion-col>
+            <ion-col size="3">
+              <ion-text>{{ t.c02Emissions | number:'1.1-2' }}</ion-text>
+            </ion-col>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,21 @@
+ion-grid, ion-list {
+  height: 100%;
+}
+
+ion-grid {
+  overflow: auto;
+  padding: 0;
+}
+
+ion-list {
+  padding-left: 5vw;
+
+  ion-list-header {
+    padding-left: 0;
+    text-align: center;
+  }
+}
+
+app-activity-item {
+  width: 100%;
+}

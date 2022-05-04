@@ -1,0 +1,41 @@
+@import "../../../../global.scss";
+
+ion-item {
+  --ion-background-color: white;
+}
+
+ion-textarea {
+  border: 1px solid lightgray;
+  --padding-start: 10px;
+}
+
+.own-review-col {
+  padding-left: 35px;
+}
+
+.stars-col {
+  ion-icon {
+    font-size: min(7vw, 30px);
+  }
+}
+
+ion-label {
+  font-size: min(4vw, 20px);
+}
+
+ion-text {
+  font-size: min(3.5vw, 18px);
+}
+
+.comment-hint {
+  color: lightgray;
+  font-style: italic;
+}
+
+app-user-review {
+  width: 100%;
+}
+
+hr {
+  border-width: 1px;
+}

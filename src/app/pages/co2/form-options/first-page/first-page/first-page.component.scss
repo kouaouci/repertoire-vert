@@ -1,0 +1,23 @@
+@import '../../../../../../global.scss';
+
+
+
+ion-grid, ion-row {
+  height: 100%;
+}
+
+ion-col {
+  align-self: center;
+}
+
+
+ion-text {
+  font-size: min(5vw, 20px);
+  color: black;
+  margin-right: 2vw;
+}
+
+ion-icon {
+  color: $gaea-yellow;
+  margin-bottom: -10px;
+}

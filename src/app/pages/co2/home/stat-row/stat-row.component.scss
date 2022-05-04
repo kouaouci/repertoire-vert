@@ -1,0 +1,44 @@
+
+ion-row {
+  padding: 0 5vw 0 5vw;
+  background-color: white;
+}
+
+.stats-col {
+  height: calc(130px + 3vw);
+  padding: 0;
+}
+
+.circle, .circle ion-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+hr {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+ion-icon {
+  height: 100%;
+  font-size: min(6vw, 30px);
+  padding-left: 5vw;
+}
+
+ion-text {
+  font-size: min(4vw, 20px);
+}
+
+.circle {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 50%;
+  width: calc(100px + 3vw);
+  height: calc(100px + 3vw);
+
+  ion-label {
+    font-size: min(8vw, 25px);
+  }
+}

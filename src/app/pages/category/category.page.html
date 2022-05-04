@@ -1,0 +1,45 @@
+
+<app-toolbar></app-toolbar>  
+  
+<ion-content padding>
+  <ion-grid>
+    <!-- Loading spinner -->
+    <ion-row *ngIf="isLoading">
+      <ion-col size="12" class="ion-text-center">
+        <ion-spinner></ion-spinner>
+      </ion-col>
+    </ion-row>
+
+    <!-- Catégories -->
+    <div *ngIf="!isLoading">
+      <ion-row *ngFor="let category of categories; let i = index;">
+        <ion-col size="12" class="category-name-col">
+          <ion-text color="gaea-green-grass">{{ category.name }}</ion-text>
+          <ion-icon 
+            [name]="category.favorite? 'heart' : 'heart-outline'" 
+            [color]="category.favorite? 'gaea-red-deep' : 'dark'"
+            (click)="handleClick(category.id)">
+          </ion-icon>
+        </ion-col>
+  
+        <!-- Slides Sous-Catégories -->
+        <ion-col size="12">
+          <app-slides-categories [categoryId]="category.id" [categoryName]="category.name"></app-slides-categories>
+        </ion-col>
+  
+        <!--<ion-col sizeLg="4" sizeMd="4" sizeXs="6"   *ngFor="let category of categories; let i = index;" 
+      
+        [routerLink]="['/subcategory', categories[i].id]" routerDirection="forward">
+        <ion-card>
+          <img class="img-wrapper" src="../../assets/imgs/cat/{{categories[i].slug}}.jpg">
+        
+          </ion-card>
+        </ion-col> -->
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>
+
+
+
+

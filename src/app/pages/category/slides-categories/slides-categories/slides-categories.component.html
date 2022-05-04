@@ -1,0 +1,10 @@
+<ion-slides pager="true" [options]="slideOpts">
+  <ion-slide *ngFor="let page of pages" 
+    [ngClass]="page.subcategories.length > 2 && 'fullSlide'">
+    <app-card-sous-categorie *ngFor="let subcategory of page.subcategories"
+      [categoryId]="categoryId"
+      [categoryName]="categoryName"
+      [subcategory]="subcategory"  
+    ></app-card-sous-categorie>
+  </ion-slide>
+</ion-slides>

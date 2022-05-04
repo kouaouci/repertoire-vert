@@ -1,0 +1,25 @@
+ion-avatar {
+  margin: 0 auto;
+}
+
+.username-col {
+  align-self: center;
+
+  ion-label {
+    font-size: min(4vw, 20px);
+  }
+}
+
+.comment-col {
+  ion-text {
+    font-size: min(3.5vw, 18px);
+  }
+}
+
+.date-col {
+  ion-text {
+    color: lightgray;
+    font-style: italic;
+    font-size: min(3vw, 16px);
+  }
+}

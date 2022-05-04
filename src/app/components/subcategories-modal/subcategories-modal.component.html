@@ -1,0 +1,44 @@
+<ion-toolbar color="gaea-green-grass">
+  <ion-label translate="selectSubcategories"></ion-label>
+</ion-toolbar>
+<ion-content forceOverscroll="false">
+  <form [formGroup]="subcategoriesForm">
+    <ion-grid>
+
+      <!-- Category and subcategory list -->
+      <ion-row class="list-row" *ngIf="categories">
+        <ng-container *ngFor="let c of categories">
+          <ion-col size="12" class="category-label-col" (click)="toggleSubcategories(c.id)">
+            <ion-label class="category-label">{{ c.name }}</ion-label>
+            <ion-icon 
+              name="chevron-back-outline" 
+              color="gaea-green-grass"
+              *ngIf="!showCategorySubcategories[c.id]">
+            </ion-icon>
+            <ion-icon 
+              name="chevron-down-outline"
+              color="gaea-green-grass"
+              *ngIf="showCategorySubcategories[c.id]">
+            </ion-icon>
+          </ion-col>
+          <ion-col size="12" *ngIf="showCategorySubcategories[c.id]" class="sub-menu">
+            <ion-item *ngFor="let s of c.subcategories" (click)="addOrRemove(s.id)">
+              <ion-label>{{ s.name }}</ion-label>
+              <ion-checkbox 
+                [checked]="selectedSubcategories.indexOf(s.id) !== -1? true : false">
+              </ion-checkbox>
+            </ion-item>
+          </ion-col>
+        </ng-container>
+      </ion-row>
+
+      <!-- Buttons row -->
+      <ion-row class="btn-row">
+        <ion-col size="12" class="ion-text-center btn-col">
+          <ion-button color="light" translate="cancel" (click)="close()"></ion-button>
+          <ion-button color="gaea-green-grass" translate="confirm" (click)="dismiss()"></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

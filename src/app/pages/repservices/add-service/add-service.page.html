@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+  <ion-item lines="none">
+  
+    <ion-label>
+      <h2>Ajouter un service</h2>
+    </ion-label>
+  </ion-item>
+</ion-header>
+
+
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button color="light">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button   [routerLink]="['/add-servicescategory']" routerDirection="forward"  data-desc="Ajouter une catégorie">
+        <ion-icon name="file-tray-stacked-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button   [routerLink]="['/services']" routerDirection="forward"  data-desc="Services">
+        <ion-icon name="albums-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+  <form [formGroup]="ServiceForm" (ngSubmit)="onFormSubmit()">
+    <ion-footer class="ion-no-border">
+      <ion-toolbar style="height: auto;">
+       
+        <ion-label>Categorie</ion-label>
+
+        <ion-select (ionChange)="selecttransport($event)"  
+         placeholder="Sélectionner une categorie" >
+          <ion-select-option *ngFor="let item of cats; let index"  [value]=item.id>{{item.name}}</ion-select-option>
+        </ion-select>
+
+        <ion-label>type</ion-label>
+  
+        <ion-select 
+         placeholder="Sélectionner une categorie" formControlName="type" >
+          <ion-select-option   value="company">Entreprise</ion-select-option>
+          <ion-select-option   value="user">Particulier</ion-select-option>
+        </ion-select>
+        <ion-label>Description</ion-label>
+  <ion-textarea rows="6" color="dark" formControlName="description" placeholder="Description .." type="text"  ></ion-textarea>
+  
+  <ion-label>Domaine</ion-label>
+  <ion-textarea rows="6" color="dark" formControlName="field" placeholder="Domaine .." type="text"  ></ion-textarea>
+  <ion-button type="submit" [disabled]="!ServiceForm.valid" color="success"  > Ajouter service</ion-button>
+
+  </ion-toolbar>
+  </ion-footer>
+  
+  </form>
+</ion-content>

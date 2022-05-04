@@ -1,0 +1,51 @@
+
+
+  <ion-grid class="content-grid">
+    <ion-row class="content-row">
+      <ion-segment   
+        value="all" 
+        scrollable="true"
+        [(ngModel)]="segment"
+        (ionChange)="segmentChanged()">
+
+        <ion-segment-button value="0" class="segmen-all">
+          <ion-label [translate]="'profile.all'"></ion-label>
+        </ion-segment-button>
+
+        <ion-segment-button value="1">
+          <ion-label [translate]="'profile.thisMonth'"></ion-label>
+        </ion-segment-button>
+
+        <ion-segment-button value="2">
+          <ion-label [translate]="'profile.thisWeek'"></ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+      <ion-slides #slides (ionSlideDidChange)="slideChanged()">
+        <!-- Toutes les activités -->
+        <ion-slide>
+          <app-list-activities 
+            [activities]="activities" period="tout"
+            (deleteEvent)="deleteActivity($event)">
+          </app-list-activities>
+        </ion-slide>
+
+        <!--Ce mois -->
+        <ion-slide>
+          <app-list-activities
+            [activities]="activitiesMonth" period="mois"
+            (deleteEvent)="deleteActivity($event)">
+          </app-list-activities>
+        </ion-slide>
+
+        <!-- Cette semaine -->
+        <ion-slide>
+          <app-list-activities
+            [activities]="activitiesWeek" period="semaine"
+            (deleteEvent)="deleteActivity($event)">
+          </app-list-activities>
+        </ion-slide>
+
+      </ion-slides>
+    </ion-row>
+  </ion-grid>

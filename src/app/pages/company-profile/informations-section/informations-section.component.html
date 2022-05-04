@@ -1,0 +1,110 @@
+<ion-grid>
+
+  <!-- Modify Information -->
+  <ion-row *ngIf="ownCompany">
+    <ion-col size="12" class="modify-btn-col ion-text-center">
+      <ion-button color="light" (click)="editInfo()">
+        {{ 'companyProfile.editInformation' | translate }}
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <!-- Description-->
+  <ion-row class="description-row">
+    <ion-col size="12">
+      <ion-label>{{ 'description' | translate}} : </ion-label>
+      <ion-text>{{ company?.description }}</ion-text>
+    </ion-col>
+  </ion-row>
+
+  <!-- Company info -->
+  <ion-row>
+    <!-- Address -->
+    <ion-col size="12" class="info-col">
+      <ion-label>{{ 'address' | translate}}: </ion-label>
+      <ion-text>{{ company?.street }}</ion-text>
+    </ion-col>
+    
+    <!-- Social reason -->
+    <ion-col size="6" class="info-col">
+      <ion-label>{{ 'legalStatus' | translate}} : </ion-label>
+      <ion-text>{{ company?.socialreason }}</ion-text>
+    </ion-col>
+
+    <!-- Certification -->
+    <ion-col size="6" class="info-col">
+      <ion-label>{{ 'certification' | translate}} : </ion-label>
+      <ion-text>{{ company?.certification }}</ion-text>
+    </ion-col>
+  </ion-row>
+
+  <!-- Gaea21 recommendation -->
+  <ion-row>
+    <ion-col size="12">
+      <div class="recommendation-container">
+        <ion-text>
+          {{ 'gaeaRecommendation' | translate}} :
+        </ion-text>
+        <ion-text [translate]="company?.wantevaluation? 'yes' : 'no'"></ion-text>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <!--<div class="separation-line"></div>-->
+  <hr class="separation-line">
+
+  <!-- Contact info -->
+  <ion-row class="contact-row">
+    <ion-col size="12">
+      <ion-label>{{ 'contact' | translate}} :</ion-label>
+    </ion-col>
+    <!-- Phone numbers -->
+    <ion-col size="5" class="phone-col">
+      <ion-col size="2">
+        <ion-icon name="call" color="gaea-green-grass"></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <ion-text>{{ company?.phone }}</ion-text>
+      </ion-col>
+    </ion-col>
+
+    <!-- Emails -->
+    <ion-col size="7" class="email-col">
+      <ion-col size="2">
+        <ion-icon name="mail-outline" color="gaea-green-grass"></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <ion-text>{{ company?.urlwebsite }}</ion-text>
+      </ion-col>
+    </ion-col>
+
+    <!-- Social links -->
+    <ion-col size="12" class="social-col">
+      <ion-icon src="../../../../assets/icon/twitter.svg"></ion-icon>
+      <ion-icon src="../../../../assets/icon/facebook.svg"></ion-icon>
+      <ion-icon src="../../../../assets/icon/linkedin.svg"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+  <!-- Categories -->
+  <ion-row class="categories-row">
+    <ion-col size="3" *ngFor="let category of company?.categories">
+      <ion-img 
+        [src]="'../../../../assets/icon/categories/' + category.name + '.svg'"
+        class="category-icon">
+      </ion-img>
+      <ion-text>{{ category.name }}</ion-text>
+    </ion-col>
+  </ion-row>
+
+  <!-- Map -->
+  <ion-row class="map-row">
+    <ion-col size="12">
+      <ion-label [translate]="'influenceArea'"></ion-label>
+      <ion-text>Lausanne, Genève, Haute-Savoie</ion-text>
+    </ion-col>
+    <ion-col size="12">
+      <map id="companyMap" style="width: 100%; height: 200px"></map>
+    </ion-col>
+  </ion-row>
+</ion-grid>

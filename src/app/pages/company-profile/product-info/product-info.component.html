@@ -1,0 +1,60 @@
+<ion-grid *ngIf="product">
+  <ion-row class="info-row" 
+    [routerLink]="['/tabs/product-details/' + product.id]">
+    <ion-col size="3">
+      <ion-avatar>
+        <img [src]="image"
+        onerror="this.onerror=null;this.src='../../../../../assets/imgs/no_product.jpg';">
+      </ion-avatar>
+    </ion-col>
+    <ion-col size="9">
+      <ion-row>
+        <ion-col size="12" class="name-col">
+          <ion-label>{{ product.name | titlecase}}</ion-label>
+          <ion-text *ngIf="product.discr === 'marchandise'">
+            {{ merchandise.price | number:'1.2'}}
+            {{ ' ' }}
+            {{ merchandise.currency.toUpperCase() === 'CHF'? 'CHF' : 'EUR' }}
+          </ion-text>
+        </ion-col>
+        <ion-col size="12">
+          <ion-text>{{ product.description }}</ion-text>
+        </ion-col>
+        <ion-col size="12" class="origin-col">
+          <ion-label *ngIf="product.discr === 'marchandise'">
+            {{ 'origin' | translate }} : <span class="origin-text">{{ merchandise.origin }}</span>
+          </ion-label>
+          <div class="niveau-container">
+            {{ product.niveau }}
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="reviews-row">
+
+    <!-- Review labels -->
+    <ion-col size="6">
+      <ion-text class="review-label" [translate]="'consummers'"></ion-text>
+    </ion-col>
+    <ion-col size="6">
+      <ion-text class="review-label" [translate]="'companies'"></ion-text>
+    </ion-col>
+
+    <!-- User Reviews -->
+    <ion-col size="6">
+      <app-review-stars [stars]="product.userAverageRating"></app-review-stars>
+      <ion-text class="review-text">{{ product.userTotalReviews || 0 }} {{ 'reviews' | translate }}</ion-text>
+      <ion-icon name="chatbubbles" color="gaea-green-grass"></ion-icon>
+    </ion-col>
+
+    <!-- Company Reviews -->
+    <ion-col size="6">
+      <app-review-stars [stars]="product.companyAverageRating"
+        color="gaea-blue-star"></app-review-stars>
+      <ion-text class="review-text">{{ product.companyTotalReviews || 0 }} {{ 'reviews' | translate }}</ion-text>
+      <ion-icon name="chatbubbles" color="gaea-green-grass"></ion-icon>
+    </ion-col>
+  </ion-row>
+</ion-grid>

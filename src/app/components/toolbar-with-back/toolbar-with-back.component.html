@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="toolbar-title">{{ title | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button color="dark"></ion-menu-button>
+      <div class="notification-number" *ngIf="isAuthenticated && notifications > 0">
+        <span>{{ notifications }}</span>
+      </div>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()" class="back-btn">
+        <ion-icon name="chevron-back" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

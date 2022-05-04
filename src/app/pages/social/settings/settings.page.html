@@ -1,0 +1,66 @@
+
+<app-toolbar title="settings.title"></app-toolbar>
+
+<ion-content forceOverscroll="false">
+  <ion-grid class="outer-grid">
+    <ion-row class="outer-row">
+      <ion-col size="12">
+        <ion-list>
+
+          <!-- OnBoarding-->
+          <app-setting-item
+            title="OnBoarding"
+            onBoarding="true">
+          </app-setting-item>
+
+          <!-- Tutoriel -->
+          <app-setting-item
+            title="settings.tutorialLabel"
+            text="settings.tutorialText"
+            [activated]="show_tutorial">
+          </app-setting-item>
+
+          <!-- Activités -->
+          <app-setting-item
+            title="settings.activityLabel"
+            text="settings.activityText"
+            [activated]="show_activities">
+          </app-setting-item>
+
+          <!-- Statut -->
+          <app-setting-item
+            title="settings.statusLabel"
+            text="settings.statusText"
+            [activated]="show_status">
+          </app-setting-item>
+
+          <!-- Restrictions -->
+          <ion-item>
+            <ion-grid class="inner-grid">
+              <ion-row>
+                <ion-label [translate]="'settings.restrictionLabel'"></ion-label>
+              </ion-row>
+              <ion-row>
+                <ion-col size="12" class="button-col">
+                  <ion-button
+                    fill="clear"
+                    class="compte-button"
+                    size="small"
+                    [routerLink]="['/reported']"
+                    >{{ 'settings.myAccount' | translate: {} }}
+                  </ion-button>
+                  <ion-button
+                    size="small"
+                    color="gaea-green-grass"
+                    [routerLink]="['/reports']"
+                    >{{ 'settings.mySignals' | translate: {} }}
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

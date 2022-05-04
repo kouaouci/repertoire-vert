@@ -1,0 +1,39 @@
+<app-toolbar></app-toolbar>
+<ion-content forceOverscroll="false">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-slides pager="true" #slides>
+      
+            <!-- Première page -->
+            <ion-slide class="ion-padding premiere-page">
+              <app-first-page (clickEvent)="changeSlide()"></app-first-page>
+            </ion-slide>
+      
+            <!-- Page Transport -->
+            <ion-slide class="ion-padding page-transport">
+              <app-second-page 
+                [transports]="transports"
+                (choiceEvent)="handleTransport($event)">
+              </app-second-page>
+            </ion-slide>
+
+            <!-- Page Achats -->
+            <ion-slide class="ion-padding page-achats">
+              <app-third-page
+                (choiceEvent)="handleActivity($event)"
+                (clickEvent)="handleSubmit()">
+              </app-third-page>      
+            </ion-slide>
+          </ion-slides>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+
+
+
+

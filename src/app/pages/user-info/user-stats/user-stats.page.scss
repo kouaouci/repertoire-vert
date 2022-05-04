@@ -1,0 +1,61 @@
+@import '../../../../global.scss';
+
+ion-grid, ion-col {
+  padding: 0;
+}
+
+ion-grid {
+  padding-top: 7vw;
+  overflow: auto;
+}
+
+ion-row {
+  margin-bottom: min(5vw, 15px);
+}
+
+ion-segment {
+  width: 100%;
+  background-color: white;
+  transition: all 200ms;
+  border-radius: 8px;
+
+  ion-segment-button {
+    height: 30px;
+    border-radius: 8px;
+    min-height: 0;
+    font-size: min(3vw, 14px);
+    --color: black;
+    --color-checked: white !important;
+    --background-checked: #608125;
+    --ion-background-color: none;
+    --indicator-height: 0;
+    text-transform: none;
+    letter-spacing: 0;
+    --border-color: #CBCBCB;
+  }
+}
+
+app-news {
+  width: 100%;
+}
+
+.info-card-row {
+  justify-content: space-between;
+  
+  ion-col {
+    max-width: 31%;
+  }
+}
+
+.stats-row ion-card, .remarques-row ion-card {
+  margin: 0;
+  border-radius: 8px;
+}
+
+.remarques-row {
+  margin-bottom: 15px;
+}
+
+#chart {
+  width: 100%;
+}

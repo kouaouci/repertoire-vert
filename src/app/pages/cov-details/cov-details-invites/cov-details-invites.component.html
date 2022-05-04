@@ -1,0 +1,60 @@
+
+<ion-grid #content *ngIf="invitations && participations">
+
+  <!-- Invitations row -->
+  <ion-row *ngIf="invitations?.length > 0" class="invites-row">
+    <ion-col size="12" class="label-col">
+      <ion-label [translate]="'invitations'"></ion-label>
+    </ion-col>
+    <ion-col size="12" class="friend-col"
+      *ngFor="let invitation of invitations">
+      <app-user-offer-card 
+        type="invitation"
+        [user]="invitation.friend"
+        [invitationId]="invitation.id"
+        (cancelEvent)="deleteInvitation($event)">
+      </app-user-offer-card>
+    </ion-col>
+  </ion-row>
+
+  <!-- Favorites row -->
+  <ion-row *ngIf="favorites?.length > 0" class="favorites-row">
+    <ion-col size="12" class="label-col">
+      <ion-label [translate]="'favorites'"></ion-label>
+    </ion-col>
+    <ion-col size="12" class="friend-col"
+      *ngFor="let favorite of favorites">
+      <app-user-offer-card
+        *ngIf="favorite.favorite.id !== creatorId"
+        type="friend-invite"
+        [user]="favorite.favorite"
+        [invited]="checkAlreadyInvited(favorite.favorite.id)"
+        [participating]="checkAlreadyParticipating(favorite.favorite.id)"
+        (inviteEvent)="inviteFriend($event)">
+      </app-user-offer-card>
+    </ion-col>
+  </ion-row>
+
+  <!-- Friends row -->
+  <ion-row class="friends-row">
+    <ion-col size="12" class="label-col">
+      <ion-label [translate]="'friends'"></ion-label>
+    </ion-col>
+    <ion-col size="12" class="searchbar-col">
+      <app-searchbar
+        [text]="'findUser' | translate"
+        (searchEvent)="handleSearch($event)"></app-searchbar>
+    </ion-col>
+
+    <ion-col size="12" class="friend-col"
+      *ngFor="let friend of friends | filter:filterTerm; let index = index">
+      <app-user-offer-card 
+        type="friend-invite"
+        [user]="friend"
+        [invited]="checkAlreadyInvited(friend.id)"
+        [participating]="checkAlreadyParticipating(friend.id)"
+        (inviteEvent)="inviteFriend($event)">
+      </app-user-offer-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

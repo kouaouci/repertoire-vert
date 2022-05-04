@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <ion-item lines="none">
+  
+    <ion-label>
+      <h2>Ajouter une catégorie</h2>
+    </ion-label>
+  </ion-item>
+</ion-header>
+
+
+<ion-content>
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button color="light">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button   [routerLink]="['/company-categories']" routerDirection="forward"  data-desc="Vos Catégories">
+        <ion-icon name="file-tray-stacked-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button   [routerLink]="['/add-servicescategory']" routerDirection="forward"  data-desc="Ajouter une catégorie">
+        <ion-icon name="file-tray-stacked-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button   [routerLink]="['/services']" routerDirection="forward"  data-desc="Services">
+        <ion-icon name="albums-outline"></ion-icon>
+      </ion-fab-button>
+      
+    </ion-fab-list>
+  </ion-fab>
+  <form [formGroup]="CategoryForm" (ngSubmit)="onFormSubmit()">
+    <ion-footer class="ion-no-border">
+      <ion-toolbar style="height: auto;">
+       
+        <ion-label>Nom de la catégorie</ion-label>
+<ion-input type="text" formControlName="name" placeholder="Nom de la catégorie .."></ion-input>
+  
+<ion-label>Slug</ion-label>
+<ion-input type="text" formControlName="slug" placeholder="slug .."></ion-input> 
+<ion-label>Image</ion-label>
+<ion-input type="text" formControlName="image" placeholder="image .."></ion-input> 
+        <ion-label>Description</ion-label>
+  <ion-textarea rows="6" color="dark" formControlName="description" placeholder="Description .." type="text"  ></ion-textarea>
+  
+  <ion-button type="submit" [disabled]="!CategoryForm.valid" color="success"  > Ajouter catégorie</ion-button>
+
+  </ion-toolbar>
+  </ion-footer>
+  
+  </form>
+</ion-content>

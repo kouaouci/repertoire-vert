@@ -1,0 +1,59 @@
+
+<app-toolbar-with-back
+  title="forum.title"
+  backUrl="/tabs/communaute">
+</app-toolbar-with-back>
+
+<ion-content force-overscroll="false">
+  
+  <!-- Refresh page -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-grid>
+    
+    <!-- Searchbar row -->
+    <ion-row class="searchbar-row">
+      <ion-col size="12">
+        <app-searchbar text="forum.searchPost" (searchEvent)="handleSearch($event)"></app-searchbar>
+      </ion-col>
+    </ion-row>
+
+    <!-- Add new post row -->
+    <ion-row>
+      <ion-col size="12" class="icon-col">
+        <ion-icon 
+          src="../../../../../assets/imgs/plus.svg"
+          [routerLink]="['/tabs/forum/create-post']"
+        ></ion-icon>
+      </ion-col>
+    </ion-row>
+
+    <!-- Discussions row -->
+    <ion-row class="discussions-row">
+      <ion-col size="12">
+        <ion-list>
+          <app-forum-post 
+            *ngFor="let post of posts | filter:filterTerm; let last = last"
+            [post]="post"
+            [last]="last">
+          </app-forum-post>
+        </ion-list>
+      </ion-col>
+
+      <ion-col size="12" class="ion-text-center">
+        <ion-spinner *ngIf="isLoading"></ion-spinner>
+      </ion-col>
+
+      <ion-col size="12" class="ion-text-center">
+        <ion-button 
+          *ngIf="showButton"
+          color="gaea-green-grass"
+          [translate]="'forum.viewMore'">
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

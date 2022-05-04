@@ -1,0 +1,32 @@
+
+ion-label {
+  font-size: min(3vw, 18px) !important;
+  white-space: normal !important;
+}
+
+ion-text {
+  font-size: min(2.5vw, 16px) !important;
+}
+
+.icon-col {
+  display: flex;
+  padding: 0;
+  justify-content: space-around;
+  
+  ion-icon {
+    height: 100%;
+  }
+
+  .icon-oeil {
+    font-size: min(7vw, 32px)
+  }
+
+  .icon-poubelle {
+    font-size: min(4.5vw, 23px)
+  }
+}
+
+.info-col {
+  padding-left: 0;
+  padding-right: 0;
+}

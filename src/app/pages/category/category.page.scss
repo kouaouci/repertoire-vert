@@ -1,0 +1,35 @@
+ion-content {
+  --background: #f6f7f9;
+}
+
+ion-grid {
+  padding: 15px;
+}
+
+ion-grid,
+ion-row {
+  width: 100%;
+}
+
+app-slides-categories {
+  width: 100%;
+}
+
+.category-name-col {
+  //padding-top: 5px;
+  //padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/**.img-wrapper {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}**/
+
+ion-card {
+  border-radius: 15px;
+}

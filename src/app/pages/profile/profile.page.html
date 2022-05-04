@@ -1,0 +1,90 @@
+<app-toolbar></app-toolbar>
+
+<ion-content [forceOverscroll]="false" [fullscreen]="true">
+  <ion-grid class="content-grid">
+
+    <!-- Profil avatar & nom -->
+    <ion-row class="header-row">
+      <ion-col size="3" sizeSm="2" sizeLg="1">
+        <ion-avatar >
+          <img src="../../../assets/imgs/avatar.png">
+        </ion-avatar>
+      </ion-col>
+      <ion-col class="name-col" size="9" sizeSm="10" sizeLg="11">
+          <ion-text>
+            {{ user?.lastname | titlecase }} {{ user?.firstname | titlecase}}
+          </ion-text>
+          <ion-text>{{ user?.city | titlecase }}</ion-text>
+          <ion-button color="light" (click)="togglePreferences()"
+            [translate]="showPreferences? 'profile.backToProfile' : 'profile.preferences'">
+          </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!-- User Preferences -->
+    <ion-row class="preferences-row" *ngIf="showPreferences">
+      <ion-col size="12">
+        <app-user-preferences></app-user-preferences>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+    <!-- Tabs -->
+  <super-tabs [config]="{ nativeSmoothScroll: false }" class="content-tabs"
+    *ngIf="!showPreferences">
+    <super-tabs-toolbar 
+      [showIndicator]="true" 
+      no-border>
+      <super-tab-button>
+        {{ 'profile.statistics' | translate }}
+        <div class="button-not-last"></div>
+      </super-tab-button>
+      <super-tab-button>
+        {{ 'profile.favorites' | translate }}
+        <div class="button-not-last"></div>
+      </super-tab-button>
+      <super-tab-button>
+        {{ 'profile.activities' | translate }}
+        <div class="button-not-last"></div>
+      </super-tab-button>
+      <super-tab-button>
+        {{ 'profile.network' | translate }}
+      </super-tab-button>
+    </super-tabs-toolbar>
+  
+    <!-- Tabs content -->
+    <super-tabs-container autoScrollTop *ngIf="!showPreferences">
+      <super-tab>
+        <ion-nav>
+          <app-user-stats
+            (touchStartEvent)="disableSwipe()"
+            (touchEndEvent)="enableSwipe()"
+            [activities]="activities"
+            [activitiesWeek]="activitiesWeek"
+            [activitiesMonth]="activitiesMonth"
+            [activitiesYear]="activitiesYear"
+          ></app-user-stats>
+        </ion-nav>
+      </super-tab>
+      <super-tab>
+        <ion-nav>
+          <app-user-favorites></app-user-favorites>
+        </ion-nav>
+      </super-tab>
+      <super-tab>
+        <ion-nav>
+          <app-user-activities
+          [activities]="activities"
+          [activitiesWeek]="activitiesWeek"
+          [activitiesMonth]="activitiesMonth"
+          ></app-user-activities>
+        </ion-nav>
+      </super-tab>
+      <super-tab>
+        <ion-nav>
+          <app-user-network></app-user-network>
+        </ion-nav>
+      </super-tab>
+    </super-tabs-container>
+  </super-tabs>
+</ion-content>

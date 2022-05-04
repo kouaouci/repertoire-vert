@@ -1,0 +1,126 @@
+<ion-header [translucent]="true">
+  
+  
+  <ion-toolbar>
+    <ion-segment
+      color="success"
+      class="segment-wrapper"
+      (ionChange)="segmentChanged($event)"
+      [(ngModel)]="segment"
+    >
+      <ion-segment-button value="0">
+        <ion-label>Localisation</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button *ngIf="image" value="1">
+        <ion-label> Détails </ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="image" >
+    <ion-row >
+ 
+      <ion-col size="4">
+        <ion-icon name="airplane-outline" slot="start"></ion-icon>
+        <ion-item >
+        <div id="distancecycling"></div>
+      </ion-item>
+      </ion-col>
+  
+
+
+      <ion-col size="4">
+        <ion-icon name="airplane-outline" slot="start"></ion-icon>
+        <ion-item>
+        <div id="timecycling"></div>
+      </ion-item>
+      </ion-col>
+
+
+      <ion-col size="4">
+        <ion-icon name="airplane-outline" slot="start"></ion-icon>
+        <ion-item>
+        <div id="caloriescycling"></div>
+      </ion-item>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+ 
+  <ion-slides
+    class="slides-wrapper"
+    #slides
+    (ionSlideDidChange)="slideChanged()"
+  >
+    <ion-slide>
+      <ion-searchbar
+        placeholder="Cherchez une entreprise"
+        (ionInput)="search()"
+        [(ngModel)]="searchKey"
+      ></ion-searchbar>
+
+      <ion-searchbar showCancelButton="focus" cancelButtonText="Custom Cancel"
+      placeholder="Cherchez un produit"
+      (ionInput)="searchPro()"
+      [(ngModel)]="searchKeyPro"
+    ></ion-searchbar>
+    <ion-list
+    *ngIf="products.length > 0"
+    class="autocomplete-address-list common-bg-light"
+    lines="full"
+  >
+    <div class="list autolist">
+      <ion-item
+        tappable
+        (click)="onClickPickAddress(product.latitude, product.longitude)"
+        class="item"
+        *ngFor="let product of products"
+      >
+        <ion-icon name="location-outline" slot="start"></ion-icon>
+        {{product.name}}
+        <img
+          style="height: 30px; width: 60px"
+          src="{{product.image}}"
+        />
+      </ion-item>
+    </div>
+  </ion-list>
+<!-- -->
+
+      <ion-list
+        *ngIf="places.length > 0"
+        class="autocomplete-address-list common-bg-light"
+        lines="full"
+      >
+        <div class="list autolist">
+          <ion-item
+            tappable
+            (click)="onClickPickAddress(place.latitude, place.longitude)"
+            class="item"
+            *ngFor="let place of places"
+          >
+            <ion-icon name="location-outline" slot="start"></ion-icon>
+            {{place.name}}
+            <img
+              style="height: 30px; width: 60px"
+              src="{{place.image}}"
+            />
+          </ion-item>
+        </div>
+      </ion-list>
+
+      <div id="mapcycling" style="width: 100%; height: 100%;"></div>
+    </ion-slide>
+
+    <ion-slide *ngIf="image">
+      <ion-card>
+        <ion-card-title>Nom : {{objectName}}</ion-card-title>
+        <img src="{{image}}" />
+        <ion-card-subtitle>Addresse :{{addressComponent}}</ion-card-subtitle>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

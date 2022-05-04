@@ -1,0 +1,21 @@
+<ion-segment
+  scrollable="true"
+  [(ngModel)]="segment"
+  (ionChange)="segmentChanged($event)"
+>
+  <ion-segment-button [value]="0">
+    <ion-label [translate]="'profilePreferences.information'"></ion-label>
+  </ion-segment-button>
+
+  <ion-segment-button [value]="1">
+    <ion-label [translate]="'profilePreferences.carpool'"></ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+<ng-container *ngIf="segment == 0">
+  <app-information-form></app-information-form>
+</ng-container>
+
+<ng-container *ngIf="segment == 1">
+  <app-covoiturage-form></app-covoiturage-form>
+</ng-container>

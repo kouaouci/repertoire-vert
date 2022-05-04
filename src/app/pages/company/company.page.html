@@ -1,0 +1,288 @@
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/ionic/ionic.esm.js"></script>
+<script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core@latest/dist/ionic/ionic.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@latest/css/ionic.bundle.css" />
+
+<script
+  type="module"
+  src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.esm.js"
+></script>
+<script
+  nomodule src="https://unpkg.com/@ionic/pwa-elements@latest/dist/ionicpwaelements/ionicpwaelements.js"
+></script>
+
+<body>
+  <ion-app>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+
+        <ion-title>
+          Entreprise
+        </ion-title>
+
+        <ion-buttons slot="end">
+          <ion-back-button defaultHref="/identification"></ion-back-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content force-overscroll="true"> <!--[scrollEvents]="true"-->  
+      <form [formGroup]="companyForm"
+            (ngSubmit)="companyForm.valid && submitForm()"
+            #formCompany="ngForm"
+      >
+
+      <div class="label">
+        <!-- Inputs with labels -->
+
+        <!--N'est pas visible sur la view -->
+        <ion-item>
+          <ion-label position="stacked">Pseudo*</ion-label>
+            <ion-input name="gaeaUserId" formControlName="gaeaUserId"></ion-input>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="stacked">Nom, Prénom du contact*</ion-label>
+            <ion-input formControlName="username"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Mot de passe*</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Confirmer le mot de passe*</ion-label>
+            <ion-input type="password" formControlName="passwordConfirm" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Adresse mail*</ion-label>
+            <ion-input formControlName="email"></ion-input>
+        </ion-item>
+          <app-error-message
+            message="*Email is invalid"
+            [field]="companyForm.get('email')"
+            error="email"
+          ></app-error-message>
+          <app-error-message
+            message="*Email is mandatory"
+            [field]="companyForm.get('email')"
+            error="required" 
+          ></app-error-message>
+
+        <ion-item>
+          <ion-label position="stacked">Confirmer l'adresse mail*</ion-label>
+            <ion-input formControlName="emailConfirm"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Nom de l'entreprise*</ion-label>
+          <ion-input formControlName="name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Raison sociale*</ion-label>
+            <ion-input formControlName="socialreason"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Adresse</ion-label>
+            <ion-input formControlName="street"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Ville</ion-label>
+            <ion-input formControlName="city"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Code postal</ion-label>
+            <ion-input formControlName="postcode"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Canton, département</ion-label>
+            <ion-input formControlName="region"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Pays</ion-label>
+            <ion-input formControlName="country"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Téléphone</ion-label>
+          <ion-input formControlName="phone" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Site Web</ion-label>
+          <ion-input formControlName="urlwebsite">http://</ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Lien Facebook</ion-label>
+          <ion-input formControlName="urlfacebook">http://</ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Lien Twitter</ion-label>
+          <ion-input formControlName="urltwitter">http://</ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Lien LinkedIn</ion-label>
+          <ion-input formControlName="urllinkedin" >http://</ion-input>
+        </ion-item>
+
+        
+
+        <ion-item>
+          <ion-label>Début de l'activité*</ion-label>
+          <ion-datetime formControlName="startingdate" presentation="date" [(ngModel)]="date" interface="popover"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Certification(s)*</ion-label>
+            <ion-input formControlName="certification" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Zone d'influence géographique*</ion-label>
+          <ion-select formControlName="influencezone" [interfaceOptions]="customAlertOptions" interface="popover" placeholder="Select One">
+            <ion-select-option value="5Km ou moins">5Km ou moins</ion-select-option>
+            <ion-select-option value="10Km">10Km</ion-select-option>
+            <ion-select-option value="20Km">20Km</ion-select-option>
+            <ion-select-option value="50Km">50Km</ion-select-option>
+            <ion-select-option value="100Km">100Km</ion-select-option>
+            <ion-select-option value="Plus de 100Km">Plus de 100Km</ion-select-option>
+          </ion-select>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label>Mon/mes secteur(s) d'activité(s)*</ion-label>
+          <ion-select formControlName="categories" interface="popover" multiple="true" placeholder="Select multiple">
+            <ion-select-option value="nes">NES</ion-select-option>
+            <ion-select-option value="n64">Nintendo64</ion-select-option>
+            <ion-select-option value="ps">PlayStation</ion-select-option>
+            <ion-select-option value="genesis">Sega Genesis</ion-select-option>
+            <ion-select-option value="saturn">Sega Saturn</ion-select-option>
+            <ion-select-option value="snes">SNES</ion-select-option>
+          </ion-select>
+        </ion-item>
+        
+
+        <p> &nbsp; Je souhaite être évalué par Gaea21 : (voir tableau ci-dessous)</p>
+        <ion-radio-group value="Oui" formControlName="wantevaluation">
+        <ion-item>
+          <ion-label>Oui</ion-label>
+          <ion-radio color="primary" slot="start" value="Oui"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Non</ion-label>
+          <ion-radio color="primary" slot="start" value="Non"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+
+        <ion-item>
+          <ion-label position="stacked">Description de votre entreprise</ion-label>
+          <ion-textarea formControlName="description" ></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Votre vision du Développement Durable : <br>
+            Comment résumeriez-vous votre philosophie <br> d’entreprise au sujet du Développement Durable ?</ion-label>
+          <ion-textarea formControlName="vision" ></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <p>Téléchargez votre logo (jpeg/png)</p>
+          <ion-button color="dark" size="default" (click)="takePicture()">Parcourir</ion-button>
+          <img [src]="picture"/>
+          <ion-button color="dark" size="default">Supprimez l'image</ion-button>
+        </ion-item>
+        
+      </div>
+      <!-- Input with placeholder 
+      <ion-input placeholder=" Enter Input">Nom d'utilisateur :</ion-input>
+      <ion-input placeholder=" Enter Input">Nom de l'entreprise :</ion-input>
+      <ion-input placeholder=" Enter Input">Description :</ion-input>
+      
+      Number type input 
+      <ion-input type="number" placeholder=" km">Zone d'influence : </ion-input>
+      <ion-input type="number">Numéro de téléphone : </ion-input>
+      
+      URL Input 
+      <ion-input placeholder=" Enter URL">URL Site Web :</ion-input>
+      <ion-input placeholder=" Enter URL">URL Facebook :</ion-input>
+      <ion-input placeholder=" Enter URL">URL Twitter :</ion-input>
+      <ion-input placeholder=" Enter URL">URL LinkedIn :</ion-input> -->
+
+      <ion-item>
+        <ion-button color="gaea-green-deep" shape="rectangular" size="large" type="submit" (click)='btnClicked()'
+        
+         >Enregistrer</ion-button>
+        <ion-button color="light" shape="rectangular" size="large" routerLink= "/login">Annuler</ion-button>
+      </ion-item>
+      
+  </form>
+
+
+      <ion-item>
+        <ion-tabs>
+          <ion-tab-bar style="width: 100%;" slot="bottom">
+            <ion-tab-button tab="category" routerLink="/tabs/category">
+              <ion-icon name="folder"></ion-icon>
+              <ion-label >Catégories</ion-label>
+            </ion-tab-button>
+
+            <ion-tab-button (click)="showOfflineMessage()">
+              <ion-icon 
+                *ngIf="!co2Selected"
+                src="../../../assets/imgs/home/pas.svg">
+              </ion-icon>
+              <ion-icon 
+                *ngIf="co2Selected"
+                src="../../../assets/imgs/home/pas_green.svg">
+              </ion-icon>
+              <ion-label>CO2</ion-label>
+            </ion-tab-button>
+
+            <ion-tab-button tab="qrcode" routerLink="/tabs/qrcode">
+              <ion-icon 
+                *ngIf="!qrcodeSelected"
+                src="../../../assets/imgs/home/qr_code.svg">
+              </ion-icon>
+              <ion-icon 
+                *ngIf="qrcodeSelected"
+                src="../../../assets/imgs/home/qr_code_green.svg">
+              </ion-icon>
+              <ion-label>QR Code</ion-label>
+            </ion-tab-button>
+        
+            <ion-tab-button tab="communaute" routerLink="/tabs/communaute">
+              <ion-icon name="people"></ion-icon>
+              <ion-label>Communauté</ion-label>
+            </ion-tab-button>
+        
+            <ion-tab-button tab="lieux" routerLink="/tabs/lieux">
+              <ion-icon name="search"></ion-icon>
+              <ion-label>Recherche</ion-label>
+            </ion-tab-button>
+          </ion-tab-bar>
+        </ion-tabs>
+      </ion-item>
+
+        
+      
+    </ion-content>
+  </ion-app>
+</body>
+
+
+

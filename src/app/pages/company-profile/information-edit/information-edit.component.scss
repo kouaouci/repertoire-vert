@@ -1,0 +1,22 @@
+ion-input,
+ion-textarea {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  --padding-start: 5px;
+  --padding-end: 5px;
+}
+
+ion-label,
+ion-input,
+ion-textarea,
+ion-button {
+  font-size: min(3.5vw, 18px)
+}
+
+.btn-col {
+  margin-top: 20px;
+  ion-button {
+    box-shadow: lightgrey 1px 1px 5px 3px;
+    border-radius: 10px;
+  }
+}

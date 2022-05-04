@@ -1,0 +1,87 @@
+<app-toolbar></app-toolbar>
+
+<ion-content force-overscroll="false" fullscreen class="gaea21home">
+
+  <ion-grid>
+
+    <!-- Logo répertoire vert-->
+    <ion-row [class]="isAuthenticated? 'no-logo-row' : 'logo-row'">
+      <ion-col size="12">
+        <ion-img 
+          *ngIf="!isAuthenticated" 
+          class="content-logo"  
+          src="../assets/imgs/logo_repertoire_vert_ok.png">
+        </ion-img>
+      </ion-col>
+    </ion-row>
+
+    <!-- Îcones -->
+    <ion-row [class]="isAuthenticated? 'logged-icon-row' : 'icon-row'">
+      <!-- Catégories -->
+      <ion-col size="6" class="ion-text-right" [routerLink]="['/tabs/category']" >
+        <app-home-icon 
+          label="categories" 
+          [icon]="icons?.categorie" 
+          color="gaea-gray"
+          [loggedIn]="isAuthenticated">
+        </app-home-icon>
+      </ion-col>
+
+      <!-- Pricing -->
+      <ion-col size="6" [routerLink]="['tabs/pricing']">
+        <app-home-icon 
+          label="price" 
+          [icon]="icons?.prix" 
+          color="gaea-violet"
+          [loggedIn]="isAuthenticated">
+        </app-home-icon>
+      </ion-col>
+
+      <!-- CO2 -->
+      <ion-col size="6" class="ion-text-right" (click)="checkAuth()">
+        <app-home-icon 
+          label="co2" 
+          [icon]="icons?.co2" 
+          color="gaea-green-deep"
+          [loggedIn]="isAuthenticated">
+        </app-home-icon>
+      </ion-col>
+
+      <!-- Lieux -->
+      <ion-col size="6" [routerLink]="['/tabs/lieux']" >
+        <app-home-icon 
+          label="places" 
+          [icon]="icons?.lieu" 
+          color="gaea-red"
+          [loggedIn]="isAuthenticated">
+        </app-home-icon>
+      </ion-col>
+
+      <!-- QR code -->
+      <ion-col size="6" class="ion-text-right" [routerLink]="['/tabs/qrcode']">
+        <app-home-icon 
+          label="qrcode" 
+          [icon]="icons?.qrCode" 
+          color="gaea-blue"
+          [loggedIn]="isAuthenticated">
+        </app-home-icon>
+      </ion-col>
+
+      <!-- Communauté -->
+      <ion-col size="6" [routerLink]="['/tabs/communaute']">
+        <app-home-icon 
+          label="community" 
+          [icon]="icons?.communaute"
+          color="gaea-yellow"
+          [loggedIn]="isAuthenticated">
+        </app-home-icon>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-toolbar *ngIf="isAuthenticated">
+  <app-tab></app-tab>
+</ion-toolbar>
+

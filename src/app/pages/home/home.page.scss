@@ -1,0 +1,151 @@
+/** Style pour darl mode **/
+ion-toggle{
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-color: #262E31;
+    background-position: center;
+    border-radius: 10px;
+}
+
+ion-toggle[aria-checked="true"]{
+  position: relative;
+  width: 35px;
+  &::before {
+    position: absolute;
+    color:#262E31;
+  }
+ &::after {
+    position: absolute;
+    top: 16px;
+    right: 30px;
+    --background: rgb(96, 129, 37);
+    color: white;
+    font-size: 10px;
+    z-index: 1;
+    color:white;
+  }
+}
+
+/** Style du Home page **/
+.gaea21home{
+
+  --background: url(../../../assets/imgs/bg/home_bg.png) no-repeat center center / cover;
+   
+  ion-grid {
+    height: 100%;
+  }
+
+  .logo-row {
+    height: 30%;
+
+    ion-col {
+      align-self: center;
+    }
+
+    .content-logo {
+      width: 184px;
+      margin: 0 auto;
+    }
+  }
+
+  .no-logo-row {
+    height: 5%;
+  }
+
+  .icon-row {
+    max-height: 80%;
+    ion-col {
+      height: 120px;
+    }
+  }
+
+  .logged-icon-row {
+    height: 85%;
+    max-height: 560px;
+    ion-col {
+      height: 33%;
+    }
+  }
+
+
+
+  .tutorial {
+    background: #fc4a1a;  /* fallback for old browsers */
+      }    
+  .opacite{
+    opacity: 0.5;
+  }
+
+#menuToggle
+{
+  display: block;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+
+  z-index: 1;
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+}
+.content{
+    text-align: center;
+   
+    color: cornsilk;
+    .buttons-container{
+        margin-top: 30px;
+
+    }
+}
+
+ion-content.background{
+    --background: url(../../../assets/imgs/jeteau.jpg) no-repeat center center / cover;
+   
+}
+
+ion-tab-bar {
+    bottom: 20px;
+    border-radius: 16px;
+    width: 92%;
+    margin: 0 auto;
+  }
+  
+  ion-tab-button {
+    --color: var(--ion-color-medium);
+    --color-selected: var(--ion-color-primary);
+  
+    &::before {
+      background-color: transparent;
+      display: block;
+      content: "";
+      margin: 0 auto;
+      width: 20px;
+      height: 2px;
+    }
+  
+    &.tab-selected::before {
+      background-color: var(--ion-color-primary);
+    }
+  }
+  
+  .alertCancel{
+    --background: red;
+      button.alertButton{
+        color: white;
+      }
+    }  
+    @keyframes pulse {
+      0% {
+        box-shadow: 0, 0, 0, 0 rgba(44, 103, 255, 0.4);
+      }
+    
+      70% {
+        box-shadow: 0, 0, 0, 0 rgba(44, 103, 255, 0);
+      }
+    
+      100% {
+        box-shadow: 0, 0, 0, 0 rgba(44, 103, 255, 0);
+      }
+    }

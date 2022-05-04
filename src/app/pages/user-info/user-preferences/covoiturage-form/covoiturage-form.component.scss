@@ -1,0 +1,29 @@
+ion-grid {
+  background-color: white;
+  padding: 5vw;
+  
+  ion-row {
+    margin-bottom: 5vw;
+  }
+}
+
+ion-label {
+  font-size: min(4vw, 20px);
+}
+
+ion-text {
+  font-size: min(3.5vw, 18px);
+}
+
+.select-col {
+  ion-select {
+    border: 1px solid lightgray;
+    border-radius: 8px;
+  }
+}
+
+.user-preferences-col {
+  ion-text {
+    margin-right: auto;
+  }
+}

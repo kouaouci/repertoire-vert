@@ -1,0 +1,395 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+/** Ionic CSS Variables **/
+:root {
+  /** primary **/
+  --ion-color-primary: #488aff;
+  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #3171e0;
+  --ion-color-primary-tint: #4c8dff;
+
+  /** secondary **/
+  --ion-color-secondary: #32db64;
+  --ion-color-secondary-rgb: 61, 194, 255;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #36abe0;
+  --ion-color-secondary-tint: #50c8ff;
+
+  /** tertiary **/
+  --ion-color-tertiary: #5260ff;
+  --ion-color-tertiary-rgb: 82, 96, 255;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #4854e0;
+  --ion-color-tertiary-tint: #6370ff;
+
+  /** success **/
+  --ion-color-success: #2dd36f;
+  --ion-color-success-rgb: 45, 211, 111;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #28ba62;
+  --ion-color-success-tint: #42d77d;
+
+  /** warning **/
+  --ion-color-warning: #ffc409;
+  --ion-color-warning-rgb: 255, 196, 9;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #e0ac08;
+  --ion-color-warning-tint: #ffca22;
+
+  /** danger **/
+  --ion-color-danger: #f53d3d;
+  --ion-color-danger-rgb: 235, 68, 90;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #cf3c4f;
+  --ion-color-danger-tint: #ed576b;
+
+  /** dark **/
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 36, 40;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  /** medium **/
+  --ion-color-medium: #92949c;
+  --ion-color-medium-rgb: 146, 148, 156;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #808289;
+  --ion-color-medium-tint: #9d9fa6;
+
+  /** light **/
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 245, 248;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+
+  /** white **/
+  --ion-color-white: #ffffff;
+  --ion-color-white-rgb: 255,255,255;
+  --ion-color-white-contrast: #000000;
+  --ion-color-white-contrast-rgb: 0,0,0;
+  --ion-color-white-shade: #e0e0e0;
+  --ion-color-white-tint: #ffffff;
+
+ /** light **/
+ --ion-color-empreinte: rgb(96, 129, 37);
+ 
+/** gaea-green **/
+  --ion-color-gaea-green: #D8E0CA;
+  --ion-color-gaea-green-rgb: 216,224,202;
+  --ion-color-gaea-green-contrast: #000000;
+  --ion-color-gaea-green-contrast-rgb: 0,0,0;
+  --ion-color-gaea-green-shade: #bec5b2;
+  --ion-color-gaea-green-tint: #dce3cf;
+
+/** gaea-green-grass **/
+  --ion-color-gaea-green-grass: #618226;
+  --ion-color-gaea-green-grass-rgb: 97,130,38;
+  --ion-color-gaea-green-grass-contrast: #ffffff;
+  --ion-color-gaea-green-grass-contrast-rgb: 255,255,255;
+  --ion-color-gaea-green-grass-shade: #557221;
+  --ion-color-gaea-green-grass-tint: #718f3c;
+
+/** gaea-green-half **/
+  --ion-color-gaea-green-half: #afc092;
+  --ion-color-gaea-green-half-rgb: 175,192,146;
+  --ion-color-gaea-green-half-contrast: #000000;
+  --ion-color-gaea-green-half-contrast-rgb: 0,0,0;
+  --ion-color-gaea-green-half-shade: #9aa980;
+  --ion-color-gaea-green-half-tint: #b7c69d;
+
+/** gaea-green-deep **/
+  --ion-color-gaea-green-deep: #2D690D;
+  --ion-color-gaea-green-deep-rgb: 45,105,13;
+  --ion-color-gaea-green-deep-contrast: #ffffff;
+  --ion-color-gaea-green-deep-contrast-rgb: 255,255,255;
+  --ion-color-gaea-green-deep-shade: #285c0b;
+  --ion-color-gaea-green-deep-tint: #427825;
+
+/** gaea-gray **/
+  --ion-color-gaea-gray: #505050;
+  --ion-color-gaea-gray-rgb: 80,80,80;
+  --ion-color-gaea-gray-contrast: #ffffff;
+  --ion-color-gaea-gray-contrast-rgb: 255,255,255;
+  --ion-color-gaea-gray-shade: #464646;
+  --ion-color-gaea-gray-tint: #626262;
+
+/** gaea-gray-deep **/
+--ion-color-gaea-gray-deep: #707070;
+--ion-color-gaea-gray-deep-rgb: 112,112,112;
+--ion-color-gaea-gray-deep-contrast: #ffffff;
+--ion-color-gaea-gray-deep-contrast-rgb: 255,255,255;
+--ion-color-gaea-gray-deep-shade: #636363;
+--ion-color-gaea-gray-deep-tint: #7e7e7e;
+
+/** gaea-violet**/
+  --ion-color-gaea-violet: #8333A0;
+  --ion-color-gaea-violet-rgb: 131,51,160;
+  --ion-color-gaea-violet-contrast: #ffffff;
+  --ion-color-gaea-violet-contrast-rgb: 255,255,255;
+  --ion-color-gaea-violet-shade: #732d8d;
+  --ion-color-gaea-violet-tint: #8f47aa;
+
+/** gaea-red **/
+  --ion-color-gaea-red: #D92A2A;
+  --ion-color-gaea-red-rgb: 217,42,42;
+  --ion-color-gaea-red-contrast: #ffffff;
+  --ion-color-gaea-red-contrast-rgb: 255,255,255;
+  --ion-color-gaea-red-shade: #bf2525;
+  --ion-color-gaea-red-tint: #dd3f3f;
+
+/** gaea-red-deep **/
+--ion-color-gaea-red-deep: #E2051A;
+--ion-color-gaea-red-deep-rgb: 226,5,26;
+--ion-color-gaea-red-deep-contrast: #ffffff;
+--ion-color-gaea-red-deep-contrast-rgb: 255,255,255;
+--ion-color-gaea-red-deep-shade: #c70417;
+--ion-color-gaea-red-deep-tint: #e51e31;
+
+/** gaea-blue **/
+  --ion-color-gaea-blue: #2150D0;
+  --ion-color-gaea-blue-rgb: 33,80,208;
+  --ion-color-gaea-blue-contrast: #ffffff;
+  --ion-color-gaea-blue-contrast-rgb: 255,255,255;
+  --ion-color-gaea-blue-shade: #1d46b7;
+  --ion-color-gaea-blue-tint: #3762d5;
+
+/** gaea-blue-normal **/
+  --ion-color-gaea-blue-normal: #526CAC;
+  --ion-color-gaea-blue-normal-rgb: 82,108,172;
+  --ion-color-gaea-blue-normal-contrast: #ffffff;
+  --ion-color-gaea-blue-normal-contrast-rgb: 255,255,255;
+  --ion-color-gaea-blue-normal-shade: #485f97;
+  --ion-color-gaea-blue-normal-tint: #637bb4;
+
+/** gaea-blue-star **/
+  --ion-color-gaea-blue-star: #5770AD;
+  --ion-color-gaea-blue-star-rgb: 87,112,173;
+  --ion-color-gaea-blue-star-contrast: #ffffff;
+  --ion-color-gaea-blue-star-contrast-rgb: 255,255,255;
+  --ion-color-gaea-blue-star-shade: #4d6398;
+  --ion-color-gaea-blue-star-tint: #687eb5;
+
+/** gaea-yellow **/
+  --ion-color-gaea-yellow: #D1D12E;
+  --ion-color-gaea-yellow-rgb: 209,209,46;
+  --ion-color-gaea-yellow-contrast: #000000;
+  --ion-color-gaea-yellow-contrast-rgb: 0,0,0;
+  --ion-color-gaea-yellow-shade: #b8b828;
+  --ion-color-gaea-yellow-tint: #d6d643;
+
+/** gaea-yellow-light **/
+  --ion-color-gaea-yellow-light: #f6c90b;
+  --ion-color-gaea-yellow-light-rgb: 246,201,11;
+  --ion-color-gaea-yellow-light-contrast: #000000;
+  --ion-color-gaea-yellow-light-contrast-rgb: 0,0,0;
+  --ion-color-gaea-yellow-light-shade: #d8b10a;
+  --ion-color-gaea-yellow-light-tint: #f7ce23;
+
+/** gaea-yellow-normal **/
+--ion-color-gaea-yellow-normal: #F4B00F;
+--ion-color-gaea-yellow-normal-rgb: 244,176,15;
+--ion-color-gaea-yellow-normal-contrast: #000000;
+--ion-color-gaea-yellow-normal-contrast-rgb: 0,0,0;
+--ion-color-gaea-yellow-normal-shade: #d79b0d;
+--ion-color-gaea-yellow-normal-tint: #f5b827;
+
+/** gaea-yellow-deep **/
+  --ion-color-gaea-yellow-deep: #F2B21B;
+  --ion-color-gaea-yellow-deep-rgb: 242,178,27;
+  --ion-color-gaea-yellow-deep-contrast: #ffffff;
+  --ion-color-gaea-yellow-deep-contrast-rgb: 0,0,0;
+  --ion-color-gaea-yellow-deep-shade: #d59d18;
+  --ion-color-gaea-yellow-deep-tint: #f3ba32;
+}
+
+/** White **/
+.ion-color-white {
+  --ion-color-base: var(--ion-color-white);
+  --ion-color-base-rgb: var(--ion-color-white-rgb);
+  --ion-color-contrast: var(--ion-color-white-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-white-contrast-rgb);
+  --ion-color-shade: var(--ion-color-white-shade);
+  --ion-color-tint: var(--ion-color-white-tint);
+}
+
+/** Gaea Green **/
+.ion-color-gaea-green {
+  --ion-color-base: var(--ion-color-gaea-green);
+  --ion-color-base-rgb: var(--ion-color-gaea-green-rgb);
+  --ion-color-contrast: var(--ion-color-gaea-green-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gaea-green-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gaea-green-shade);
+  --ion-color-tint: var(--ion-color-gaea-green-tint);
+}
+
+/** Gaea Green Grass **/
+.ion-color-gaea-green-grass {
+  --ion-color-base: var(--ion-color-gaea-green-grass);
+  --ion-color-base-rgb: var(--ion-color-gaea-green-grass-rgb);
+  --ion-color-contrast: var(--ion-color-gaea-green-grass-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gaea-green-grass-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gaea-green-grass-shade);
+  --ion-color-tint: var(--ion-color-gaea-green-grass-tint);
+}
+
+/** Gaea Green Half **/
+.ion-color-gaea-green-half {
+  --ion-color-base: var(--ion-color-gaea-green-half);
+  --ion-color-base-rgb: var(--ion-color-gaea-green-half-rgb);
+  --ion-color-contrast: var(--ion-color-gaea-green-half-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gaea-green-half-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gaea-green-half-shade);
+  --ion-color-tint: var(--ion-color-gaea-green-half-tint);
+}
+
+/** Gaea Green Deep **/
+.ion-color-gaea-green-deep {
+  --ion-color-base: var(--ion-color-gaea-green-deep);
+  --ion-color-base-rgb: var(--ion-color-gaea-green-deep-rgb);
+  --ion-color-contrast: var(--ion-color-gaea-green-deep-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gaea-green-deep-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gaea-green-deep-shade);
+  --ion-color-tint: var(--ion-color-gaea-green-deep-tint);
+}
+
+/** Gaea Gray **/
+.ion-color-gaea-gray {
+  --ion-color-base: var(--ion-color-gaea-gray);
+  --ion-color-base-rgb: var(--ion-color-gaea-gray-rgb);
+  --ion-color-contrast: var(--ion-color-gaea-gray-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gaea-gray-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gaea-gray-shade);
+  --ion-color-tint: var(--ion-color-gaea-gray-tint);
+}
+
+/** Gaea Gray Deep **/
+.ion-color-gaea-gray-deep {
+  --ion-color-base: var(--ion-color-gaea-gray-deep);
+  --ion-color-base-rgb: var(--ion-color-gaea-gray-deep-rgb);
+  --ion-color-contrast: var(--ion-color-gaea-gray-deep-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gaea-gray-deep-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gaea-gray-deep-shade);
+  --ion-color-tint: var(--ion-color-gaea-gray-deep-tint);
+}
+
+/** Gaea Violet **/
+.ion-color-gaea-violet {
+  --ion-color-base: var(--ion-color-gaea-violet);
+  --ion-color-base-rgb: var(--ion-color-gaea-violet-rgb);
+  --ion-color-contrast: var(--ion-color-gaea-violet-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gaea-violet-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gaea-violet-shade);
+  --ion-color-tint: var(--ion-color-gaea-violet-tint);
+}
+
+/** Gaea Red **/
+.ion-color-gaea-red {
+  --ion-color-base: var(--ion-color-gaea-red);
+  --ion-color-base-rgb: var(--ion-color-gaea-red-rgb);
+  --ion-color-contrast: var(--ion-color-gaea-red-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gaea-red-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gaea-red-shade);
+  --ion-color-tint: var(--ion-color-gaea-red-tint);
+}
+
+/** Gaea Red Deep **/
+.ion-color-gaea-red-deep {
+  --ion-color-base: var(--ion-color-gaea-red-deep);
+  --ion-color-base-rgb: var(--ion-color-gaea-red-deep-rgb);
+  --ion-color-contrast: var(--ion-color-gaea-red-deep-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gaea-red-deep-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gaea-red-deep-shade);
+  --ion-color-tint: var(--ion-color-gaea-red-deep-tint);
+}
+
+/** Gaea Blue **/
+.ion-color-gaea-blue {
+  --ion-color-base: var(--ion-color-gaea-blue);
+  --ion-color-base-rgb: var(--ion-color-gaea-blue-rgb);
+  --ion-color-contrast: var(--ion-color-gaea-blue-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gaea-blue-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gaea-blue-shade);
+  --ion-color-tint: var(--ion-color-gaea-blue-tint);
+}
+
+/** Gaea Blue Normal **/
+.ion-color-gaea-blue-normal {
+  --ion-color-base: var(--ion-color-gaea-blue-normal);
+  --ion-color-base-rgb: var(--ion-color-gaea-blue-normal-rgb);
+  --ion-color-contrast: var(--ion-color-gaea-blue-normal-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gaea-blue-normal-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gaea-blue-normal-shade);
+  --ion-color-tint: var(--ion-color-gaea-blue-normal-tint);
+}
+
+/** Gaea Blue Star **/
+.ion-color-gaea-blue-star {
+	--ion-color-base: var(--ion-color-gaea-blue-star);
+	--ion-color-base-rgb: var(--ion-color-gaea-blue-star-rgb);
+	--ion-color-contrast: var(--ion-color-gaea-blue-star-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-gaea-blue-star-contrast-rgb);
+	--ion-color-shade: var(--ion-color-gaea-blue-star-shade);
+	--ion-color-tint: var(--ion-color-gaea-blue-star-tint);
+}
+
+/** Gaea Yellow **/
+.ion-color-gaea-yellow {
+  --ion-color-base: var(--ion-color-gaea-yellow);
+  --ion-color-base-rgb: var(--ion-color-gaea-yellow-rgb);
+  --ion-color-contrast: var(--ion-color-gaea-yellow-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gaea-yellow-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gaea-yellow-shade);
+  --ion-color-tint: var(--ion-color-gaea-yellow-tint);
+}
+
+/** Gaea Yellow Light **/
+.ion-color-gaea-yellow-light {
+  --ion-color-base: var(--ion-color-gaea-yellow-light);
+  --ion-color-base-rgb: var(--ion-color-gaea-yellow-light-rgb);
+  --ion-color-contrast: var(--ion-color-gaea-yellow-light-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gaea-yellow-light-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gaea-yellow-light-shade);
+  --ion-color-tint: var(--ion-color-gaea-yellow-light-tint);
+}
+
+/** Gaea Yellow Normal **/
+.ion-color-gaea-yellow-normal {
+  --ion-color-base: var(--ion-color-gaea-yellow-normal);
+  --ion-color-base-rgb: var(--ion-color-gaea-yellow-normal-rgb);
+  --ion-color-contrast: var(--ion-color-gaea-yellow-normal-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gaea-yellow-normal-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gaea-yellow-normal-shade);
+  --ion-color-tint: var(--ion-color-gaea-yellow-normal-tint);
+}
+
+/** Gaea Yellow Deep **/
+.ion-color-gaea-yellow-deep {
+  --ion-color-base: var(--ion-color-gaea-yellow-deep);
+  --ion-color-base-rgb: var(--ion-color-gaea-yellow-deep-rgb);
+  --ion-color-contrast: var(--ion-color-gaea-yellow-deep-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-gaea-yellow-deep-contrast-rgb);
+  --ion-color-shade: var(--ion-color-gaea-yellow-deep-shade);
+  --ion-color-tint: var(--ion-color-gaea-yellow-deep-tint);
+}
+
+
+
+/** Dark mode **/
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* dark mode variables go here */
+  }
+}

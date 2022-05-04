@@ -1,0 +1,156 @@
+<app-toolbar-with-back title="company"></app-toolbar-with-back>
+
+<ion-content forceOverscroll="false">
+  <ion-grid class="content-grid" *ngIf="company">
+
+    <!-- Company header row-->
+    <ion-row>
+      <ion-col size="3" class="avatar-col">
+        <ion-avatar>
+          <img src="../../../assets/imgs/avatar.png" alt="company-avatar" />
+        </ion-avatar>
+      </ion-col>
+      <ion-col size="6" class="info-col">
+        <ion-row>
+          <!-- Company name -->
+          <ion-col size="12">
+            <ion-text class="company-name">{{company?.name}}</ion-text>
+          </ion-col>
+
+          <!-- Company city -->
+          <ion-col size="12">
+            <ion-text class="company-city">{{company?.city}}</ion-text>
+          </ion-col>
+
+          <!-- Company reviews -->
+          <ion-col size="12" class="rating" *ngIf="reviews">
+            <app-review-stars [stars]="reviews.average"></app-review-stars>
+            <ion-text class="company-avis">{{ reviews.total }} {{ 'reviews' | translate }}</ion-text>
+          </ion-col>
+          <ion-col size="12" class="niveau-col">
+            <ion-button
+              color="gaea-green-grass"
+              [routerLink]="['/tabs/companies/'+company?.id+'/reviews']"
+              [translate]="ownCompany? 'myReviews': 'giveReview'">
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+      <!-- Company Favorite -->
+      <ion-col size="3" class="niveau-col" *ngIf="!ownCompany">
+        <ion-icon 
+          [name]="company.favorite? 'heart' : 'heart-outline'" 
+          [color]="company.favorite? 'gaea-red-deep' : 'dark'"
+          (click)="handleClick()">
+        </ion-icon>
+        <div class="niveau-square">
+          <ion-text>{{ company?.niveau }}</ion-text>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <!-- Company information or products -->
+    <ion-row>
+      <ion-col size="12" class="buttons-col">
+        <ion-button
+          *ngIf="selectedSection === 0"
+          color="gaea-green-grass"
+          (click)="toggleSection(0)"
+          [translate]="'informations'"
+        >
+        </ion-button>
+        <ion-button
+          *ngIf="selectedSection !== 0"
+          fill="clear"
+          class="unselected-button"
+          (click)="toggleSection(0)"
+          [translate]="'informations'"
+        >
+        </ion-button>
+        <ion-button
+          *ngIf="(ownCompany && selectedSection === 1) || 
+          (merchandise.length > 0 && selectedSection === 1)"
+          color="gaea-green-grass"
+          (click)="toggleSection(1)"
+          [translate]="'products'"
+        >
+        </ion-button>
+        <ion-button
+          *ngIf="(ownCompany && selectedSection !== 1) ||
+          (merchandise.length > 0 && selectedSection !== 1)"
+          fill="clear"
+          class="unselected-button"
+          (click)="toggleSection(1)"
+          [translate]="'products'"
+        >
+        </ion-button>
+        <ion-button
+          *ngIf="(ownCompany && selectedSection === 2) ||
+          (services.length > 0 && selectedSection === 2)"
+          color="gaea-green-grass"
+          (click)="toggleSection(2)"
+          [translate]="'services'"
+        >
+        </ion-button>
+        <ion-button
+          *ngIf="(ownCompany && selectedSection !== 2) ||
+          (services.length > 0 && selectedSection !== 2)"
+          fill="clear"
+          class="unselected-button"
+          (click)="toggleSection(2)"
+          [translate]="'services'"
+        >
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!-- info or products section -->
+    <ion-row>
+      <ion-col size="12">
+        <app-informations-section
+          *ngIf="selectedSection === 0 && !editing"
+          (editEvent)="toggleEditing($event)"
+          [company]="company"
+          [ownCompany]="ownCompany"
+        >
+        </app-informations-section>
+        <app-information-edit
+          *ngIf="selectedSection === 0 && editing"
+          (updateEvent)="updateCompany($event)"
+          (cancelEvent)="toggleEditing($event)"
+          [company]="company"
+        >
+        </app-information-edit>
+        <app-products-section
+          *ngIf="selectedSection === 1 && !addingProduct"
+          [productType]="'merchandise'"
+          [products]="merchandise"
+          [ownCompany]="ownCompany"
+          (addEvent)="toggleAddNew($event)"
+        >
+        </app-products-section>
+        <app-product-new
+          *ngIf="selectedSection === 1 && addingProduct"
+          type="merchandise"
+          (backEvent)="toggleAddNew($event)"
+          (newProductEvent)="addNewProduct($event)">
+        </app-product-new>
+        <app-products-section
+          *ngIf="selectedSection === 2 && !addingService"
+          [productType]="'service'"
+          [products]="services"
+          [ownCompany]="ownCompany"
+          (addEvent)="toggleAddNew($event)"
+        >
+        </app-products-section>
+        <app-product-new
+          *ngIf="selectedSection === 2 && addingService"
+          type="service"
+          (backEvent)="toggleAddNew($event)"
+          (newProductEvent)="addNewProduct($event)">
+        </app-product-new>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

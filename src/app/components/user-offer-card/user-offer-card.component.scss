@@ -1,0 +1,88 @@
+@import "../../../global.scss";
+
+ion-grid {
+  padding: 0;
+}
+
+ion-avatar {
+  width: 100%;
+  max-width: 80px;
+  height: auto;
+}
+
+ion-label,
+ion-text {
+  font-size: min(3vw, 16px);
+}
+
+.buttons-col {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.offer {
+  ion-button {
+    --padding-start: 3px;
+    --padding-end: 3px;
+    margin: 0;
+  }
+
+  .call-icon {
+    margin-left: 10px;
+  }
+}
+
+.invite {
+  ion-button {
+    max-width: 100%;
+  }
+}
+
+.reservation {
+  ion-button {
+    width: 40%;
+    height: 40px;
+    --padding-start: 10;
+    --padding-end: 10;
+  }
+}
+
+.name-row ion-col {
+  align-self: end;
+  padding-left: 2.5vw;
+}
+
+.username {
+  font-size: min(4vw, 20px);
+}
+
+.star {
+  display: inline;
+}
+
+.avis {
+  margin-left: 5px;
+  font-size: min(3vw, 16px);
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.covoiturage-row {
+  ion-col {
+    padding-top: 0;
+    padding-bottom: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  ion-label {
+    color: $gaea-gray;
+  }
+}
+
+.btn-invitation {
+  font-size: min(4vw, 18px);
+}

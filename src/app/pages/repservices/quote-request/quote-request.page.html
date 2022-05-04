@@ -1,0 +1,40 @@
+
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-down-outline"></ion-refresher-content>
+  </ion-refresher>
+  <ion-list lines="none">
+    <ion-list-header lines="none">
+      <ion-label>
+        Mes Devis reçus
+        <small>
+          <ion-text color="medium">{{numberOfQuotes}}</ion-text>
+        </small>
+      </ion-label>
+    </ion-list-header>
+
+    <ion-button fill="clear" color="medium" style="height: 32px;">
+      Filtrer par date
+      <ion-icon name="swap-vertical-outline" size="small" style="margin-left: 8px;"></ion-icon>
+    </ion-button>
+<div *ngFor="let quote of quotes"  >
+
+
+    <ion-card  [routerLink]="['/quote-details', quote.id]" routerDirection="forward"  button detail="false"  color="light" >
+   
+        <ion-card-content>De la part de : {{quote.user.firstname}}  {{quote.user.lastname}}
+
+          <p>Description : {{quote.devis}}</p>
+          <p>Service sélectionné : {{quote.service.field}}</p>
+          <p>Date de la demande : {{quote.date.date| date}}</p>
+        </ion-card-content>
+      
+
+
+  
+    </ion-card>
+  
+  </div>
+  </ion-list>
+</ion-content>

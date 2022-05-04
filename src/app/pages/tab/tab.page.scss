@@ -1,0 +1,60 @@
+
+@import '../../../global.scss';
+
+ion-icon {
+  font-size: min(6vw, 20px);
+}
+
+.not-logged {
+  ion-tab-button {
+    width: 20%;
+  }
+
+  .icon-row {
+    height: 55%;
+  }  
+
+  ion-img {
+    height: 20px;
+  }
+
+  ion-icon {
+    color: #4E4E4E;
+  }
+}
+
+.logged {
+  ion-tab-button {
+    width: 33%;
+  }
+
+  ion-icon {
+    color: #292929;
+  }
+}
+
+ion-label {
+  font-size: min(3vw, 12px);
+}
+
+.tab-selected {
+  color: $gaea-green-grass;
+  ion-icon {
+    color: $gaea-green-grass;
+  }
+}
+
+.nb-products {
+  position: absolute;
+  background-color: red;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  top: 0;
+  right: 25%;
+}

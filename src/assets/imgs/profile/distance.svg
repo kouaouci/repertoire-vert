@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="59.864" height="23.5" viewBox="0 0 59.864 23.5">
+  <g id="Group_6" data-name="Group 6" transform="translate(-154.886 -511.956)">
+    <g id="Icon_feather-map-pin" data-name="Icon feather-map-pin" transform="translate(151.136 515.206)">
+      <path id="Path_21" data-name="Path 21" d="M19.227,8.864c0,5.727-7.364,10.636-7.364,10.636S4.5,14.591,4.5,8.864a7.364,7.364,0,0,1,14.727,0Z" transform="translate(0 0)" fill="none" stroke="#618226" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Path_22" data-name="Path 22" d="M18.969,13.265A2.735,2.735,0,1,1,16.234,10.5,2.75,2.75,0,0,1,18.969,13.265Z" transform="translate(-4.371 -4.595)" fill="none" stroke="#618226" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+    <g id="Icon_feather-map-pin-2" data-name="Icon feather-map-pin" transform="translate(191.5 511.206)">
+      <path id="Path_21-2" data-name="Path 21" d="M22.5,10.5c0,7-9,13-9,13s-9-6-9-13a9,9,0,0,1,18,0Z" fill="none" stroke="#618226" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Path_22-2" data-name="Path 22" d="M20.7,14.141A3.6,3.6,0,1,1,17.1,10.5,3.622,3.622,0,0,1,20.7,14.141Z" transform="translate(-3.601 -4.059)" fill="none" stroke="#618226" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+    <line id="Line_1" data-name="Line 1" x2="27.818" transform="translate(169.5 534.5)" fill="none" stroke="#618226" stroke-linecap="round" stroke-width="1"/>
+  </g>
+</svg>

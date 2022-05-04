@@ -1,0 +1,71 @@
+<form [formGroup]="companyForm">
+  <ion-row *ngIf="company">
+
+    <ion-col size="12">
+      <ion-label [translate]="'username'"></ion-label>
+      <ion-input [placeholder]="company.username" formControlName="username">
+      </ion-input>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-label [translate]="'companyName'"></ion-label>
+      <ion-input [placeholder]="company.name" formControlName="name">
+      </ion-input>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-label [translate]="'description'"></ion-label>
+      <ion-textarea [placeholder]="company.description" formControlName="description">
+      </ion-textarea>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-label [translate]="'vision'"></ion-label>
+      <ion-input [placeholder]="company.vision" formControlName="vision">
+      </ion-input>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-label [translate]="'influenceArea'"></ion-label>
+      <ion-input [placeholder]="company.influencezone" formControlName="influencezone">
+      </ion-input>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-label [translate]="'phoneNumber'"></ion-label>
+      <ion-input [placeholder]="company.phone" formControlName="phone">
+      </ion-input>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-label [translate]="'urlWebsite'"></ion-label>
+      <ion-input [placeholder]="company.urlwebsite" formControlName="urlwebsite">
+      </ion-input>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-label [translate]="'urlFacebook'"></ion-label>
+      <ion-input [placeholder]="company.urlfacebook" formControlName="urlfacebook">
+      </ion-input>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-label [translate]="'urlTwitter'"></ion-label>
+      <ion-input [placeholder]="company.urltwitter" formControlName="urltwitter">
+      </ion-input>
+    </ion-col>
+
+    <ion-col size="12">
+      <ion-label [translate]="'urlLinkedin'"></ion-label>
+      <ion-input [placeholder]="company.urllinkedin" formControlName="urllinkedin">
+      </ion-input>
+    </ion-col>
+
+    <ion-col size="12" class="btn-col ion-text-center">
+      <ion-button color="light" (click)="cancelEdit()" 
+        translate="goBack"></ion-button>
+      <ion-button color="gaea-green-grass" (click)="updateInfo()"
+        [translate]="'save'"></ion-button>
+    </ion-col>
+  </ion-row>
+</form>

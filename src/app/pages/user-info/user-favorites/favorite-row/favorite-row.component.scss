@@ -1,0 +1,21 @@
+ion-row {
+  width: 100%;
+  padding-top: min(3vw, 20px);
+  padding-bottom: min(3vw, 20px);
+}
+
+.avatar-col {
+  max-width: fit-content;
+}
+
+.info-col {
+  align-self: center;
+}
+
+ion-avatar {
+  margin-left: 3vw;
+}
+
+ion-text {
+  font-size: min(3.5vw, 18px);
+}

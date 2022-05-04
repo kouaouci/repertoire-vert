@@ -1,0 +1,7 @@
+@import '../../../../global.scss';
+
+ion-segment-button {
+  text-transform: none;
+  color: $gaea-green-grass;
+  --indicator-color: $gaea-green-grass;
+}

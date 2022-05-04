@@ -1,0 +1,30 @@
+<ion-grid>
+  <ion-row>
+    <ion-col size="12">
+      <ion-list>
+        <ion-item>
+          <pagination-controls
+            [id]="period"
+            (pageChange)="pageChanged($event)"
+            [previousLabel]="'profile.previous' | translate"
+            [nextLabel]="'profile.next' | translate"
+            maxSize="4"
+          >
+          </pagination-controls>
+        </ion-item>
+        <ng-container *ngFor="let activity of activities | paginate: config">
+          <ion-item *ngIf="activity.status === 'Current'"
+            [routerLink]="['/tabs/co2/home']">
+            <ion-label [translate]="'profile.onGoing'"></ion-label>
+          </ion-item>
+          <ion-item *ngIf="activity.status === 'Done'">
+            <app-activity-item 
+              [activity]="activity" 
+              (deleteEvent)="deleteActivity($event)">
+          </app-activity-item>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>

@@ -1,0 +1,56 @@
+<ion-content>
+  <ion-searchbar showCancelButton="focus" cancelButtonText="Cancel"
+  placeholder="Cherchez un produit"
+  (ionInput)="searchPro()"
+  [(ngModel)]="searchKeyPro"
+></ion-searchbar>
+<ion-list
+*ngIf="products.length > 0"
+class="autocomplete-address-list common-bg-light"
+lines="full"
+>
+<div class="list autolist">
+  <ion-item
+    tappable
+    (click)="onClickPickAddress(product.latitude, product.longitude)"
+    class="item"
+    *ngFor="let product of products"
+  >
+    <ion-icon name="location-outline" slot="start"></ion-icon>
+    {{product.name}}
+    <img
+      style="height: 30px; width: 60px"
+      src="{{product.image}}"
+    />
+    <p>2/KG</p>
+  </ion-item>
+</div>
+</ion-list>
+  <div id="mapcycling" style="width: 100%; height: 90%;"> </div>
+</ion-content>
+<!--<ion-footer>
+  <p>aze</p>
+  <ion-tabs>
+    <ion-tab-bar style="width: 100%;" slot="bottom">
+      <ion-tab-button [routerLink]="['/category']">
+        <ion-icon style="color:black" name="folder-outline"></ion-icon>
+        <ion-label  style="color:black">Catégories</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button  [routerLink]="['/form-options-co2']">
+        <ion-icon  style="color: rgb(96, 129, 37);" name="walk-outline"></ion-icon>
+        <ion-label  style="color: rgb(96, 129, 37);">Co2</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button  [routerLink]="['/communaute']" >
+        <ion-icon style="color: rgb(246, 175, 9);" name="people"></ion-icon>
+        <ion-label style="color: rgb(246, 175, 9);">Communauté</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button [routerLink]="['/pricing']">
+        <ion-icon style="color: rgb(132, 90, 154);" name="pricetag-outline"></ion-icon>
+        <ion-label style="color: rgb(132, 90, 154);">Pricing</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-footer>-->

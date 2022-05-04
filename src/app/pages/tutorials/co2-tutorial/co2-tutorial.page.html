@@ -1,0 +1,132 @@
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts" (ionSlideDidChange)="sliderChanges($event)">
+    <ion-slide>
+      <div class="slide slide-1">
+        <div class="skip-button">
+          <ion-button color="light" fill="clear" class="skip" (click)="startApp()">Skip</ion-button>
+        </div>
+        <img src="assets/samples/imgs/ionic-white.png">
+        <div>
+          <h1 class="slideTitle">Bienvenue dans le Tutorial du CO2</h1>
+          <span class="slideText">Dans ce tutoriel vous allez voir quelques instructions pour bien utiliser ce module</span>
+          <span class="slideText">Ce module utilise vos données géographique(latitude et longitude) afin de calculer les formules</span>
+        </div>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="slide slide-2">
+       
+        <div class="skip-button">
+          <ion-button color="light" fill="clear" class="skip" (click)="startApp()">Skip</ion-button>
+        </div>
+        <img src="assets/samples/imgs/firebase.png" alt="">
+        <div>
+          <h1 class="slideTitle">Le choix des véhicules</h1>
+          <span class="slideText">vous allez trouver un slider qui vous demande de sélectionner un  moyen de transport,
+            pour que l'application puisse calculer le nombre des calories
+          </span>
+
+          <ion-select  id="action" style="color: white;"   name="Transport_method" placeholder="Select  Your transport method">
+            <ion-select-option  value="car">Car</ion-select-option>
+            <ion-select-option  value="metro">Metro</ion-select-option>
+            <ion-select-option  value="tramway">Tramway</ion-select-option>
+            <ion-select-option  value="walk">à pied</ion-select-option>
+            <ion-select-option  value="rer">RER</ion-select-option>
+            <ion-select-option  value="bus">Bus</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="slide slide-3">
+        
+        <div class="skip-button">
+          <ion-button color="light" fill="clear" class="skip" (click)="startApp()">Skip</ion-button>
+        </div>
+        <img src="assets/samples/imgs/woocommerce.png" alt="">
+        <div>
+          <h1 class="slideTitle">La raison pour laquelle vous chosissez ce moyen de transport</h1>
+          <span class="slideText">Pour que l'utilisateur puisse avoir des statistiques sur ses derniéres activités,
+            vous devez choisir l'une des options suivantes
+          </span>
+
+          <ion-select  id="action" style="color: white;"  name="reason" placeholder="Select your reason">
+            <ion-select-option style="color: cornsilk;" value="shopping">Shopping</ion-select-option>
+            <ion-select-option style="color: cornsilk;" value="course">Faire des courses</ion-select-option>
+            <ion-select-option style="color: cornsilk;" value="supermarket">Aller au marché</ion-select-option>
+            <ion-select-option style="color: cornsilk;" value="supermarket">Autre</ion-select-option>
+          </ion-select>
+        </div>
+
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="slide slide-4">
+        <div class="skip-button">
+          <ion-button color="light" fill="clear" class="skip" (click)="startApp()">Skip</ion-button>
+        </div>
+        Ensuite vous allez trouver un bouton comme ce lui la 
+        <ion-button  color="light"  fill="outline">Commencer</ion-button>
+
+        clicker et vous allez rediriger vers la page CO2
+
+
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="slide slide-5">
+        <div class="skip-button">
+          <ion-button color="light" fill="clear" class="skip" (click)="startApp()">Skip</ion-button>
+        </div>
+        <img src="assets/samples/imgs/layouts.png" alt="">
+        <div>
+          <h1 class="slideTitle">CO2</h1>
+          <span class="slideText">Vous allez trouver 3 boutons</span>
+          <ion-button  fill="outline" expand="block"  >
+            START Tracking my position
+          </ion-button>
+            <ion-button  fill="outline" expand="block"  >
+              Start counting my steps
+            </ion-button>
+            <ion-button color="primary" expand="block" fill="outline" 
+            >Stop counting my steps</ion-button
+          >
+        </div>
+        <span class="slideText">Vous devez cliquer sur ces bouton par ordre</span>
+        <ul>
+          <li>1.  START Tracking my position</li>        
+          <li>2.  Start counting my steps</li>
+
+          Dés que vous terminez cliquer sur les boutons par cet ordre 
+          <li>3.  Stop counting my steps</li>        
+          <li>4.  FINISH Tracking my position</li>
+        </ul>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <div class="slide slide-3">
+        <div class="skip-button">
+          <ion-button color="light" fill="clear" class="skip" (click)="startApp()">Skip</ion-button>
+        </div>
+       Le Fonctionnement
+       <span class="slideText">Comment le nombre de pas se calcule ?</span>
+       <span class="slideText">Toute les applications qui ont ce module(pédometre) utilise le device motion,
+         qui est un capteur de mouvement du smartphone, donc dés que vous commencer à marche(faire des mouvementsavec vos mains)
+         le nombre de pas s'incrémente ainsi que les autres données(CO2, calories et distance).
+         pour que le nombre de pas ne s'icrémente plus, vous devez placer votre téléphone sur table par exemple et vous allez voir 
+         que le nombre de pas ne s'incrémente plus.
+       </span>
+
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="slide slide-2">
+        <ion-button [routerLink]="['/co2/home']" color="light" (click)="startApp()" fill="outline">Commencer</ion-button>
+
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

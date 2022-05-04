@@ -1,0 +1,36 @@
+ion-item {
+  padding-top: min(5.5vw, 30px);
+}
+
+.inner-grid {
+  padding-bottom: min(5.5vw, 30px);
+
+  ion-col {
+    padding: 0;
+    align-self: center;
+  }
+}
+
+ion-label {
+  font-size: min(4vw, 18px) !important;
+}
+
+ion-text {
+  font-size: min(3vw, 14px) !important;
+}
+
+.toggle-text-row, .toggle-text-button {
+  justify-content: center;
+}
+
+.toggle-text-row {
+  margin-bottom: min(1vw, 10px);
+}
+
+.onboarding-col {
+  text-align: center;
+
+  ion-button {
+    margin-top: 5vw;
+  }
+}

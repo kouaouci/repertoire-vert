@@ -1,0 +1,39 @@
+@import '../../../../global.scss';
+
+ion-label, ion-text, ion-icon, .niveau-container {
+  font-size: min(3.5vw, 16px) !important;
+}
+
+ion-label {
+  font-weight: bold;
+}
+
+.name-col, .origin-col {
+  display: flex;
+  justify-content: space-between;
+}
+
+.origin-col {
+  align-items: center;
+}
+
+.origin-text {
+  font-weight: normal;
+}
+
+.niveau-container {
+  background-color: $gaea-green-grass;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+.review-label {
+  color: $gaea-green-grass;
+}
+
+.review-text {
+  margin-left: 5px;
+  margin-right: 5px;
+  color: $gaea-gray;
+}

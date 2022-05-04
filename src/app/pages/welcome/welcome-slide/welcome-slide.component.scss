@@ -1,0 +1,47 @@
+@import '../../../../global.scss';
+
+.content-grid {
+  height: 100%;
+}
+
+.image-row {
+  height: 55%;
+  ion-col {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    height: 100%;
+
+    ion-img {
+      place-self: end;
+      max-height: 100%;
+    }
+  }
+}
+
+.text-row {
+  height: 45%;
+}
+
+.title-col, .text-col {
+  padding-bottom: 6vw;
+}
+
+.title-col {
+  padding-left: 5vw;
+  padding-right: 5vw;
+  place-self: end;
+  ion-label {
+    letter-spacing: 1px;
+    font-size: min(6.5vw, 30px);
+    color: $gaea-green-grass;
+    font-weight: bold;
+  }
+}
+
+.text-col {
+  color: $gaea-gray-welcome;
+  ion-text {
+    font-size: min(5vw, 25px);
+  }
+}

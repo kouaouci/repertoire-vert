@@ -1,0 +1,37 @@
+
+ion-menu-button {
+  font-size: calc(22px + 2vw);
+}
+
+ion-title {
+  text-align: center;
+}
+
+ion-text {
+  font-weight: normal;
+}
+
+.toolbar-logo {
+  width: 96px;
+  margin: 0 auto;
+}
+
+.profil-icon {
+  font-size: min(6vw, 26px);
+  padding-right: 2vw;
+}
+
+.notification-number {
+  position: absolute;
+  background-color: red;
+  color: white;
+  width: 20px;
+  text-align: center;
+  border-radius: 50%;
+  top: 5%;
+  right: 0;
+}
+
+.hide-border {
+  --border-width: 0 !important;
+}

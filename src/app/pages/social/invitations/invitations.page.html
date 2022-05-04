@@ -1,0 +1,31 @@
+<app-toolbar
+  title="friendRequests.title"
+></app-toolbar>
+
+<ion-content forceOverscroll="false">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-down-outline"
+    ></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-grid class="content-grid">
+
+    <!-- No Friend requests row -->
+    <ion-row class="no-requests-row ion-text-center" *ngIf="friendRequests.length === 0">
+      <ion-col size="12" class="ion-text-center no-requests-col">
+        <ion-text [translate]="'friendRequests.noRequests'"></ion-text>
+      </ion-col>
+    </ion-row>
+
+    <!-- Notifications row -->
+    <ion-row *ngIf="friendRequests.length > 0">
+      <ion-col size="12">
+        <app-friend-request-card 
+          *ngFor="let friendRequest of friendRequests"
+          [friendRequest]="friendRequest">
+        </app-friend-request-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

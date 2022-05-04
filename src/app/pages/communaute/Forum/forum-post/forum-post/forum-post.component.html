@@ -1,0 +1,34 @@
+<ion-item 
+  [ngClass]="last && 'last'" 
+  [routerLink]="['/tabs/show-post/' + post.id]"
+  detail="false">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3">
+        <ion-avatar>
+          <img src="../../../../../../assets/imgs/avatar.png">
+        </ion-avatar>
+      </ion-col>
+      <ion-col size="9" class="info-col">
+        <ion-row>
+          <ion-col size="12">
+            <ion-label>{{ post.title }}</ion-label>
+          </ion-col>
+          <ion-col size="12" class="date-col">
+            <ion-row>
+              <ion-col size="10">
+                <ion-text class="date-text">
+                  {{ 'forum.publishAuthorAndDate' | translate: {author: post.creator.username, date: date, time: time} }}
+                </ion-text>
+              </ion-col>
+              <ion-col size="2">
+                <ion-icon name="chatbubble-outline"></ion-icon>
+                <ion-text class="date-text">{{ nbComments }}</ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-item>

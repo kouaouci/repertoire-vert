@@ -1,0 +1,156 @@
+<form [formGroup]="productForm">
+  <ion-grid *ngIf="type">
+    <ion-row>
+
+      <ion-col size="12" *ngIf="filePath" class="image-col">
+        <ion-img [src]="filePath"></ion-img>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-label translate="name"></ion-label>
+        <ion-label class="required-label">*</ion-label>
+        <ion-input formControlName="name">
+        </ion-input>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-label translate="description"></ion-label>
+        <ion-label class="required-label">*</ion-label>
+        <ion-textarea formControlName="description">
+        </ion-textarea>
+      </ion-col>
+
+      <ion-col size="12" class="file-col">
+        <ion-label translate="image"></ion-label>
+        <ion-label class="required-label">*</ion-label>
+        <input type="file" id="img" name="image" accept="image/*"
+          (change)="handleImage($event)">
+        <ion-text>{{ 'fileMaxSize' | translate }}: 2MB</ion-text>
+      </ion-col>
+
+      <ion-col size="12" *ngIf="type === 'merchandise'">
+        <ion-label translate="sellType"></ion-label>
+        <ion-label class="required-label">*</ion-label>
+        <ion-select 
+          value="unit" 
+          [cancelText]="'cancel' | translate"
+          formControlName="sellType">
+          <ion-select-option value="unit" translate="perUnit"></ion-select-option>
+          <ion-select-option value="kg" translate="perKg"></ion-select-option>
+          <ion-select-option value="liter" translate="perLiter"></ion-select-option>
+        </ion-select>
+      </ion-col>
+
+      <!--<ion-col size="12" *ngIf="productForm.get('sellType').value === 'perKg'">
+        <ion-label translate="weight"></ion-label>
+        <ion-input formControlName="weight" type="number">
+        </ion-input>
+      </ion-col>
+
+      <ion-col size="12" *ngIf="productForm.get('sellType').value === 'perLiter'">
+        <ion-label translate="volume"></ion-label>
+        <ion-input formControlName="volume" type="number">
+        </ion-input>
+      </ion-col>-->
+
+      <ion-col size="12">
+        <ion-label translate="price"></ion-label>
+        <ion-label class="required-label">*</ion-label>
+        <ion-input formControlName="price" type="number">
+        </ion-input>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-label translate="currency"></ion-label>
+        <ion-label class="required-label">*</ion-label>
+        <ion-select 
+          value="CHF" 
+          [cancelText]="'cancel' | translate"
+          formControlName="currency">
+          <ion-select-option value="CHF">CHF</ion-select-option>
+          <ion-select-option value="EUR">EUR</ion-select-option>
+        </ion-select>
+      </ion-col>
+
+      <ion-col size="12" *ngIf="type === 'merchandise'">
+        <ion-label translate="origin"></ion-label>
+        <ion-label class="required-label">*</ion-label>
+        <ion-input formControlName="origin">
+        </ion-input>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-label translate="certification"></ion-label>
+        <ion-label class="required-label">*</ion-label>
+        <ion-input formControlName="certification">
+        </ion-input>
+      </ion-col>
+
+      <ion-col size="12" *ngIf="type === 'merchandise'">
+        <ion-label translate="packaging"></ion-label>
+        <ion-label class="required-label">*</ion-label>
+        <ion-input formControlName="packaging">
+        </ion-input>
+      </ion-col>
+
+      <ion-col size="4" *ngIf="type === 'merchandise'">
+        <ion-label translate="height"></ion-label>
+        <ion-input formControlName="height" type="number" [placeholder]="'inCm' | translate">
+        </ion-input>
+      </ion-col>
+
+      <ion-col size="4" *ngIf="type === 'merchandise'">
+        <ion-label translate="width"></ion-label>
+        <ion-input formControlName="width" type="number" [placeholder]="'inCm' | translate">
+        </ion-input>
+      </ion-col>
+
+      <ion-col size="4" *ngIf="type === 'merchandise'">
+        <ion-label translate="depth"></ion-label>
+        <ion-input formControlName="depth" type="number" [placeholder]="'inCm' | translate">
+        </ion-input>
+      </ion-col>
+
+      <ion-col size="12" *ngIf="type !== 'merchandise'">
+        <ion-label translate="duration"></ion-label>
+        <ion-input formControlName="duration">
+        </ion-input>
+      </ion-col>
+
+      <ion-col size="12" class="subcategories-col">
+        <ion-label translate="subcategories"></ion-label>
+      </ion-col>
+      <ion-col size="12" class="ion-text-center">
+        <ion-button
+          color="light"
+          translate="selectSubcategories" 
+          (click)="presentModal()">
+        </ion-button>
+      </ion-col>
+
+      <ion-col size="12" class="subcategory-selection-col">
+        <ion-label class="ion-text-center">Sous-catégories choisie(s)</ion-label>
+        <ion-item *ngFor="let s of selectedSubcategories">
+          <ion-text>{{ s.name }}</ion-text>
+          <ion-icon 
+            name="close-circle-outline" color="gaea-red-deep"
+            (click)="removeSubcategory(s.id)">
+          </ion-icon>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" class="ion-text-center btn-col">
+        <ion-button 
+          color="light"
+          translate="goBack"
+          (click)="handleBack()">
+        </ion-button>
+        <ion-button color="gaea-green-grass"
+          (click)="handleSubmit()" [disabled]="loading? true : false">
+          {{ loading? '' : 'submit' | translate }}
+          <ion-spinner *ngIf="loading"></ion-spinner>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>

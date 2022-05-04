@@ -1,0 +1,65 @@
+@import "../../../../../global.scss";
+
+.avatar-col {
+  display: inline-flex;
+
+  ion-avatar {
+    margin-right: 2vw;
+  }
+
+  ion-label {
+    align-self: center;
+  }
+}
+
+.date-col {
+  align-self: center;
+  text-align: right;
+}
+
+.comment-col {
+  padding-left: min(8vw, 30px);
+  ion-text {
+    font-size: min(3.5vw, 14px);
+    white-space: pre-line;
+  }
+}
+
+.button-col {
+  //text-align: right;
+  //align-self: center;
+  display: flex;
+  align-items: center;
+  place-content: flex-end;
+}
+
+.date-col ion-text,
+.button-col ion-button {
+  font-size: min(3vw, 12px);
+  color: $gaea-gray;
+}
+
+.like-section {
+  border: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.liked {
+  color: /*#437BFF*/ $gaea-green-grass !important;
+}
+
+.dislike-button {
+  border-right: 1px solid lightgray;
+}
+
+.score {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: min(3.5vw, 16px);
+}
+
+.like-button {
+  border-left: 1px solid lightgray;
+}

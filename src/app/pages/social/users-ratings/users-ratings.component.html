@@ -1,0 +1,59 @@
+<app-toolbar-with-back title="Avis utilisateur"></app-toolbar-with-back>
+
+<ion-content [forceOverscroll]="false" *ngIf="reviewStars">
+  <ion-grid class="content-grid">
+    <!-- Title -->
+    <ion-row class="title-row">
+      <ion-col size="12" class="ion-text-center">
+        <ion-label>Avis</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <!-- Global Rating -->
+    <ion-row class="ratings-header-row">
+      <ion-col size="12">
+        <ion-label>{{ rating | number:'1.0-1' }}/5</ion-label>
+        <ion-text>{{ reviewStars.length }} avis</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <!-- Ratings -->
+    <ion-row class="ratings-content-row">
+      <ion-col size="12">
+        <app-review-stars [stars]="5"></app-review-stars>
+        <ion-label>{{ reviewStars[4] }}</ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <app-review-stars [stars]="4"></app-review-stars>
+        <ion-label>{{ reviewStars[3] }}</ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <app-review-stars [stars]="3"></app-review-stars>
+        <ion-label>{{ reviewStars[2] }}</ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <app-review-stars [stars]="2"></app-review-stars>
+        <ion-label>{{ reviewStars[1] }}</ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <app-review-stars [stars]="1"></app-review-stars>
+        <ion-label>{{ reviewStars[0] }}</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <!-- Ratings with comments -->
+    <ion-row class="ratings-comments-row">
+      <ion-col size="12">
+        <ion-list>
+          <ion-item></ion-item>
+          <ion-item>
+            <app-user-rating-form (submitEvent)="submitReview($event)"></app-user-rating-form>
+          </ion-item>
+          <ion-item *ngFor="let review of reviews">
+            <app-user-rating [review]="review"></app-user-rating>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

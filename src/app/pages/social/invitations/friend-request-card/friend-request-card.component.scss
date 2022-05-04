@@ -1,0 +1,47 @@
+ion-card {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.name, .username {
+  font-size: min(3vw, 14px);
+}
+
+ion-button {
+  font-size: min(2.5vw, 12px);
+  --padding-start: 0;
+  --padding-end: 0;
+  width: calc(50px + 2vw);
+  --border-radius: 5px;
+}
+
+.avatar-col, .text-col, .buttons-col {
+  align-self: center;
+}
+
+ion-avatar {
+  width: 100%;
+  height: auto;
+  max-width: 70px;
+}
+
+.text-col {
+  padding-right: 0;
+}
+
+.text-col ion-col {
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.buttons-col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.button-confirmed {
+  border: 1px solid black;
+  border-radius: 5px;
+}

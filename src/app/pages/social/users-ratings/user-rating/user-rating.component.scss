@@ -1,0 +1,43 @@
+@import '../../../../../global.scss';
+
+ion-grid {
+  padding-top: 4vw;
+  padding-bottom: 4vw;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.user-col {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+
+  ion-label {
+    font-size: min(5vw, 24px);
+  }
+
+  ion-avatar {
+    width: calc(44px + 1vw);
+    height: auto;
+    max-width: 60px;
+  }
+}
+
+.rating-col {
+  ion-text {
+    font-size: min(4vw, 20px);
+    font-weight: bold;
+  }
+}
+
+.comment-col, .date-col {
+  ion-text {
+    font-size: min(3.5vw, 18px);
+  }
+}
+
+.date-col {
+  ion-text {
+    color: $gaea-gray;
+  }
+}

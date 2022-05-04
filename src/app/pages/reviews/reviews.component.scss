@@ -1,0 +1,27 @@
+@import "../../../global.scss";
+
+ion-content {
+  --ion-background-color: #f6f8f2;
+}
+
+.content-grid {
+  background-color: white;
+  margin: 5vw;
+}
+
+.buttons-col {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+
+  ion-button {
+    width: min(35vw, 150px);
+    font-size: min(3.5vw, 18px);
+  }
+}
+
+.unselected-button {
+  color: $gaea-green-grass;
+  border: 1px solid #618226;
+  border-radius: 10px;
+}

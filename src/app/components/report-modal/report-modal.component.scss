@@ -1,0 +1,30 @@
+ion-toolbar {
+  text-align: center;
+}
+
+ion-radio {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+}
+
+ion-title,
+ion-label {
+  white-space: pre-wrap !important;
+}
+
+.message-label {
+  margin-bottom: 3vw;
+}
+
+ion-textarea {
+  border: 1px solid lightgray;
+  margin-top: 3vw;
+}
+
+.buttons-col {
+  text-align: center;
+  display: flex;
+  place-content: space-evenly;
+}

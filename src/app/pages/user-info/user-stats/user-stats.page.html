@@ -1,0 +1,110 @@
+
+<ion-grid>
+
+  <!-- Actualités -->
+  <ion-row>
+    <app-news
+      (touchStartEvent)="touchStart()"
+      (touchEndEvent)="touchEnd()"></app-news>
+  </ion-row>
+
+  <!-- Empreinte C02 -->
+  <ion-row>
+    <ion-col size="12">
+      <app-empreinte-co2></app-empreinte-co2>
+    </ion-col>
+  </ion-row>
+
+  <!-- Filtre Semaine, Mois Année -->
+  <ion-row>
+    <ion-segment
+      scrollable="true"
+      [(ngModel)]="segment" 
+      (ionChange)="segmentChanged($event)">
+    <ion-segment-button  [value]="0">
+      <ion-label [translate]="'profile.week'"></ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button  [value]="1">
+      <ion-label [translate]="'profile.month'"></ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button  [value]="2">
+      <ion-label [translate]="'profile.year'"></ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  </ion-row>
+
+  <!-- Info cards -->
+  <ion-row class="info-card-row">
+    <ion-col>
+      <app-info-card
+        titre="steps"
+        [nombre]="steps"
+        icon="../../../../assets/imgs/profile/pas-outline.svg"
+      ></app-info-card>
+    </ion-col>
+    <ion-col>
+      <app-info-card
+        titre="distance"
+        [nombre]="distance | number:'1.1-2'"
+        unite="km"
+        icon="../../../../assets/imgs/profile/distance.svg"
+      ></app-info-card>
+    </ion-col>
+    <ion-col>
+      <app-info-card
+        titre="calories"
+        [nombre]="calories"
+        unite="kcal"
+        icon="../../../../assets/imgs/profile/goutte.svg"
+      ></app-info-card>
+    </ion-col>
+  </ion-row>
+
+  <!-- Statistiques -->
+  <ion-row *ngIf="activities?.length < 5" class="stats-row">
+    <ion-col size="12">
+      <ion-card  
+        button detail="false"
+        [routerLink]="['/tabs/form-options-co2']"
+        color="danger"
+        routerdirection="forward">
+        <ion-card-header>
+          <ion-icon name="checkmark-done-outline"></ion-icon>
+        </ion-card-header>
+        <ion-card-content [translate]="'profile.noStatistics'">
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <!-- Remarques -->
+  <ion-row *ngIf="activities?.length < 5" class="remarques-row">
+    <ion-col size="12">
+      <ion-card  
+        *ngIf="activities?.length <= 5" 
+        button detail="false">
+        <ion-title style="color:white" [translate]="'profile.remarks'"></ion-title>
+        <ng-container>
+          <ion-card-content>
+            <span style="color: black;" [translate]="'profile.noRemarks'"></span>            
+          </ion-card-content>
+        </ng-container>  
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <!-- Statistiques bar chart -->
+  <ion-row class="bar-chart-row" *ngIf="activities?.length >= 5">
+    <ion-col size="12">
+      <app-bar-chart 
+        [filter]="segment"
+        [activitiesWeek]="activitiesWeek"
+        [activitiesMonth]="activitiesMonth"
+        [activitiesYear]="activitiesYear"></app-bar-chart>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+ 

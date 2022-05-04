@@ -1,0 +1,33 @@
+<ion-header [ngClass]="showBorder? '':'ion-no-border'">
+  <ion-toolbar  [color]="background" [ngClass]="showBorder? '':'hide-border'">
+    <!-- Burger Menu -->
+    <ion-buttons slot="start">
+      <ion-menu-button [color]="burger"></ion-menu-button>
+      <div class="notification-number" *ngIf="isAuthenticated && notifications > 0">
+        <span>{{ notifications }}</span>
+      </div>
+    </ion-buttons>
+  
+    <!-- Toolbar Logo -->
+    <ion-title *ngIf="isAuthenticated">
+  
+      <ion-text *ngIf="title" [translate]="title"></ion-text>
+  
+      <ion-img
+        *ngIf="!title" 
+        class="toolbar-logo"
+        src="../assets/imgs/logo_repertoire_vert_ok.svg">
+      </ion-img>
+    </ion-title>
+  
+    <!-- Profil icon -->
+      <ion-icon 
+        *ngIf="isAuthenticated" 
+        slot="end"
+        [routerLink]="isCompany? ['/tabs/company-profile/' + companyId] : ['/tabs/profile']"
+        class="profil-icon" 
+        color="dark" 
+        [name]="isCompany? 'business' : 'person'">
+      </ion-icon>
+  </ion-toolbar>
+</ion-header>

@@ -1,0 +1,123 @@
+<ion-header>
+
+  <ion-toolbar  color="translucent">
+    <ion-title>
+      Nos Services
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button style="color: empreinte;"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+    </ion-title>
+  </ion-toolbar>
+
+
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+<ng-container *ngIf="role=='ROLE_USER'" >
+  <ion-fab [routerLink]="['/quote-requestuser']"  vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button color="light">
+      <ion-icon name="folder-open-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ng-container>
+ <ng-container *ngIf="role=='ROLE_COMPANY'" >
+ 
+
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button  color="light" >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button [routerLink]="['/add-service']"  data-desc="Ajouter un service">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button   [routerLink]="['/company-services']" routerDirection="forward"  data-desc="Vos Services">
+        <ion-icon name="folder-open-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button   [routerLink]="['/company-categories']" routerDirection="forward"  data-desc="Vos Catégories">
+        <ion-icon name="file-tray-stacked-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+ </ng-container>
+  
+<div class="ion-padding wrapper">
+
+  <ion-input  hidden type="text"
+  placeholder="Cherchez une entreprise"
+  (ionChange)="searchByCat()"
+  [(ngModel)]="category"></ion-input>
+  <!-- -->
+  <ion-select  (ionInput)="searchByCat()"
+  [(ngModel)]="category"  placeholder="Sélectionner une categorie">
+  
+    <ion-select-option   *ngFor="let item of cats; let index"  [value]=item.id>{{item.name}}</ion-select-option>
+  </ion-select>
+
+  <ion-searchbar placeholder="Cherchez un service" [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
+
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-align-items-baseline">
+      <ion-col size="6">
+        <h4 class="title">
+          Nos Services
+        </h4>
+      </ion-col>
+      <ion-col size="6">
+        <h4 class="more ion-text-end">
+          Voir plus
+        </h4>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  </div>
+
+
+
+        <ion-slides [options]="options">
+
+
+          
+
+          <ion-slide *ngFor="let item of services | filter:filterTerm"  [routerLink]="['/service-detail', item.id]" routerDirection="forward" >
+            <ion-card class="card">
+              <ion-card-content class="ion-text-left">
+
+                <div class="img-wrapper">
+                  <ion-img src={{item.category.image}}></ion-img>
+                </div>
+                
+                <ion-card-title class="title"><strong>Domaine: </strong>{{item.field}}</ion-card-title>
+                <ion-card-title class="title"><strong>Description:</strong> {{item.description}}</ion-card-title>
+                <ion-card-subtitle><strong>Type :</strong>{{item.type}}</ion-card-subtitle>
+                <ion-card-subtitle>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star-outline"></ion-icon>
+                  <ion-icon name="star-outline"></ion-icon>
+                </ion-card-subtitle>
+               <strong>Categorie :</strong> 
+              
+                 {{item.category.name}}
+              
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+
+        </ion-slides>
+   
+
+
+
+
+
+
+</ion-content>

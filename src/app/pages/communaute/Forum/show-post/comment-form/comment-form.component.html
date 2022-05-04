@@ -1,0 +1,13 @@
+<form [formGroup]="commentForm" (submit)="handleSubmit()">
+  <ion-textarea 
+    auto-grow="true"
+    formControlName="comment"  
+    [placeholder]="'forum.addComment' | translate">
+  </ion-textarea>
+  <ion-button 
+    type="submit" 
+    color="gaea-green-grass"
+    [disabled]="!commentForm.valid"
+    [translate]="'forum.submit'">
+  </ion-button>
+</form>

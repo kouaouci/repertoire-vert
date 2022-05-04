@@ -1,0 +1,16 @@
+@import '../../../../global.scss';
+
+:host.ion-page {
+    background-color: var(--ion-item-background);
+    --ion-background-color: var(--ion-item-background);
+}
+
+ion-list {
+  height: 100%;
+  overflow: auto;
+  margin-top: 7vw;
+}
+
+.searchbar-col {
+  padding: 10vw 10vw 0 10vw;
+}

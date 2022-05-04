@@ -1,0 +1,67 @@
+@import "../../../../global.scss";
+
+ion-label,
+ion-input,
+ion-textarea,
+ion-button,
+ion-select,
+ion-text,
+input {
+  font-size: min(3.5vw, 18px);
+}
+
+ion-input,
+ion-textarea,
+ion-select,
+input {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  --padding-start: 5px;
+  --padding-end: 5px;
+}
+
+ion-select {
+  color: black;
+}
+
+ion-button {
+  min-width: 80px;
+  box-shadow: lightgrey 1px 1px 5px 3px;
+}
+
+input {
+  width: 100%;
+}
+
+.required-label {
+  color: red;
+}
+
+.image-col {
+  ion-img {
+    width: 60%;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}
+
+.file-col {
+  ion-text {
+    font-style: italic;
+    color: $gaea-gray-deep;
+  }
+}
+
+.subcategory-selection-col {
+  ion-item {
+    display: flex;
+    --background: white;
+    ion-text {
+      flex: 1;
+    }
+  }
+}
+
+.btn-col {
+  margin-top: 20px;
+}

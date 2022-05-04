@@ -1,0 +1,61 @@
+<app-toolbar-with-back title="shop.titleCart"></app-toolbar-with-back>
+
+<ion-content forceOverscroll="false">
+
+  <ion-grid class="content-grid">
+    <ion-row class="content-row">
+
+      <!-- Empty cart -->
+      <ion-col 
+        size="12" 
+        *ngIf="cart?.length === 0"
+        class="empty-col">
+        <ion-label translate="shop.emptyCart"></ion-label>
+      </ion-col>
+
+      <!-- Cart products -->
+      <ion-col size="12">
+        <app-shop-cart-item 
+          *ngFor="let cartline of cart"
+          [product]="cartline.produit"
+          [quantity]="cartline.quantity"
+          (addEvent)="addProduct($event)"
+          (removeEvent)="removeProduct($event)"
+          (removeAllEvent)="removeAllProduct($event)">
+        </app-shop-cart-item>
+
+        <ion-row *ngIf="cart?.length > 0">
+          <ion-col size="12" class="total-col">
+            <ion-label>{{ 'shop.orderTotal' | translate }} : {{ total | number:'1.2' }} CHF</ion-label>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row *ngIf="cart?.length > 0">
+          <ion-col size="12">
+            <ion-button 
+              expand="block" 
+              color="gaea-green-grass"
+              (click)="confirmOrder()"
+              translate="shop.confirmOrder">
+            </ion-button>
+          </ion-col>
+        </ion-row>        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<!--<ion-button 
+  style="--background:rgb(96, 129, 37);" 
+  size="small"  
+  expand="block" 
+  [routerLink]="['/user-orders']">
+  Mes commandes
+</ion-button>-->
+
+<!--<ion-row>
+  <ion-col >
+    <p>Ajouté le {{item.date |date}}</p>
+    <ion-button color="danger" size="small" (click)="deleteItemFromBasket(item.id)">Supprimer du panier</ion-button>
+  </ion-col>
+</ion-row>-->

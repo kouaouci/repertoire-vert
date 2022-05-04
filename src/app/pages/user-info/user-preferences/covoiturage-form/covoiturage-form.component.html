@@ -1,0 +1,49 @@
+<ion-grid *ngIf="preferences && userPreferences">
+  <ion-row>
+    <ion-col size="12" class="ion-text-center">
+      <ion-label [translate]="'profilePreferences.addPreferences'"></ion-label>
+    </ion-col>
+  </ion-row>
+  
+  <ion-row>
+    <ion-col size="12" class="select-col">
+      <ion-select [(ngModel)]="selectedPreference">
+        <ng-container *ngFor="let preference of preferences">
+          <ion-select-option [value]="preference.id" 
+            *ngIf="!inUserPreferences(preference.id)">
+            {{ 'preferences.' + preference.name | translate }}
+          </ion-select-option>
+        </ng-container>
+      </ion-select>
+    </ion-col>
+    <ion-col size="12" class="ion-text-center" *ngIf="preferences.length > 0">
+      <ion-button color="gaea-green-grass" (click)="handleSubmit()">
+        {{ 'profilePreferences.add' | translate }}
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  
+  <ion-row class="user-preferences-title-col">
+    <ion-col size="12" class="ion-text-center">
+      <ion-label [translate]="'profilePreferences.myPreferences'"></ion-label>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="user-preferences-col">
+    <ion-col size="12" class="ion-text-center" *ngIf="userPreferences.length === 0">
+      <ion-text [translate]="'profilePreferences.noPreferences'"></ion-text>
+    </ion-col>
+    <ng-container *ngIf="userPreferences.length > 0">
+      <ion-col size="12" class="ion-text-center">
+        <ion-list>
+          <ion-item *ngFor="let userPreference of userPreferences">
+            <ion-text>
+              {{ 'preferences.' + preferences[userPreference.preference - 1].name  | translate}}
+            </ion-text>
+            <ion-icon name="trash-outline" (click)="removeUserPreference(userPreference.id)"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ng-container>
+  </ion-row>
+</ion-grid>

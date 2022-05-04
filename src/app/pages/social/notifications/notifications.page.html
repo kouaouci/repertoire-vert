@@ -1,0 +1,28 @@
+<app-toolbar title="notifications.title"></app-toolbar>
+
+<ion-content forceOverscroll="false">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-down-outline"
+    ></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-grid>
+    <!-- No notifications row -->
+    <ion-row class="ion-text-center" *ngIf="notifications.length === 0">
+      <ion-col size="12" class="ion-text-center">
+        <ion-text [translate]="'notifications.noNotifications'"></ion-text>
+      </ion-col>
+    </ion-row>
+
+    <!-- Notifications row -->
+    <ion-row>
+      <ion-col size="12">
+        <app-notification-card 
+          *ngFor="let notification of notifications"
+          [notification]="notification">
+        </app-notification-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

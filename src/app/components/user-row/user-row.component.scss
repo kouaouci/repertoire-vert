@@ -1,0 +1,40 @@
+@import '../../../global.scss';
+
+ion-item {
+  padding-left: 5vw;
+  --padding-start: 0;
+}
+
+ion-row {
+  margin-top: 3vw;
+}
+
+ion-col {
+  padding: 0;
+  margin-bottom: 2vw;
+}
+
+ion-button {
+  width: 70px;
+}
+
+.info-col, .add-col {
+  align-self: center;
+}
+
+ion-label {
+  padding-left: 0;
+  font-size: min(3.5vw, 18px) !important;
+  position: relative;
+  font-weight: normal;
+}
+
+.no-padding {
+  --padding-start: 5px;
+  --padding-end: 5px;
+}
+
+.border {
+  border-radius: 5px;
+  border: 1px solid black;
+}

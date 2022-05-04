@@ -1,0 +1,67 @@
+@import '../../../../../../global.scss';
+
+ion-card {
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+ion-card-content {
+  padding: 10px;
+}
+
+.bg-class-danger{
+  background: rgb(230,67,62);
+  background: linear-gradient(90deg, rgba(230,67,62,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+
+.bg-class{
+  background: linear-gradient(
+    90deg, 
+    $gaea-blue, 
+    $gaea-green-lime, 
+    $gaea-green-grass
+  );
+
+  ion-card-title, ion-card-subtitle, ion-text {
+    color: white;
+    text-transform: none;
+    font-weight: normal;
+  }
+
+  ion-card-title {
+    font-size: min(6vw, 26px);
+  }
+
+  .date-label {
+    font-size: min(2.5vw, 12px);
+  }
+
+  .click-label {
+    font-size: min(4vw, 18px);
+    padding-top: 3vw;
+
+    .c02-arrow {
+      width: min(4vw, 18px);
+      display: inline-block;
+    }
+  }
+
+  ion-img {
+    height: 100%;
+  }
+
+  .c02 {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-25%);
+    font-size: min(5vw, 22px);
+    text-align: center;
+    letter-spacing: -0.2vw;
+  }
+
+  .unit {
+    font-size: min(2vw, 9px);
+  }
+}

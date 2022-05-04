@@ -1,0 +1,40 @@
+<ion-grid>
+  <ion-row *ngIf="activity">
+    <!-- Activité titre -->
+    <ion-col size="9" sizeMd="10">
+      <ion-row>
+        <ion-col size="12" class="activity-type-col">
+          <ion-label *ngIf="activity.activityType.approved">
+            {{ 'activityTypes.' + activity.activityType.name | translate}} {{ 'profile.dateTime' | translate: {date: date, time: time} }}
+          </ion-label>
+          <ion-label *ngIf="!activity.activityType.approved">
+            {{ activity.activityType.name }} {{ 'profile.dateTime' | translate: {date: date, time: time} }}
+          </ion-label>
+        </ion-col>
+        <ion-col size="6" class="info-col">
+          <ion-text>{{ 'profile.distance' | translate }}: {{ activity.totalDistance | number:'1.1-2'}} Km</ion-text>
+        </ion-col>
+        <ion-col size="6" class="info-col">
+          <ion-text>{{ 'userStats.co2Emissions' | translate }}: {{ activity.totalC02 | number:'1.1-2'}} Kg</ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  
+    <!-- Activité icônes -->
+    <ion-col size="3" sizeMd="2" class="icon-col">
+      <ion-icon
+        [routerLink]="['/tabs/co2/map/' + activity.id]"
+        class="icon-oeil"
+        src="../../../../assets/imgs/profile/oeil.svg"
+      >
+      </ion-icon>
+      <ion-icon
+        class="icon-poubelle"
+        src="../../../../assets/imgs/profile/poubelle.svg"
+        (click)="handleDelete()"
+      >
+      </ion-icon>
+    </ion-col>
+  </ion-row>
+  
+</ion-grid>
