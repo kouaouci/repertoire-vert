@@ -11,166 +11,124 @@
   href="https://cdn.jsdelivr.net/npm/@ionic/core@latest/css/ionic.bundle.css"
 />
 
+<ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
 
+      <ion-title> Entreprise </ion-title>
 
-<body>
-  <div id="main-content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-back-button defaultHref="/identification"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content force-overscroll="true">
+    <!--[scrollEvents]="true"-->
+    <form
+      [formGroup]="companyForm"
+      (ngSubmit)="companyForm.valid && submitForm()  "
+      #formCompany="ngForm"
+    >
+      <div class="label">
+        <ion-item>
+          <ion-label position="stacked">Pseudo*</ion-label>
+          <ion-input name="gaeaUserId" formControlName="gaeaUserId"></ion-input>
+        </ion-item>
+        <app-error-message
+          message="*Peudo is mandatory"
+          [field]="companyForm.get('gaeaUserId')"
+          error="required"
+        ></app-error-message>
+        <app-error-message
+          message="*Peudo must be between 3 and 50 characters "
+          [field]="companyForm.get('gaeaUserId')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*Peudo must be between 3 and 50 characters "
+          [field]="companyForm.get('gaeaUserId')"
+          error="maxlength"
+        ></app-error-message>
 
-        <ion-title> Entreprise </ion-title>
+        <ion-item>
+          <ion-label position="stacked">Nom, Prénom du contact*</ion-label>
+          <ion-input formControlName="username"></ion-input>
+        </ion-item>
+        <app-error-message
+          message="*Your name is mandatory"
+          [field]="companyForm.get('username')"
+          error="required"
+        ></app-error-message>
+        <app-error-message
+          message="*Peudo must be between 3 and 50 characters "
+          [field]="companyForm.get('username')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*Peudo must be between 3 and 50 characters "
+          [field]="companyForm.get('username')"
+          error="maxlength"
+        ></app-error-message>
 
-        <ion-buttons slot="end">
-          <ion-back-button defaultHref="/identification"></ion-back-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-  </div>
+        <ion-item>
+          <ion-label position="stacked">Mot de passe*</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        <app-error-message
+          message="*Password must have a least of 1 uppercase,1 lowercase ,1 number and must have 8 characters"
+          [field]="companyForm.get('password')"
+          error="pattern"
+        ></app-error-message>
+        <app-error-message
+          message="*Password is mandatory"
+          [field]="companyForm.get('password')"
+          error="required"
+        ></app-error-message>
 
-  <ion-app>
-    <ion-menu side="start" contentId="main-content">
-      <ion-header>
-        <ion-toolbar translucent>
-          <ion-title>Menu</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <ion-content>
-        <ion-list>
-          <ion-item>
-            <ion-icon
-              name="grid-outline"
-              slot="start"
-              defaultHref="/"
-            ></ion-icon>
-            <ion-label>Accueil</ion-label>
-          </ion-item>
-
-          <ion-item>
-            <ion-icon name="person-outline" slot="start"></ion-icon>
-            <ion-label>Profil</ion-label>
-          </ion-item>
-
-          <ion-item>
-            <ion-icon name="search-outline" slot="start"></ion-icon>
-            <ion-label>Recherche</ion-label>
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
-
-    <ion-content force-overscroll="true">
-      <!--[scrollEvents]="true"-->
-      <form
-        [formGroup]="companyForm"
-        (ngSubmit)="companyForm.valid && submitForm()  "
-        #formCompany="ngForm"
-      >
-        <div class="label">
-          <!-- Inputs with labels -->
-
-          <!--N'est pas visible sur la view -->
-          <ion-item>
-            <ion-label position="stacked">Pseudo*</ion-label>
-            <ion-input
-              name="gaeaUserId"
-              formControlName="gaeaUserId"
-            ></ion-input>
-          </ion-item>
-          <app-error-message
-            message="*Peudo is mandatory"
-            [field]="companyForm.get('gaeaUserId')"
-            error="required"
-          ></app-error-message>
-          <app-error-message
-            message="*Peudo must be between 3 and 50 characters "
-            [field]="companyForm.get('gaeaUserId')"
-            error="minlength"
-          ></app-error-message>
-          <app-error-message
-            message="*Peudo must be between 3 and 50 characters "
-            [field]="companyForm.get('gaeaUserId')"
-            error="maxlength"
-          ></app-error-message>
-
-          <ion-item>
-            <ion-label position="stacked">Nom, Prénom du contact*</ion-label>
-            <ion-input formControlName="username"></ion-input>
-          </ion-item>
-          <app-error-message
-            message="*Your name is mandatory"
-            [field]="companyForm.get('username')"
-            error="required"
-          ></app-error-message>
-          <app-error-message
-            message="*Peudo must be between 3 and 50 characters "
-            [field]="companyForm.get('username')"
-            error="minlength"
-          ></app-error-message>
-          <app-error-message
-            message="*Peudo must be between 3 and 50 characters "
-            [field]="companyForm.get('username')"
-            error="maxlength"
-          ></app-error-message>
-
-          <ion-item>
-            <ion-label position="stacked">Mot de passe</ion-label>
-            <ion-input type="password" formControlName="password"></ion-input>
-          </ion-item>
-          <app-error-message
-            message="*Password must have a least of 1 uppercase,1 lowercase ,1 number and must have 8 characters"
-            [field]="companyForm.get('password')"
-            error="pattern"
-          ></app-error-message>
-          <app-error-message
-            message="*Password is mandatory"
-            [field]="companyForm.get('password')"
-            error="required"
-          ></app-error-message>
-
-          <ion-item>
-            <ion-label position="stacked">Confirmer le mot de passe</ion-label>
-            <ion-input
-              type="password"
-              formControlName="passwordConfirm"
-            ></ion-input>
-          </ion-item>
-          <app-error-message
-            message="*Please to confirm your password"
-            [field]="companyForm.get('passwordConfirm')"
-            error="required"
-          ></app-error-message>
-          <ion-label 
+        <ion-item>
+          <ion-label position="stacked">Confirmer le mot de passe*</ion-label>
+          <ion-input
+            type="password"
+            formControlName="passwordConfirm"
+          ></ion-input>
+        </ion-item>
+        <app-error-message
+          message="*Please to confirm your password"
+          [field]="companyForm.get('passwordConfirm')"
+          error="required"
+        ></app-error-message>
+        <ion-label
           *ngIf="companyForm.hasError('notSamePassword')"
-          color="danger">*The passwords are not the same
+          color="danger"
+          >*The passwords are not the same
         </ion-label>
-        
-          <ion-item>
-            <ion-label position="stacked">Adresse mail</ion-label>
-            <ion-input
-              formControlName="email"
-              pattern="[A-Za-z0-9.%-]+@[A-Za-z0-9.%-]+\.[a-z]{2,3}"
-            ></ion-input>
-          </ion-item>
-          <app-error-message
-            message="*Email is invalid use the format example@email.ex"
-            [field]="companyForm.get('email')"
-            error="pattern"
-          ></app-error-message>
-          <app-error-message
-            message="*Email is mandatory"
-            [field]="companyForm.get('email')"
-            error="required"
-          ></app-error-message>
 
-          <ion-item>
-            <ion-label position="stacked">Confirmer l'adresse mail</ion-label>
-            <ion-input formControlName="emailConfirm"></ion-input>
-          </ion-item>
-          <app-error-message
+        <ion-item>
+          <ion-label position="stacked">Adresse mail*</ion-label>
+          <ion-input
+            formControlName="email"
+            pattern="[A-Za-z0-9.%-]+@[A-Za-z0-9.%-]+\.[a-z]{2,3}"
+          ></ion-input>
+        </ion-item>
+        <app-error-message
+          message="*Email is invalid use the format example@email.ex"
+          [field]="companyForm.get('email')"
+          error="pattern"
+        ></app-error-message>
+        <app-error-message
+          message="*Email is mandatory"
+          [field]="companyForm.get('email')"
+          error="required"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label position="stacked">Confirmer l'adresse mail*</ion-label>
+          <ion-input formControlName="emailConfirm"></ion-input>
+        </ion-item>
+        <app-error-message
           message="*Email is invalid use the format example@email.ex"
           [field]="companyForm.get('emailConfirm')"
           error="pattern"
@@ -180,252 +138,398 @@
           [field]="companyForm.get('emailConfirm')"
           error="required"
         ></app-error-message>
-        
-          <ion-item>
-            <ion-label position="stacked">Nom de l'entreprise</ion-label>
-            <ion-input formControlName="name"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label position="stacked">Raison sociale</ion-label>
-            <ion-input formControlName="socialreason"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label position="stacked">Adresse</ion-label>
-            <ion-input formControlName="street"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label position="stacked">Ville</ion-label>
-            <ion-input formControlName="city"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label position="stacked">Code postal</ion-label>
-            <ion-input formControlName="postcode"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label position="stacked">Canton, département</ion-label>
-            <ion-input formControlName="region"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label position="stacked">Pays</ion-label>
-            <ion-input formControlName="country"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label position="stacked">Téléphone</ion-label>
-            <ion-input formControlName="phone"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label position="stacked">Site Web</ion-label>
-            <ion-input formControlName="urlwebsite">http://</ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label position="stacked">Lien Facebook</ion-label>
-            <ion-input formControlName="urlfacebook">http://</ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label position="stacked">Lien Twitter</ion-label>
-            <ion-input formControlName="urltwitter">http://</ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label position="stacked">Lien LinkedIn</ion-label>
-            <ion-input formControlName="urllinkedin">http://</ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Début de l'activité</ion-label>
-            <ion-datetime
-              formControlName="startingdate"
-              presentation="date"
-              [(ngModel)]="date"
-            ></ion-datetime>
-          </ion-item>
-
-          <ion-item>
-            <ion-label position="stacked">Certification(s)</ion-label>
-            <ion-input formControlName="certification"></ion-input>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Zone d'influence géographique</ion-label>
-            <ion-select
-              formControlName="influencezone"
-              [interfaceOptions]="customAlertOptions"
-              interface="alert"
-              multiple="true"
-              placeholder="Select One"
-            >
-              <ion-select-option value="bacon">Bacon</ion-select-option>
-              <ion-select-option value="olives">Black Olives</ion-select-option>
-              <ion-select-option value="xcheese"
-                >Extra Cheese</ion-select-option
-              >
-              <ion-select-option value="peppers"
-                >Green Peppers</ion-select-option
-              >
-              <ion-select-option value="mushrooms">Mushrooms</ion-select-option>
-              <ion-select-option value="onions">Onions</ion-select-option>
-              <ion-select-option value="pepperoni">Pepperoni</ion-select-option>
-              <ion-select-option value="pineapple">Pineapple</ion-select-option>
-              <ion-select-option value="sausage">Sausage</ion-select-option>
-              <ion-select-option value="Spinach">Spinach</ion-select-option>
-            </ion-select>
-          </ion-item>
-
-          <ion-item>
-            <ion-label>Mon/mes secteur(s) d'activité(s)</ion-label>
-            <ion-select
-              formControlName="categories"
-              interface="popover"
-              multiple="true"
-              placeholder="Select multiple"
-            >
-              <ion-select-option value="nes">NES</ion-select-option>
-              <ion-select-option value="n64">Nintendo64</ion-select-option>
-              <ion-select-option value="ps">PlayStation</ion-select-option>
-              <ion-select-option value="genesis"
-                >Sega Genesis</ion-select-option
-              >
-              <ion-select-option value="saturn">Sega Saturn</ion-select-option>
-              <ion-select-option value="snes">SNES</ion-select-option>
-            </ion-select>
-          </ion-item>
-
-          <p>
-            &nbsp; Je souhaite être évalué par Gaea21 : (voir tableau
-            ci-dessous)
-          </p>
-          <ion-radio-group value="true" formControlName="wantevaluation">
-            <ion-item>
-              <ion-label>Oui</ion-label>
-              <ion-radio color="primary" slot="start" value="true"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label>Non</ion-label>
-              <ion-radio color="primary" slot="start" value="false"></ion-radio>
-            </ion-item>
-          </ion-radio-group>
-
-          <ion-item>
-            <ion-label position="stacked"
-              >Description de votre entreprise</ion-label
-            >
-            <ion-textarea formControlName="description"></ion-textarea>
-          </ion-item>
-
-          <ion-item>
-            <ion-label position="stacked"
-              >Votre vision du Développement Durable : <br />
-              Comment résumeriez-vous votre philosophie <br />
-              d’entreprise au sujet du Développement Durable ?</ion-label
-            >
-            <ion-textarea formControlName="vision"></ion-textarea>
-          </ion-item>
-
-          <ion-item>
-            <p>Téléchargez votre logo (jpeg/png)</p>
-            <ion-button color="dark" size="default" (click)="takePicture()"
-              >Parcourir</ion-button
-            >
-            <img [src]="picture" />
-            <ion-button color="light" size="default"
-              >Supprimez l'image</ion-button
-            >
-          </ion-item>
-        </div>
-        <!-- Input with placeholder 
-      <ion-input placeholder=" Enter Input">Nom d'utilisateur :</ion-input>
-      <ion-input placeholder=" Enter Input">Nom de l'entreprise :</ion-input>
-      <ion-input placeholder=" Enter Input">Description :</ion-input>
-      
-      Number type input 
-      <ion-input type="number" placeholder=" km">Zone d'influence : </ion-input>
-      <ion-input type="number">Numéro de téléphone : </ion-input>
-      
-      URL Input 
-      <ion-input placeholder=" Enter URL">URL Site Web :</ion-input>
-      <ion-input placeholder=" Enter URL">URL Facebook :</ion-input>
-      <ion-input placeholder=" Enter URL">URL Twitter :</ion-input>
-      <ion-input placeholder=" Enter URL">URL LinkedIn :</ion-input> -->
 
         <ion-item>
-          <ion-button
-            color="gaea-green-deep"
-            shape="rectangular"
-            size="large"
-            type="submit"
-            [disabled]="companyForm.invalid"
-            >Enregistrer</ion-button
+          <ion-label position="stacked">Nom de l'entreprise*</ion-label>
+          <ion-input formControlName="name"></ion-input>
+        </ion-item>
+        <app-error-message
+          message="*The name of your entreprise is mandatory"
+          [field]="companyForm.get('name')"
+          error="required"
+        ></app-error-message>
+        <app-error-message
+          message="*The name of your entreprise must contain between 3 and 100 characters"
+          [field]="companyForm.get('name')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*The name of your entreprise must contain between 3 and 100 characters"
+          [field]="companyForm.get('name')"
+          error="maxlength"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label position="stacked">Raison sociale*</ion-label>
+          <ion-input formControlName="socialreason"></ion-input>
+        </ion-item>
+        <app-error-message
+          message="*the social reason of your entreprise is mandatory"
+          [field]="companyForm.get('socialreason')"
+          error="required"
+        ></app-error-message>
+        <app-error-message
+          message="*the social reason of your entreprise must contain between 2 and 50 characters"
+          [field]="companyForm.get('socialreason')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*the social reason of your entreprise must contain between 2 and 50 characters"
+          [field]="companyForm.get('socialreason')"
+          error="maxlength"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label position="stacked">Adresse</ion-label>
+          <ion-input formControlName="street"></ion-input>
+        </ion-item>
+        <app-error-message
+          message="*the street must contain between 8 and 254 characters"
+          [field]="companyForm.get('street')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*the street must contain between 8 and 254 characters"
+          [field]="companyForm.get('street')"
+          error="maxlength"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label position="stacked">Ville</ion-label>
+          <ion-input formControlName="city"></ion-input>
+        </ion-item>
+        <app-error-message
+          message="*the city must contain between 3 and 254 characters"
+          [field]="companyForm.get('city')"
+          error="maxlength"
+        ></app-error-message>
+        <app-error-message
+          message="*the city must contain between 3 and 254 characters"
+          [field]="companyForm.get('city')"
+          error="minlength"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label position="stacked">Code postal</ion-label>
+          <ion-input formControlName="postcode"></ion-input>
+        </ion-item>
+        <app-error-message
+          message="*the Zip code must contain between 3 and 254 characters"
+          [field]="companyForm.get('postcode')"
+          error="minlenght"
+        ></app-error-message>
+        <app-error-message
+          message="*the Zip code must contain between 3 and 254 characters"
+          [field]="companyForm.get('postcode')"
+          error="maxlength"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label position="stacked">Canton, département</ion-label>
+          <ion-input formControlName="region"></ion-input>
+        </ion-item>
+        <app-error-message
+          message="*the region must contain between 3 and 254 characters"
+          [field]="companyForm.get('region')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*the region must contain between 3 and 254 characters"
+          [field]="companyForm.get('region')"
+          error="maxlength"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label position="stacked">Pays</ion-label>
+          <ion-input formControlName="country"></ion-input>
+        </ion-item>
+        <app-error-message
+          message="*the country must contain between 3 and 254 characters"
+          [field]="companyForm.get('country')"
+          error="maxlength"
+        ></app-error-message>
+        <app-error-message
+          message="*the country must contain between 3 and 254 characters"
+          [field]="companyForm.get('country')"
+          error="minlength"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label position="stacked">Téléphone</ion-label>
+          <ion-input formControlName="phone"></ion-input>
+        </ion-item>
+        <app-error-message
+          message="*the phone must contain between 10 and 20 characters"
+          [field]="companyForm.get('phone')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*the phone must contain between 10 and 20 characters"
+          [field]="companyForm.get('phone')"
+          error="maxlength"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label position="stacked">Site Web</ion-label>
+          <ion-input formControlName="urlwebsite">http://</ion-input>
+        </ion-item>
+        <app-error-message
+          message="*the website url  must contain between 3 and 254 characters"
+          [field]="companyForm.get('urlwebsite')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*the website url  must contain between 3 and 254 characters"
+          [field]="companyForm.get('urlwebsite')"
+          error="maxlength"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label position="stacked">Lien Facebook</ion-label>
+          <ion-input formControlName="urlfacebook">http://</ion-input>
+        </ion-item>
+        <app-error-message
+          message="*the facebook url must contain between 3 and 254 characters"
+          [field]="companyForm.get('urlfacebook')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*the facebook url must contain between 3 and 254 characters"
+          [field]="companyForm.get('urlfacebook')"
+          error="maxlength"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label position="stacked">Lien Twitter</ion-label>
+          <ion-input formControlName="urltwitter">http://</ion-input>
+        </ion-item>
+        <app-error-message
+          message="*the twitter url must contain between 3 and 254 characters"
+          [field]="companyForm.get('urltwitter')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*the twitter url must contain between 3 and 254 characters"
+          [field]="companyForm.get('urltwitter')"
+          error="maxlength"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label position="stacked">Lien LinkedIn</ion-label>
+          <ion-input formControlName="urllinkedin">http://</ion-input>
+        </ion-item>
+        <app-error-message
+          message="*the linkedin url must contain between 3 and 254 characters"
+          [field]="companyForm.get('urllinkedin')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*the linkedin url must contain between 3 and 254 characters"
+          [field]="companyForm.get('urllinkedin')"
+          error="maxlength"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label>Début de l'activité</ion-label>
+          <ion-datetime
+            formControlName="startingdate"
+            presentation="date"
+            [(ngModel)]="date"
+          ></ion-datetime>
+        </ion-item>
+        <app-error-message
+          message="*The starting date of your activity is mandatory"
+          [field]="companyForm.get('startingdate')"
+          error="required"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label position="stacked">Certification(s)*</ion-label>
+          <ion-input formControlName="certification"></ion-input>
+        </ion-item>
+        <app-error-message
+          message="*your certifications are mandatory"
+          [field]="companyForm.get('certification')"
+          error="required"
+        ></app-error-message>
+        <ion-item>
+          <ion-label>Zone d'influence géographique*</ion-label>
+          <ion-select
+            formControlName="influencezone"
+            [interfaceOptions]="customAlertOptions"
+            interface="popover"
+            multiple="false"
+            placeholder="Select One"
           >
-          <ion-button
-            color="light"
-            shape="rectangular"
-            size="large"
-            routerLink="/login"
-            >Annuler</ion-button
+            <ion-select-option value="5"> 5Km ou moins </ion-select-option>
+            <ion-select-option value="10">10Km</ion-select-option>
+            <ion-select-option value="20">20Km</ion-select-option>
+            <ion-select-option value="50">50Km</ion-select-option>
+            <ion-select-option value="100">100Km</ion-select-option>
+            <ion-select-option value="100+">+100Km</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <app-error-message
+          message="*Your influence zone is mandatory"
+          [field]="companyForm.get('influencezone')"
+          error="required"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label>Mon/mes secteur(s) d'activité(s)</ion-label>
+          <ion-select
+            formControlName="categories"
+            interface="popover"
+            multiple="true"
+            placeholder="Select multiple"
+          >
+            <ion-select-option
+              *ngFor="let category of categories"
+              value="{{category.id}}"
+              >{{category.name}}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+        <app-error-message
+          message="*A least of one category is mandatory"
+          [field]="companyForm.get('categories')"
+          error="required"
+        ></app-error-message>
+
+        <p>
+          &nbsp; Je souhaite être évalué par Gaea21* : (voir tableau ci-dessous)
+        </p>
+        <ion-radio-group value="true" formControlName="wantevaluation">
+          <ion-item>
+            <ion-label>Oui</ion-label>
+            <ion-radio color="primary" slot="start" value="true"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Non</ion-label>
+            <ion-radio color="primary" slot="start" value="false"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+        <app-error-message
+          message="*We need to know if you want to be evaluate by Gaea21"
+          [field]="companyForm.get('wantevaluation')"
+          error="required"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label position="stacked"
+            >Description de votre entreprise</ion-label
+          >
+          <ion-textarea formControlName="description"></ion-textarea>
+        </ion-item>
+        <app-error-message
+          message="*the description must contain between 3 and 508 characters"
+          [field]="companyForm.get('description')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*the description must contain between 3 and 508 characters"
+          [field]="companyForm.get('description')"
+          error="maxlength"
+        ></app-error-message>
+
+        <ion-item>
+          <ion-label position="stacked"
+            >Votre vision du Développement Durable : <br />
+            Comment résumeriez-vous votre philosophie <br />
+            d’entreprise au sujet du Développement Durable ?</ion-label
+          >
+          <ion-textarea formControlName="vision"></ion-textarea>
+        </ion-item>
+        <app-error-message
+          message="*Your vision of durable developpement must contain between 3 and 508 characters"
+          [field]="companyForm.get('vision')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*Your vision of durable developpement must contain between 3 and 508 characters"
+          [field]="companyForm.get('vision')"
+          error="maxlength"
+        ></app-error-message>
+
+        <ion-item>
+          <p>Téléchargez votre logo (jpeg/png)</p>
+          <ion-button color="dark" size="default" (click)="takePicture()"
+            >Parcourir</ion-button
+          >
+          <img [src]="picture" />
+          <ion-button color="light" size="default"
+            >Supprimez l'image</ion-button
           >
         </ion-item>
-      </form>
-
+      </div>
       <ion-item>
-        <ion-tabs>
-          <ion-tab-bar style="width: 100%" slot="bottom">
-            <ion-tab-button tab="category" routerLink="/tabs/category">
-              <ion-icon name="folder"></ion-icon>
-              <ion-label>Catégories</ion-label>
-            </ion-tab-button>
+        <ion-button
+          color="gaea-green-deep"
+          shape="rectangular"
+          size="large"
+          type="submit"
+          [disabled]="companyForm.invalid"
+        >
+          Enregistrer</ion-button
+        >
 
-            <ion-tab-button (click)="showOfflineMessage()">
-              <ion-icon
-                *ngIf="!co2Selected"
-                src="../../../assets/imgs/home/pas.svg"
-              >
-              </ion-icon>
-              <ion-icon
-                *ngIf="co2Selected"
-                src="../../../assets/imgs/home/pas_green.svg"
-              >
-              </ion-icon>
-              <ion-label>CO2</ion-label>
-            </ion-tab-button>
-
-            <ion-tab-button tab="qrcode" routerLink="/tabs/qrcode">
-              <ion-icon
-                *ngIf="!qrcodeSelected"
-                src="../../../assets/imgs/home/qr_code.svg"
-              >
-              </ion-icon>
-              <ion-icon
-                *ngIf="qrcodeSelected"
-                src="../../../assets/imgs/home/qr_code_green.svg"
-              >
-              </ion-icon>
-              <ion-label>QR Code</ion-label>
-            </ion-tab-button>
-
-            <ion-tab-button tab="communaute" routerLink="/tabs/communaute">
-              <ion-icon name="people"></ion-icon>
-              <ion-label>Communauté</ion-label>
-            </ion-tab-button>
-
-            <ion-tab-button tab="lieux" routerLink="/tabs/lieux">
-              <ion-icon name="search"></ion-icon>
-              <ion-label>Recherche</ion-label>
-            </ion-tab-button>
-          </ion-tab-bar>
-        </ion-tabs>
+        <ion-button
+          color="light"
+          shape="rectangular"
+          size="large"
+          routerLink="/login"
+          >Annuler</ion-button
+        >
       </ion-item>
-    </ion-content>
-  </ion-app>
-</body>
+    </form>
 
+    <ion-item>
+      <ion-tabs>
+        <ion-tab-bar style="width: 100%" slot="bottom">
+          <ion-tab-button tab="category" routerLink="/tabs/category">
+            <ion-icon name="folder"></ion-icon>
+            <ion-label>Catégories</ion-label>
+          </ion-tab-button>
 
+          <ion-tab-button (click)="showOfflineMessage()">
+            <ion-icon
+              *ngIf="!co2Selected"
+              src="../../../assets/imgs/home/pas.svg"
+            >
+            </ion-icon>
+            <ion-icon
+              *ngIf="co2Selected"
+              src="../../../assets/imgs/home/pas_green.svg"
+            >
+            </ion-icon>
+            <ion-label>CO2</ion-label>
+          </ion-tab-button>
+
+          <ion-tab-button tab="qrcode" routerLink="/tabs/qrcode">
+            <ion-icon
+              *ngIf="!qrcodeSelected"
+              src="../../../assets/imgs/home/qr_code.svg"
+            >
+            </ion-icon>
+            <ion-icon
+              *ngIf="qrcodeSelected"
+              src="../../../assets/imgs/home/qr_code_green.svg"
+            >
+            </ion-icon>
+            <ion-label>QR Code</ion-label>
+          </ion-tab-button>
+
+          <ion-tab-button tab="communaute" routerLink="/tabs/communaute">
+            <ion-icon name="people"></ion-icon>
+            <ion-label>Communauté</ion-label>
+          </ion-tab-button>
+
+          <ion-tab-button tab="lieux" routerLink="/tabs/lieux">
+            <ion-icon name="search"></ion-icon>
+            <ion-label>Recherche</ion-label>
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
+    </ion-item>
+  </ion-content>
+</ion-app>

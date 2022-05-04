@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { faDiagramSuccessor } from '@fortawesome/free-solid-svg-icons';
 import { start } from 'repl';
 import { throwError } from 'rxjs';
+import { Category } from 'src/app/shared/category.model';
+import { CategoriesService } from 'src/app/services/categories/categories.service';
 @Component({
   selector: 'app-company',
   templateUrl: './company.page.html',
@@ -20,14 +22,15 @@ export class CompanyPage implements OnInit {
   picture: string;
   date: Date;
   customAlertOptions: any;
+  categories:Category[] = [];
   constructor(
+    private categoriesService: CategoriesService,
     private toastController: ToastController,
     private fb: FormBuilder,
     private router:Router,
     ) {}
 
   async takePicture() {
-    console.log("coucou")
     const image = await Camera.getPhoto({
       quality: 100,
       allowEditing: false,
@@ -46,6 +49,21 @@ export class CompanyPage implements OnInit {
   }
 
   ngOnInit() {
+    this.categoriesService.getCategories().subscribe({
+      next: (categories: Category[]) => {
+        this.categories = categories;
+      },
+      error: async (error) =>{
+        const toast = await this.toastController.create({
+          message:"Un problème est survenue lors de la connexion au serveur veuillez réesayer",
+          duration: 3500,
+          position: "bottom",
+          animated: true,
+          color:"danger"
+        })
+        toast.present();
+      }
+    })
     this.companyForm = new CompanyPageForm(this.fb).createCompanyForm();
   }
 
