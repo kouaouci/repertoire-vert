@@ -6,6 +6,9 @@ import { ToolbarComponent } from 'src/app/components/toolbar/toolbar.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CompanyPageForm } from './company.page.form';
 import { Router } from '@angular/router';
+import { faDiagramSuccessor } from '@fortawesome/free-solid-svg-icons';
+import { start } from 'repl';
+import { throwError } from 'rxjs';
 @Component({
   selector: 'app-company',
   templateUrl: './company.page.html',
@@ -13,7 +16,7 @@ import { Router } from '@angular/router';
 export class CompanyPage implements OnInit {
 
   companyForm: FormGroup;
-
+  check:boolean
   picture: string;
   date: Date;
   customAlertOptions: any;
@@ -24,6 +27,7 @@ export class CompanyPage implements OnInit {
     ) {}
 
   async takePicture() {
+    console.log("coucou")
     const image = await Camera.getPhoto({
       quality: 100,
       allowEditing: false,
@@ -33,10 +37,6 @@ export class CompanyPage implements OnInit {
     this.picture = image.dataUrl;
   }
   
-  btnClicked() {
-    alert("Votre compte entreprise vient d'être crée")
-  }
-
   async showOfflineMessage() {
     const toast = await this.toastController.create({
       message: 'Vous n\'êtes pas connecté(e)',
@@ -49,7 +49,7 @@ export class CompanyPage implements OnInit {
     this.companyForm = new CompanyPageForm(this.fb).createCompanyForm();
   }
 
-  async submitForm(){
+ public async submitForm(){
     const formData = new FormData();
     formData.append('gaeaUserId',this.companyForm.value.gaeaUserId);
     formData.append('username',this.companyForm.value.username);
@@ -77,26 +77,34 @@ export class CompanyPage implements OnInit {
     formData.append('country', this.companyForm.value.country);
     formData.append('categories', this.companyForm.value.categories);
     console.log(this.companyForm.value)   
-  }
-    /*this.companyService.post(formData).subcribe({
-      next: () =>{
-          const toast = await this.toastController.create({
-          message: 'Votre compte à été crée avec succès',
-          duration: 3500
-      }),
-      error: (error) =>{
-          const toast = await this.toastController.create({
-          message: 'Une erreur est survenue veuillez réessayer',
-          duration: 3500
-      });
-      this.router.navigate(['/login']);
-   
-    });
-    toast.present();
-    })
-    */
+
+    if(this.companyForm.valid){
+      const toast = await this.toastController.create({
+        message:"Votre compte à été crée avec succès",
+        duration: 3500,
+        color: "gaea-green-deep",
+        position:'bottom',
+        animated: true,
+      })
+      toast.present();
+      this.companyForm.reset();
+      // this.router.navigate(['login']);
+    }
+
+    // if(this.companyForm.invalid){
+    //   const toast = await this.toastController.create({
+    //     message:"Une erreur c'est produite veuillez réessayer",
+    //     duration: 3500,
+    //     color: "danger",
+    //     position:'bottom',
+    //     animated: true,
+    //   })
+    //   toast.present();
+    // }
   }
 
+
+  }
 
 
 

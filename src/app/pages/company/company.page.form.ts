@@ -1,21 +1,23 @@
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from "@angular/forms";
 
 export class CompanyPageForm{
 
     private formBuilder :FormBuilder;
+ 
 
     constructor(formBuilder:FormBuilder){
         this.formBuilder=formBuilder;
+       
     }
 
     createCompanyForm():FormGroup{
         return this.formBuilder.group({
             gaeaUserId: ["", [Validators.required, Validators.minLength(3),Validators.maxLength(50)]],
-            username:["",[Validators.required, Validators.minLength(3),Validators.maxLength(255)]],
+            username:["",[Validators.required, Validators.minLength(3),Validators.maxLength(50)]],
             password: ["",[Validators.required,Validators.minLength(8),Validators.pattern('((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]],
             passwordConfirm: ["",[Validators.required,Validators.minLength(8),Validators.pattern('((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})')]],
-            email:["",[Validators.required,Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$')]],
-            emailConfirm:["",[Validators.required,Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$')]],
+            email:["",[Validators.required,Validators.email,Validators.pattern("[A-Za-z0-9.%-]+@[A-Za-z0-9.%-]+\.[a-z]{2,3}")]],
+            emailConfirm:["",[Validators.required,Validators.email,Validators.pattern("[A-Za-z0-9.%-]+@[A-Za-z0-9.%-]+\.[a-z]{2,3}")]],
             name: ["",[Validators.required,Validators.minLength(3),Validators.maxLength(255)]],
             socialreason: ["",[Validators.required,Validators.minLength(3),Validators.maxLength(50)]],
             street: ["",[Validators.minLength(3),Validators.maxLength(255)]],
@@ -35,9 +37,21 @@ export class CompanyPageForm{
             wantevaluation:["",[Validators.required]],
             description:["",[Validators.minLength(3),Validators.maxLength(255)]],
             vision:["",[Validators.minLength(3),Validators.maxLength(255)]]
-        })
-    }
+        },
+        {validators:this.checkPassword}
+       
 
+        
+        
+        )
+    }
+    checkPassword: ValidatorFn = (group:AbstractControl):ValidationErrors | null =>{
+        const password= group.get('password')!.value;
+        const passwordConfirm = group.get('passwordConfirm')!.value;
+        return password === passwordConfirm ? null : {notSamePassword:true};
+    };
+    
+  
     
 
 
