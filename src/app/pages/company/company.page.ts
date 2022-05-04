@@ -38,10 +38,6 @@ export class CompanyPage implements OnInit {
     toast.present();
   }
 
-  allFieldsValidate() {
-    
-  }
-
   ngOnInit() {
   }
 }
