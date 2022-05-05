@@ -79,4 +79,8 @@ export class CompanyService {
         });
     });
   }
+
+  // createCompany(formData:FormData): Observable<Company>{
+  //  return this.http.post<Company>(this.API_URL + 'companies', formData);
+  // }
 }

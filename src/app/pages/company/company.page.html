@@ -29,7 +29,7 @@
     <!--[scrollEvents]="true"-->
     <form
       [formGroup]="companyForm"
-      (ngSubmit)="companyForm.valid && submitForm()  "
+      (ngSubmit)="companyForm.valid && submitForm()"
       #formCompany="ngForm"
     >
       <div class="label">
@@ -101,7 +101,7 @@
           error="required"
         ></app-error-message>
         <ion-label
-          *ngIf="companyForm.hasError('notSamePassword')"
+          *ngIf="companyForm.hasError('passwordsNotEquals')"
           color="danger"
           >*The passwords are not the same
         </ion-label>
@@ -138,6 +138,11 @@
           [field]="companyForm.get('emailConfirm')"
           error="required"
         ></app-error-message>
+        <ion-label
+          *ngIf="companyForm.hasError('emailsNotEquals')"
+          color="danger"
+          >*The emails are not the same
+        </ion-label>
 
         <ion-item>
           <ion-label position="stacked">Nom de l'entreprise*</ion-label>
@@ -330,7 +335,7 @@
         ></app-error-message>
 
         <ion-item>
-          <ion-label>Début de l'activité</ion-label>
+          <ion-label>Début de l'activité*</ion-label>
           <ion-datetime
             formControlName="startingdate"
             presentation="date"
@@ -376,7 +381,7 @@
         ></app-error-message>
 
         <ion-item>
-          <ion-label>Mon/mes secteur(s) d'activité(s)</ion-label>
+          <ion-label>Mon/mes secteur(s) d'activité(s)*</ion-label>
           <ion-select
             formControlName="categories"
             interface="popover"
@@ -453,14 +458,19 @@
 
         <ion-item>
           <p>Téléchargez votre logo (jpeg/png)</p>
-          <ion-button color="dark" size="default" (click)="takePicture()"
-            >Parcourir</ion-button
+          <ion-button color="dark" size="default" (click)="takePicture()" >
+            Parcourir</ion-button
           >
-          <img [src]="picture" />
           <ion-button color="light" size="default"
             >Supprimez l'image</ion-button
           >
         </ion-item>
+        <img
+          [src]="picture"
+          *ngIf="picture != undefined"
+          width="100px"
+          height="100px"
+        />
       </div>
       <ion-item>
         <ion-button

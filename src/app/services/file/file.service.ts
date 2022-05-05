@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { S_IFREG } from 'constants';
 import { environment } from 'src/environments/environment';
 import { AlertService } from '../alerts/alert.service';
 
@@ -9,6 +10,7 @@ import { AlertService } from '../alerts/alert.service';
 export class FileService {
 
   API_URL = environment.url + 'api/'
+  imageDownload: File;
 
   constructor(
     private http: HttpClient,

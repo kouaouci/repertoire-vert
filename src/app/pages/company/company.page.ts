@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonTabs, ToastController } from '@ionic/angular';
 import { AnimationBuilder, IonLabel } from '@ionic/angular';
 import { Camera, CameraResultType } from '@capacitor/camera/';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { ToolbarComponent } from 'src/app/components/toolbar/toolbar.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CompanyPageForm } from './company.page.form';
@@ -11,6 +12,7 @@ import { start } from 'repl';
 import { throwError } from 'rxjs';
 import { Category } from 'src/app/shared/category.model';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
+import { FileService } from 'src/app/services/file/file.service';
 @Component({
   selector: 'app-company',
   templateUrl: './company.page.html',
@@ -19,7 +21,7 @@ export class CompanyPage implements OnInit {
 
   companyForm: FormGroup;
   check:boolean
-  picture: string;
+  picture: any;
   date: Date;
   customAlertOptions: any;
   categories:Category[] = [];
@@ -28,8 +30,31 @@ export class CompanyPage implements OnInit {
     private toastController: ToastController,
     private fb: FormBuilder,
     private router:Router,
-    ) {}
+    private fileService: FileService
+    ) {
+      defineCustomElements(window);
+    }
 
+    ngOnInit() {
+      this.categoriesService.getCategories().subscribe({
+        next: (categories: Category[]) => {
+          this.categories = categories;
+        },
+        error: async (_error) =>{
+          const toast = await this.toastController.create({
+            message:"Un problème est survenue lors de la connexion au serveur veuillez réesayer",
+            duration: 3500,
+            position: "bottom",
+            animated: true,
+            color:"danger"
+          })
+          toast.present();
+        }
+      })
+      this.companyForm = new CompanyPageForm(this.fb).createCompanyForm();
+      this.picture = undefined;
+    }
+  
   async takePicture() {
     const image = await Camera.getPhoto({
       quality: 100,
@@ -38,7 +63,13 @@ export class CompanyPage implements OnInit {
     });
 
     this.picture = image.dataUrl;
+    console.log(this.picture)
+    
   }
+  deleteFile(){
+    this.picture= undefined;
+  }
+  
   
   async showOfflineMessage() {
     const toast = await this.toastController.create({
@@ -48,25 +79,7 @@ export class CompanyPage implements OnInit {
     toast.present();
   }
 
-  ngOnInit() {
-    this.categoriesService.getCategories().subscribe({
-      next: (categories: Category[]) => {
-        this.categories = categories;
-      },
-      error: async (error) =>{
-        const toast = await this.toastController.create({
-          message:"Un problème est survenue lors de la connexion au serveur veuillez réesayer",
-          duration: 3500,
-          position: "bottom",
-          animated: true,
-          color:"danger"
-        })
-        toast.present();
-      }
-    })
-    this.companyForm = new CompanyPageForm(this.fb).createCompanyForm();
-  }
-
+  
  public async submitForm(){
     const formData = new FormData();
     formData.append('gaeaUserId',this.companyForm.value.gaeaUserId);
@@ -94,7 +107,7 @@ export class CompanyPage implements OnInit {
     formData.append('vision',this.companyForm.value.vision);
     formData.append('country', this.companyForm.value.country);
     formData.append('categories', this.companyForm.value.categories);
-    console.log(this.companyForm.value)   
+   
 
     if(this.companyForm.valid){
       const toast = await this.toastController.create({
@@ -106,6 +119,7 @@ export class CompanyPage implements OnInit {
       })
       toast.present();
       this.companyForm.reset();
+      this.deleteFile()
       // this.router.navigate(['login']);
     }
 
