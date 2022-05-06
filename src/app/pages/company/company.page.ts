@@ -2,39 +2,53 @@ import { Component, OnInit } from '@angular/core';
 import { IonTabs, ToastController } from '@ionic/angular';
 import { AnimationBuilder, IonLabel } from '@ionic/angular';
 import { Camera, CameraResultType } from '@capacitor/camera/';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { ToolbarComponent } from 'src/app/components/toolbar/toolbar.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CompanyPageForm } from './company.page.form';
 import { Router } from '@angular/router';
+import { FileService } from 'src/app/services/file/file.service';
+import { type } from 'os';
+import { stringify } from 'querystring';
+
 @Component({
   selector: 'app-company',
   templateUrl: './company.page.html',
 })
 export class CompanyPage implements OnInit {
-
+  modes = ['date'];
+  selectedMode = 'date';
+  
   companyForm: FormGroup;
-
-  picture: string;
+  co2Selected: any;
+  qrcodeSelected: any;
+  picture: any;
   date: Date;
   customAlertOptions: any;
+  
+  
   constructor(
     private toastController: ToastController,
     private fb: FormBuilder,
     private router:Router,
-    ) {}
+    private fileService: FileService,
+  ) {defineCustomElements(window);}
 
   async takePicture() {
     const image = await Camera.getPhoto({
-      quality: 100,
+      quality: 90,
       allowEditing: false,
       resultType: CameraResultType.DataUrl 
     });
-
     this.picture = image.dataUrl;
   }
-  
-  btnClicked() {
-    alert("Votre compte entreprise vient d'être crée")
+
+  public uploadFile(type: string, file: File){
+    this.fileService.uploadImage(type,file)
+  }
+
+  async deletePicture() {
+    this.picture = undefined
   }
 
   async showOfflineMessage() {

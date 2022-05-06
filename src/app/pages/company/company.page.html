@@ -144,7 +144,7 @@
 
         <ion-item>
           <ion-label>Début de l'activité*</ion-label>
-          <ion-datetime formControlName="startingdate" presentation="date" [(ngModel)]="date" interface="popover"></ion-datetime>
+          <ion-datetime formControlName="startingdate" [(ngModel)]="date" interface="popover"></ion-datetime>
         </ion-item>
 
         <ion-item>
@@ -179,15 +179,15 @@
 
         <p> &nbsp; Je souhaite être évalué par Gaea21 : (voir tableau ci-dessous)</p>
         <ion-radio-group value="Oui" formControlName="wantevaluation">
-        <ion-item>
-          <ion-label>Oui</ion-label>
-          <ion-radio color="primary" slot="start" value="Oui"></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>Non</ion-label>
-          <ion-radio color="primary" slot="start" value="Non"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
+          <ion-item>
+            <ion-label>Oui</ion-label>
+            <ion-radio color="primary" slot="start" value="Oui"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Non</ion-label>
+            <ion-radio color="primary" slot="start" value="Non"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
 
         <ion-item>
           <ion-label position="stacked">Description de votre entreprise</ion-label>
@@ -201,11 +201,11 @@
         </ion-item>
 
         <ion-item>
-          <p>Téléchargez votre logo (jpeg/png)</p>
+          <p >Téléchargez votre logo (jpeg/png)</p>
           <ion-button color="dark" size="default" (click)="takePicture()">Parcourir</ion-button>
-          <img [src]="picture"/>
-          <ion-button color="dark" size="default">Supprimez l'image</ion-button>
+          <ion-button color="light" size="default" (click)="deletePicture()">Supprimez l'image</ion-button>
         </ion-item>
+        <img [src]="picture" *ngIf="picture != undefined"  width="100%" height="350px"/>
         
       </div>
       <!-- Input with placeholder 
@@ -224,8 +224,7 @@
       <ion-input placeholder=" Enter URL">URL LinkedIn :</ion-input> -->
 
       <ion-item>
-        <ion-button color="gaea-green-deep" shape="rectangular" size="large" type="submit" (click)='btnClicked()'
-        
+        <ion-button color="gaea-green-deep" shape="rectangular" size="large" type="submit"
          >Enregistrer</ion-button>
         <ion-button color="light" shape="rectangular" size="large" routerLink= "/login">Annuler</ion-button>
       </ion-item>
