@@ -73,7 +73,7 @@ export class CompanyPage implements OnInit {
   
   async showOfflineMessage() {
     const toast = await this.toastController.create({
-      message: 'Vous n\'êtes pas connecté(e)',
+      message: " Vous n'êtes pas connecté(e)",
       duration: 5000
     });
     toast.present();
@@ -107,7 +107,10 @@ export class CompanyPage implements OnInit {
     formData.append('vision',this.companyForm.value.vision);
     formData.append('country', this.companyForm.value.country);
     formData.append('categories', this.companyForm.value.categories);
-   
+    formData.append('image',this.picture);
+    if(this.picture != undefined){
+      this.fileService.uploadImage('image', this.picture);
+    };
 
     if(this.companyForm.valid){
       const toast = await this.toastController.create({
@@ -118,8 +121,10 @@ export class CompanyPage implements OnInit {
         animated: true,
       })
       toast.present();
+      console.log(this.companyForm.value)
       this.companyForm.reset();
-      this.deleteFile()
+      this.deleteFile();
+      
       // this.router.navigate(['login']);
     }
 
@@ -134,6 +139,27 @@ export class CompanyPage implements OnInit {
     //   toast.present();
     // }
   }
+
+  //   uploadImage() {
+  //   // Get image file
+  //   let imageFile: File = this.productForm.get('image').value;
+
+  //   // Check if file size is larger than 2MB
+  //   if (imageFile.size > 2000000) {
+  //     this.alertService.presentAlert('error', 'fileTooBig')
+  //     this.loading = false;
+  //   } else {
+
+  //     this.fileService.uploadImage('products', imageFile).then(result => {
+  //       // Once image uploaded, save product info to DB
+  //       this.saveProductToDB(result);
+  //     }, error => {
+  //       this.loading = false;
+  //     });
+  //   }
+  // }
+
+
 
 
   }

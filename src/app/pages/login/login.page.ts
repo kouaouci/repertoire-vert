@@ -159,7 +159,7 @@ export class LoginPage implements OnInit {
       this.user.dateBirth = this.authForm.value.dateBirth.trim();
       this.user.password = this.authForm.value.motDePasse.trim();
       this.user.role = 'ROLE_USER';
-
+      this.user.url = "https://www.repertoirevert.org";
       const passwordConfirm = this.authForm.value.motDePasseConfirm.trim();
 
       // Check passwords match

@@ -31,4 +31,5 @@ export interface User {
     reviews?: Review[];
     covoiturages?: Covoiturage[];
     userPreferences?: UserPreference[];
+    url?:string
 }

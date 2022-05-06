@@ -461,15 +461,15 @@
           <ion-button color="dark" size="default" (click)="takePicture()" >
             Parcourir</ion-button
           >
-          <ion-button color="light" size="default"
+          <ion-button color="light" size="default" (click)="deleteFile()"
             >Supprimez l'image</ion-button
           >
         </ion-item>
         <img
           [src]="picture"
           *ngIf="picture != undefined"
-          width="100px"
-          height="100px"
+          width="100%"
+          
         />
       </div>
       <ion-item>

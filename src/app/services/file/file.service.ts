@@ -10,7 +10,6 @@ import { AlertService } from '../alerts/alert.service';
 export class FileService {
 
   API_URL = environment.url + 'api/'
-  imageDownload: File;
 
   constructor(
     private http: HttpClient,
