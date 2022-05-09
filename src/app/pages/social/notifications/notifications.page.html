@@ -21,6 +21,7 @@
         <app-notification-card 
           *ngFor="let notification of notifications"
           [notification]="notification">
+          <ion-text [translate]="'notifications.noNotifications'"></ion-text>
         </app-notification-card>
       </ion-col>
     </ion-row>
