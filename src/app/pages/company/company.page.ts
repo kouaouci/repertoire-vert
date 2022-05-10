@@ -110,11 +110,7 @@ export class CompanyPage implements OnInit {
     })
     */
   }
-
-
-
-
-
+  
 
 interface InputChangeEventDetail {
   value: string | undefined | null;

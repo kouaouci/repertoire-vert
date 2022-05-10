@@ -1,3 +1,5 @@
+
+
 <app-toolbar title="notifications.title"></app-toolbar>
 
 <ion-content forceOverscroll="false">
@@ -8,12 +10,53 @@
   </ion-refresher>
 
   <ion-grid>
-    <!-- No notifications row -->
+    <!-- No notifications row 
     <ion-row class="ion-text-center" *ngIf="notifications.length === 0">
       <ion-col size="12" class="ion-text-center">
         <ion-text [translate]="'notifications.noNotifications'"></ion-text>
       </ion-col>
-    </ion-row>
+    </ion-row> -->
+    
+
+    <ion-content [fullscreen]="true">
+      <div id="container">
+        <ion-button color="success" (click)="acceptReservation()">Accepter</ion-button>
+        <ion-button color="danger" (click)="denyReservation()">Refuser</ion-button>
+        <ion-button color="primary" (click)="friendRequest()">Demande d'amis</ion-button>
+      </div>
+
+      <!--<ion-list>
+        <ion-item>
+          <ion-avatar slot="start">
+            <ion-img src="./avatar-gollum.jpg" alt="logo1"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <h2>Louis</h2>
+            <p>Sneaky little hobbitses!</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-avatar slot="start">
+            <ion-img src="./avatar-frodo.jpg" alt="logo1"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <h2>Louisa</h2>
+            <p>Go back, Sam! I'm going to Mordor alone!</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-avatar slot="start">
+            <ion-img src="./avatar-samwise.jpg" alt="logo1"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <h2>Samwise</h2>
+            <p>What we need is a few good taters.</p>
+          </ion-label>
+        </ion-item>
+      </ion-list> -->
+    </ion-content>
+
+    
 
     <!-- Notifications row -->
     <ion-row>
