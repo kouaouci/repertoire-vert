@@ -1,73 +1,145 @@
-<ion-row>
-  <ion-col size="12" class="ion-text-center">
-    <ion-label [translate]="'profilePreferences.modifyInformation'"></ion-label>
-  </ion-col>
-</ion-row>
 <ion-content>
-  <form
-    [formGroup]="userUpdateForm"
-    (ngSubmit)="userUpdateForm.valid && submitForm()"
-  >
-    <div class="user-infos">
+  <div class="user-infos">
+    <form
+      [formGroup]="userUpdateForm"
+      (ngSubmit)="userUpdateForm.valid && submitForm()"
+    >
       <div class="top-infos">
         <ion-item>
           <ion-label position="stacked"> Prénom </ion-label>
-          <ion-input name="firstname" formControlName="firstname">
-          
-          </ion-input>
+          <ion-input name="firstname" formControlName="firstname"> </ion-input>
         </ion-item>
+        <app-error-message
+          message="*Your firstname is mandatory"
+          [field]="userUpdateForm.get('firstname')"
+          error="required"
+        ></app-error-message>
+        <app-error-message
+          message="*Your firstname must be between 3 and 50 characters "
+          [field]="userUpdateForm.get('firstname')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*Your firstname must be between 3 and 50 characters "
+          [field]="userUpdateForm.get('firstname')"
+          error="maxlength"
+        ></app-error-message>
         <ion-item>
           <ion-label position="stacked"> Nom </ion-label>
-          <ion-input name="lastname" formControlName="lastname">
-           
-          </ion-input>
+          <ion-input name="lastname" formControlName="lastname"> </ion-input>
         </ion-item>
+        <app-error-message
+          message="*Your lastname is mandatory"
+          [field]="userUpdateForm.get('lastname')"
+          error="required"
+        ></app-error-message>
+        <app-error-message
+          message="*Your lastname must be between 3 and 50 characters "
+          [field]="userUpdateForm.get('lastname')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*Your lastname must be between 3 and 50 characters "
+          [field]="userUpdateForm.get('lastname')"
+          error="maxlength"
+        ></app-error-message>
         <ion-item>
           <ion-label position="stacked"> Date de naissance </ion-label>
           <ion-datetime formControlName="dateBirth" locale="en-GB">
-          
           </ion-datetime>
         </ion-item>
       </div>
       <div class="adress">
         <ion-item>
           <ion-label position="stacked"> Numéro de la voie </ion-label>
-          <ion-input formControlName="streetnumber">
-          
+          <ion-input formControlName="streetnumber" pattern="'/^[0-9]\\d*$/'">
           </ion-input>
         </ion-item>
+        <app-error-message
+          message="*Only numbers is allowed on this input"
+          [field]="userUpdateForm.get('streetnumber')"
+          error="pattern"
+        ></app-error-message>
         <ion-item>
           <ion-label position="stacked"> Nom de la rue </ion-label>
-          <ion-input formControlName="street">
-           
-          </ion-input>
+          <ion-input formControlName="street"> </ion-input>
         </ion-item>
+        <app-error-message
+          message="*Your street must be between 8 and 254 characters "
+          [field]="userUpdateForm.get('street')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*Your street must be between 8 and 254 characters "
+          [field]="userUpdateForm.get('street')"
+          error="maxlength"
+        ></app-error-message>
         <ion-item>
           <ion-label position="stacked"> Code postal </ion-label>
-          <ion-input formControlName="postcode">
-          
-          </ion-input>
+          <ion-input formControlName="postcode"> </ion-input>
         </ion-item>
+        <app-error-message
+          message="*Your ZipCode must contain 10 characters maximum"
+          [field]="userUpdateForm.get('postcode')"
+          error="maxlength"
+        ></app-error-message>
         <ion-item>
           <ion-label position="stacked"> Ville </ion-label>
-          <ion-input formControlName="city">
-          
-          </ion-input>
+          <ion-input formControlName="city"> </ion-input>
         </ion-item>
+        <app-error-message
+          message="*Your city must be between 3 and 254 characters "
+          [field]="userUpdateForm.get('city')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*Your city must be between 3 and 254 characters "
+          [field]="userUpdateForm.get('city')"
+          error="maxlength"
+        ></app-error-message>
         <ion-item>
           <ion-label position="stacked"> Pays </ion-label>
-          <ion-input formControlName="country">
-          
-          </ion-input>
+          <ion-input formControlName="country"> </ion-input>
         </ion-item>
+        <app-error-message
+          message="*Your country must be between 3 and 150 characters "
+          [field]="userUpdateForm.get('country')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*Your country must be between 3 and 150 characters "
+          [field]="userUpdateForm.get('country')"
+          error="maxlength"
+        ></app-error-message>
       </div>
       <div class="usefull-links">
         <ion-item>
           <ion-label position="stacked"> Site internet </ion-label>
-          <ion-input formControlName="url">
-        
-          </ion-input>
+          <ion-input formControlName="url"> </ion-input>
         </ion-item>
+        <app-error-message
+          message="*The url must be between 10 and 254 characters "
+          [field]="userUpdateForm.get('url')"
+          error="minlength"
+        ></app-error-message>
+        <app-error-message
+          message="*The url must be between 10 and 254 characters "
+          [field]="userUpdateForm.get('url')"
+          error="maxlength"
+        ></app-error-message>
+      </div>
+      <div class="profilPict">
+        <ion-item>
+          <p>Téléchargez votre logo (jpeg/png)</p>
+          <ion-button color="dark" size="default" (click)="takePicture()">
+            Parcourir</ion-button
+          >
+          <input type="file" hidden="true" name="image" />
+          <ion-button color="light" size="default" (click)="deleteFile()"
+            >Supprimez</ion-button
+          >
+        </ion-item>
+        <img [src]="picture" *ngIf="picture != undefined" width="100%" />
       </div>
       <div class="buttons">
         <ion-button
@@ -84,6 +156,6 @@
           Annuler
         </ion-button>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </ion-content>
