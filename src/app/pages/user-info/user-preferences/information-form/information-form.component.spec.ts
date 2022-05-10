@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 
 import { InformationFormComponent } from './information-form.component';
 

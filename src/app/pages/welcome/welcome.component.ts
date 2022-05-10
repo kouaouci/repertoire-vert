@@ -87,7 +87,7 @@ export class WelcomeComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => 
       this.slides.startAutoplay()
-    , 3500);
+    , 5000);
   }
 
   next() {
@@ -104,7 +104,7 @@ export class WelcomeComponent implements OnInit {
         this.slides.stopAutoplay();
         setTimeout(() => 
           this.slides.startAutoplay()
-        , 3500);
+        , 5000);
       }
     });
   }
