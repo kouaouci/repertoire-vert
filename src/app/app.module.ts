@@ -25,7 +25,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedComponentsModule } from './components/shared-components.module';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { WelcomeSlideComponent } from './pages/welcome/welcome-slide/welcome-slide.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -73,6 +73,7 @@ export function HttpLoaderFactory(http: HttpClient) {
           }
         }),
         FormsModule,
+        ReactiveFormsModule,
         SharedComponentsModule
     ],
     providers: [

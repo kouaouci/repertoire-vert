@@ -10,6 +10,7 @@ import {
 export class CompanyPageForm {
   private formBuilder: FormBuilder;
 
+
   constructor(formBuilder: FormBuilder) {
     this.formBuilder = formBuilder;
   }
@@ -98,9 +99,12 @@ export class CompanyPageForm {
         wantevaluation: ["", [Validators.required]],
         description: ["", [Validators.minLength(3), Validators.maxLength(508)]],
         vision: ["", [Validators.minLength(3), Validators.maxLength(508)]],
+        image: [""],
       },
       { validators: [this.checkPassword, this.checkEmail] }
+      
     );
+   
   }
 
   checkPassword: ValidatorFn = (

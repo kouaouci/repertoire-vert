@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { IonTabs, ToastController } from '@ionic/angular';
+import {  ToastController } from '@ionic/angular';
 import { AnimationBuilder, IonLabel } from '@ionic/angular';
 import { Camera, CameraResultType } from '@capacitor/camera/';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
-import { ToolbarComponent } from 'src/app/components/toolbar/toolbar.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CompanyPageForm } from './company.page.form';
 import { Router } from '@angular/router';
-import { faDiagramSuccessor } from '@fortawesome/free-solid-svg-icons';
-import { start } from 'repl';
-import { throwError } from 'rxjs';
+
 import { Category } from 'src/app/shared/category.model';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { FileService } from 'src/app/services/file/file.service';
@@ -25,6 +22,7 @@ export class CompanyPage implements OnInit {
   date: Date;
   customAlertOptions: any;
   categories:Category[] = [];
+  loading: boolean
   constructor(
     private categoriesService: CategoriesService,
     private toastController: ToastController,
@@ -36,9 +34,10 @@ export class CompanyPage implements OnInit {
     }
 
     ngOnInit() {
+      
       this.categoriesService.getCategories().subscribe({
         next: (categories: Category[]) => {
-          this.categories = categories;
+           this.categories = categories;
         },
         error: async (_error) =>{
           const toast = await this.toastController.create({
@@ -61,10 +60,8 @@ export class CompanyPage implements OnInit {
       allowEditing: false,
       resultType: CameraResultType.DataUrl 
     });
-
     this.picture = image.dataUrl;
-    console.log(this.picture)
-    
+    this.companyForm.get('image').setValue(this.picture);    
   }
   deleteFile(){
     this.picture= undefined;
@@ -77,6 +74,29 @@ export class CompanyPage implements OnInit {
       duration: 5000
     });
     toast.present();
+  }
+  private uploadImage() {
+    // Get image file
+    let imageFile: File = this.companyForm.get('image').value;
+
+    // Check if file size is larger than 2MB
+    if (imageFile.size > 2000000) {
+      const toast = this.toastController.create({
+        message: "the file is too big",
+        duration: 3500,
+        animated: true,
+        color: "danger",
+        position:'bottom'
+      })
+      this.loading = false;
+    } else {
+      console.log(imageFile)
+      this.fileService.uploadImage('companies', imageFile).then(result => {
+        this.loading = true;
+      }, error => {
+        this.loading = false;
+      });
+    }
   }
 
   
@@ -109,7 +129,7 @@ export class CompanyPage implements OnInit {
     formData.append('categories', this.companyForm.value.categories);
     formData.append('image',this.picture);
     if(this.picture != undefined){
-      this.fileService.uploadImage('image', this.picture);
+      this.uploadImage();
     };
 
     if(this.companyForm.valid){
@@ -122,7 +142,7 @@ export class CompanyPage implements OnInit {
       })
       toast.present();
       console.log(this.companyForm.value)
-      this.companyForm.reset();
+      // this.companyForm.reset();
       this.deleteFile();
       
       // this.router.navigate(['login']);
@@ -138,35 +158,9 @@ export class CompanyPage implements OnInit {
     //   })
     //   toast.present();
     // }
-  }
-
-  //   uploadImage() {
-  //   // Get image file
-  //   let imageFile: File = this.productForm.get('image').value;
-
-  //   // Check if file size is larger than 2MB
-  //   if (imageFile.size > 2000000) {
-  //     this.alertService.presentAlert('error', 'fileTooBig')
-  //     this.loading = false;
-  //   } else {
-
-  //     this.fileService.uploadImage('products', imageFile).then(result => {
-  //       // Once image uploaded, save product info to DB
-  //       this.saveProductToDB(result);
-  //     }, error => {
-  //       this.loading = false;
-  //     });
-  //   }
-  // }
-
-
-
+    }
 
   }
-
-
-
-
 
 interface InputChangeEventDetail {
   value: string | undefined | null;

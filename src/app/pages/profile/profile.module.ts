@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -21,6 +21,7 @@ import { CovoiturageFormComponent } from '../user-info/user-preferences/covoitur
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     SuperTabsModule,
     IonicModule,
     ProfilePageRoutingModule,
