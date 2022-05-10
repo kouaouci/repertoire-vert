@@ -3,3 +3,87 @@
     <ion-label [translate]="'profilePreferences.modifyInformation'"></ion-label>
   </ion-col>
 </ion-row>
+<ion-content>
+  <form
+    [formGroup]="userUpdateForm"
+    (ngSubmit)="userUpdateForm.valid && submitForm()"
+  >
+    <div class="user-infos">
+      <div class="top-infos">
+        <ion-item>
+          <ion-label position="stacked"> Prénom </ion-label>
+          <ion-input name="firstname" formControlName="firstname">
+          
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"> Nom </ion-label>
+          <ion-input name="lastname" formControlName="lastname">
+           
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"> Date de naissance </ion-label>
+          <ion-datetime formControlName="dateBirth" locale="en-GB">
+          
+          </ion-datetime>
+        </ion-item>
+      </div>
+      <div class="adress">
+        <ion-item>
+          <ion-label position="stacked"> Numéro de la voie </ion-label>
+          <ion-input formControlName="streetnumber">
+          
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"> Nom de la rue </ion-label>
+          <ion-input formControlName="street">
+           
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"> Code postal </ion-label>
+          <ion-input formControlName="postcode">
+          
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"> Ville </ion-label>
+          <ion-input formControlName="city">
+          
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"> Pays </ion-label>
+          <ion-input formControlName="country">
+          
+          </ion-input>
+        </ion-item>
+      </div>
+      <div class="usefull-links">
+        <ion-item>
+          <ion-label position="stacked"> Site internet </ion-label>
+          <ion-input formControlName="url">
+        
+          </ion-input>
+        </ion-item>
+      </div>
+      <div class="buttons">
+        <ion-button
+          class="ion-color ion-color-light ios button button-solid ion-activatable ion-focusable hydrated"
+          type="submit"
+          [disabled]="userUpdateForm.invalid"
+        >
+          Modifier mon profil
+        </ion-button>
+        <ion-button
+          style="box-shadow: 2px 2px 2px lightgrey"
+          class="ion-color ion-color-light ios button button-solid ion-activatable ion-focusable hydrated"
+        >
+          Annuler
+        </ion-button>
+      </div>
+    </div>
+  </form>
+</ion-content>
