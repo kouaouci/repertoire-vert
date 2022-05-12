@@ -5,7 +5,7 @@
       (ngSubmit)="userUpdateForm.valid && submitForm()"
     >
       <div class="top-infos">
-        <ion-item>
+        <ion-item lines="none">
           <ion-label position="stacked"> Prénom </ion-label>
           <ion-input name="firstname" formControlName="firstname"> </ion-input>
         </ion-item>
@@ -24,7 +24,7 @@
           [field]="userUpdateForm.get('firstname')"
           error="maxlength"
         ></app-error-message>
-        <ion-item>
+        <ion-item lines="none">
           <ion-label position="stacked"> Nom </ion-label>
           <ion-input name="lastname" formControlName="lastname"> </ion-input>
         </ion-item>
@@ -43,14 +43,14 @@
           [field]="userUpdateForm.get('lastname')"
           error="maxlength"
         ></app-error-message>
-        <ion-item>
+        <ion-item lines="none">
           <ion-label position="stacked"> Date de naissance </ion-label>
           <ion-datetime formControlName="dateBirth" locale="en-GB">
           </ion-datetime>
         </ion-item>
       </div>
       <div class="adress">
-        <ion-item>
+        <ion-item lines="none">
           <ion-label position="stacked"> Numéro de la voie </ion-label>
           <ion-input formControlName="streetnumber" pattern="'/^[0-9]\\d*$/'">
           </ion-input>
@@ -60,7 +60,7 @@
           [field]="userUpdateForm.get('streetnumber')"
           error="pattern"
         ></app-error-message>
-        <ion-item>
+        <ion-item lines="none">
           <ion-label position="stacked"> Nom de la rue </ion-label>
           <ion-input formControlName="street"> </ion-input>
         </ion-item>
@@ -74,7 +74,7 @@
           [field]="userUpdateForm.get('street')"
           error="maxlength"
         ></app-error-message>
-        <ion-item>
+        <ion-item lines="none">
           <ion-label position="stacked"> Code postal </ion-label>
           <ion-input formControlName="postcode"> </ion-input>
         </ion-item>
@@ -83,7 +83,7 @@
           [field]="userUpdateForm.get('postcode')"
           error="maxlength"
         ></app-error-message>
-        <ion-item>
+        <ion-item lines="none">
           <ion-label position="stacked"> Ville </ion-label>
           <ion-input formControlName="city"> </ion-input>
         </ion-item>
@@ -97,10 +97,10 @@
           [field]="userUpdateForm.get('city')"
           error="maxlength"
         ></app-error-message>
-        <ion-item>
+        <ion-item lines="none">
           <ion-label position="stacked"> Pays </ion-label>
           <ion-input formControlName="country"> </ion-input>
-        </ion-item>
+        </ion-item >
         <app-error-message
           message="*Your country must be between 3 and 150 characters "
           [field]="userUpdateForm.get('country')"
@@ -113,7 +113,7 @@
         ></app-error-message>
       </div>
       <div class="usefull-links">
-        <ion-item>
+        <ion-item lines="none">
           <ion-label position="stacked"> Site internet </ion-label>
           <ion-input formControlName="url"> </ion-input>
         </ion-item>
@@ -129,7 +129,7 @@
         ></app-error-message>
       </div>
       <div class="profilPict">
-        <ion-item>
+        <ion-item lines="none">
           <p>Téléchargez votre logo (jpeg/png)</p>
           <ion-button color="dark" size="default" (click)="takePicture()">
             Parcourir</ion-button

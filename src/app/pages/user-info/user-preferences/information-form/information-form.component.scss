@@ -1,5 +1,9 @@
 ion-input,ion-datetime{
-    border: 1px grey solid;
+    border: 0.5px rgb(197, 197, 197) solid;
     border-radius: 5px;
     width: 100%;
+}
+ion-label{
+    padding: 3px;
+    --color: #618226  !important;
 }

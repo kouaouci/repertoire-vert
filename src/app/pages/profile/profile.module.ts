@@ -16,6 +16,7 @@ import { UserStatsPageModule } from '../user-info/user-stats/user-stats.module';
 import { UserPreferencesComponent } from '../user-info/user-preferences/user-preferences.component';
 import { InformationFormComponent } from '../user-info/user-preferences/information-form/information-form.component';
 import { CovoiturageFormComponent } from '../user-info/user-preferences/covoiturage-form/covoiturage-form.component';
+import { ErrorMessageComponent } from 'src/app/components/error-message/error-message.component';
 
 @NgModule({
   imports: [
@@ -35,7 +36,8 @@ import { CovoiturageFormComponent } from '../user-info/user-preferences/covoitur
     ProfilePageComponent,
     UserPreferencesComponent,
     InformationFormComponent,
-    CovoiturageFormComponent
+    CovoiturageFormComponent,
+    ErrorMessageComponent
   ]
 })
 export class ProfilePageModule {}
