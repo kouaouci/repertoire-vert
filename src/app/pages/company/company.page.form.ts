@@ -101,8 +101,7 @@ export class CompanyPageForm {
         vision: ["", [Validators.minLength(3), Validators.maxLength(508)]],
         image: [""],
       },
-      { validators: [this.checkPassword, this.checkEmail] }
-      
+      {validators: [this.checkPassword, this.checkEmail],}
     );
    
   }

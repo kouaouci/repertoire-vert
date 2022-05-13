@@ -8,10 +8,8 @@ import { CompanyPageRoutingModule } from './company-routing.module';
 
 import { CompanyPage } from './company.page';
 //import { TabPageModule } from '../tab/tab.module';
-//import { SharedComponentsModule } from 'src/app/components/shared-components.module';
+import { SharedComponentsModule } from 'src/app/components/shared-components.module';
 import {ErrorMessageComponent} from 'src/app/components/error-message/error-message.component'
-
-
 @NgModule({
   imports: [
     CommonModule,
@@ -20,11 +18,11 @@ import {ErrorMessageComponent} from 'src/app/components/error-message/error-mess
     IonicModule,
     CompanyPageRoutingModule,
     //TabPageModule,
-    //SharedComponentsModule
+    SharedComponentsModule
   ],
   declarations: [
     CompanyPage,
-    ErrorMessageComponent
+    ErrorMessageComponent,
   ]
 })
 export class CompanyPageModule {}

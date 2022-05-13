@@ -12,20 +12,16 @@
 />
 
 <ion-app>
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-
-      <ion-title> Entreprise </ion-title>
-
-      <ion-buttons slot="end">
-        <ion-back-button defaultHref="/identification"></ion-back-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+  <app-toolbar *ngIf="isLogin"></app-toolbar>
+  <app-toolbar-with-back
+    *ngIf="!isLogin"
+    backUrl="/login"
+  ></app-toolbar-with-back>
   <ion-content force-overscroll="true">
+    <ion-col size="12" class="ion-text-center label-column">
+      <ion-text *ngIf="isLogin" translate="login.login"></ion-text>
+      <ion-text *ngIf="!isLogin" translate="login.createAccount"></ion-text>
+    </ion-col>
     <!--[scrollEvents]="true"-->
     <form
       [formGroup]="companyForm"
@@ -101,8 +97,9 @@
           error="required"
         ></app-error-message>
         <ion-label
-          *ngIf="companyForm.hasError('passwordsNotEquals')"
+          class="errorMessage"
           color="danger"
+          *ngIf="companyForm.hasError('passwordsNotEquals')"
           >*The passwords are not the same
         </ion-label>
 
@@ -128,6 +125,12 @@
           <ion-label position="stacked">Confirmer l'adresse mail*</ion-label>
           <ion-input formControlName="emailConfirm"></ion-input>
         </ion-item>
+        <ion-label
+          class="errorMessage"
+          color="danger"
+          *ngIf="companyForm.hasError('emailsNotEquals')"
+          >*The emails are not the same
+        </ion-label>
         <app-error-message
           message="*Email is invalid use the format example@email.ex"
           [field]="companyForm.get('emailConfirm')"
@@ -138,11 +141,6 @@
           [field]="companyForm.get('emailConfirm')"
           error="required"
         ></app-error-message>
-        <ion-label
-          *ngIf="companyForm.hasError('emailsNotEquals')"
-          color="danger"
-          >*The emails are not the same
-        </ion-label>
 
         <ion-item>
           <ion-label position="stacked">Nom de l'entreprise*</ion-label>
@@ -458,7 +456,7 @@
 
         <ion-item>
           <p>Téléchargez votre logo (jpeg/png)</p>
-          <ion-button color="dark" size="default" (click)="takePicture()" >
+          <ion-button color="dark" size="default" (click)="takePicture()">
             Parcourir</ion-button
           >
           <input type="file" hidden="true" name="image" />
@@ -466,13 +464,9 @@
             >Supprimez l'image</ion-button
           >
         </ion-item>
-        <img
-          [src]="picture"
-          *ngIf="picture != undefined"
-          width="100%"
-          
-        />
+        <img [src]="picture" *ngIf="picture != undefined" width="100%" />
       </div>
+      <p>*Ces champs sont obligatoire</p>
       <ion-item>
         <ion-button
           color="gaea-green-deep"
@@ -493,54 +487,5 @@
         >
       </ion-item>
     </form>
-
-    <ion-item>
-      <ion-tabs>
-        <ion-tab-bar style="width: 100%" slot="bottom">
-          <ion-tab-button tab="category" routerLink="/tabs/category">
-            <ion-icon name="folder"></ion-icon>
-            <ion-label>Catégories</ion-label>
-          </ion-tab-button>
-
-          <ion-tab-button (click)="showOfflineMessage()">
-            <ion-icon
-              *ngIf="!co2Selected"
-              src="../../../assets/imgs/home/pas.svg"
-            >
-            </ion-icon>
-            <ion-icon
-              *ngIf="co2Selected"
-              src="../../../assets/imgs/home/pas_green.svg"
-            >
-            </ion-icon>
-            <ion-label>CO2</ion-label>
-          </ion-tab-button>
-
-          <ion-tab-button tab="qrcode" routerLink="/tabs/qrcode">
-            <ion-icon
-              *ngIf="!qrcodeSelected"
-              src="../../../assets/imgs/home/qr_code.svg"
-            >
-            </ion-icon>
-            <ion-icon
-              *ngIf="qrcodeSelected"
-              src="../../../assets/imgs/home/qr_code_green.svg"
-            >
-            </ion-icon>
-            <ion-label>QR Code</ion-label>
-          </ion-tab-button>
-
-          <ion-tab-button tab="communaute" routerLink="/tabs/communaute">
-            <ion-icon name="people"></ion-icon>
-            <ion-label>Communauté</ion-label>
-          </ion-tab-button>
-
-          <ion-tab-button tab="lieux" routerLink="/tabs/lieux">
-            <ion-icon name="search"></ion-icon>
-            <ion-label>Recherche</ion-label>
-          </ion-tab-button>
-        </ion-tab-bar>
-      </ion-tabs>
-    </ion-item>
   </ion-content>
 </ion-app>
