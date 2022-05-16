@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {  ToastController } from '@ionic/angular';
-import { AnimationBuilder, IonLabel } from '@ionic/angular';
+import { AnimationBuilder } from '@ionic/angular';
 import { Camera, CameraResultType } from '@capacitor/camera/';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { CompanyPageForm } from './company.page.form';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Category } from 'src/app/shared/category.model';
@@ -13,16 +12,19 @@ import { FileService } from 'src/app/services/file/file.service';
 @Component({
   selector: 'app-company',
   templateUrl: './company.page.html',
+  styleUrls: ['./company.page.scss'],
 })
 export class CompanyPage implements OnInit {
 
+
   companyForm: FormGroup;
-  check:boolean
   picture: any;
   date: Date;
   customAlertOptions: any;
   categories:Category[] = [];
   loading: boolean
+  formBuilder: any;
+
   constructor(
     private categoriesService: CategoriesService,
     private toastController: ToastController,
@@ -30,9 +32,103 @@ export class CompanyPage implements OnInit {
     private router:Router,
     private fileService: FileService
     ) {
+    this.companyForm= this.fb.group(
+        {
+          username: [
+            "",
+            [
+              Validators.required,
+              Validators.minLength(3),
+              Validators.maxLength(50),
+            ],
+          ],
+          password: [
+            "",
+            [
+              Validators.required,
+              Validators.minLength(8),
+              Validators.pattern("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})"),
+            ],
+          ],
+          passwordConfirm: [
+            "",
+            [
+              Validators.required,
+              Validators.minLength(8),
+              Validators.pattern("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,30})"),
+            ],
+          ],
+          email: [
+            "",
+            [
+              Validators.required,
+              Validators.email,
+              Validators.pattern("[A-Za-z0-9.%-]+@[A-Za-z0-9.%-]+.[a-z]{2,3}"),
+            ],
+          ],
+          emailConfirm: [
+            "",
+            [
+              Validators.required,
+              Validators.email,
+              Validators.pattern("[A-Za-z0-9.%-]+@[A-Za-z0-9.%-]+.[a-z]{2,3}"),
+            ],
+          ],
+          name: [
+            "",
+            [
+              Validators.required,
+              Validators.minLength(3),
+              Validators.maxLength(100),
+            ],
+          ],
+          socialreason: [
+            "",
+            [
+              Validators.required,
+              Validators.minLength(2),
+              Validators.maxLength(50),
+            ],
+          ],
+          street: ["", [Validators.minLength(8), Validators.maxLength(254)]],
+          postcode: ["", [Validators.minLength(3), Validators.maxLength(15)]],
+          region: ["", [Validators.minLength(3), Validators.maxLength(254)]],
+          city: ["", [Validators.minLength(3), Validators.maxLength(254)]],
+          country: ["", [Validators.minLength(3), Validators.maxLength(254)]],
+          phone: ["", [Validators.minLength(10), Validators.maxLength(20)]],
+          urlwebsite: ["", [Validators.minLength(3), Validators.maxLength(254)]],
+          urlfacebook: ["", [Validators.minLength(3), Validators.maxLength(254)]],
+          urllinkedin: ["", [Validators.minLength(3), Validators.maxLength(254)]],
+          urltwitter: ["", [Validators.minLength(3), Validators.maxLength(254)]],
+          startingdate: ["", [Validators.required]],
+          certification: ["", [Validators.required]],
+          influencezone: ["", [Validators.required]],
+          categories: ["", [Validators.required]],
+          wantevaluation: ["", [Validators.required]],
+          description: ["", [Validators.minLength(3), Validators.maxLength(508)]],
+          vision: ["", [Validators.minLength(3), Validators.maxLength(508)]],
+          image: [""],
+        },
+        {validators: [this.checkPassword, this.checkEmail],}
+      );
+    
       defineCustomElements(window);
     }
-
+    checkPassword: ValidatorFn = (
+      group: AbstractControl
+    ): ValidationErrors | null => {
+      const password = group.get("password")!.value;
+      const passwordConfirm = group.get("passwordConfirm")!.value;
+      return password === passwordConfirm ? null : { passwordsNotEquals: true };
+    };
+    checkEmail: ValidatorFn = (
+      group: AbstractControl
+    ): ValidationErrors | null => {
+      const email = group.get("email")!.value;
+      const emailConfirm = group.get("emailConfirm")!.value;
+      return email === emailConfirm ? null : { emailsNotEquals: true };
+    };
+   
     ngOnInit() {
       
       this.categoriesService.getCategories().subscribe({
@@ -50,7 +146,6 @@ export class CompanyPage implements OnInit {
           toast.present();
         }
       })
-      this.companyForm = new CompanyPageForm(this.fb).createCompanyForm();
       this.picture = undefined;
     }
   
@@ -66,34 +161,26 @@ export class CompanyPage implements OnInit {
   deleteFile(){
     this.picture= undefined;
   }
-  
-  
-  async showOfflineMessage() {
-    const toast = await this.toastController.create({
-      message: " Vous n'êtes pas connecté(e)",
-      duration: 5000
-    });
-    toast.present();
-  }
-  private uploadImage() {
+  private async uploadImage() {
     // Get image file
     let imageFile: File = this.companyForm.get('image').value;
 
     // Check if file size is larger than 2MB
     if (imageFile.size > 2000000) {
-      const toast = this.toastController.create({
+      const toast = await this.toastController.create({
         message: "the file is too big",
         duration: 3500,
         animated: true,
         color: "danger",
         position:'bottom'
       })
+      toast.present()
       this.loading = false;
     } else {
       console.log(imageFile)
-      this.fileService.uploadImage('companies', imageFile).then(result => {
+      this.fileService.uploadImage('companies', imageFile).then( () => {
         this.loading = true;
-      }, error => {
+      }, () => {
         this.loading = false;
       });
     }
@@ -132,6 +219,7 @@ export class CompanyPage implements OnInit {
       this.uploadImage();
     };
 
+    // a mettre dans le subscribe "next"
     if(this.companyForm.valid){
       const toast = await this.toastController.create({
         message:"Votre compte à été crée avec succès",
@@ -148,7 +236,7 @@ export class CompanyPage implements OnInit {
       // this.router.navigate(['login']);
     }
 
-    // if(this.companyForm.invalid){
+    // error: () => {
     //   const toast = await this.toastController.create({
     //     message:"Une erreur c'est produite veuillez réessayer",
     //     duration: 3500,

@@ -1,53 +1,138 @@
-@import '../../../global.scss';
-
-ion-icon {
-    font-size: min(6vw, 20px);
-};
-
-ion-label {
-    font-size: min(3vw, 12px);
+form {
+  width: 90%;
 }
+@import "../../../global.scss";
 
-.not-logged {
-    ion-tab-button {
-      width: 20%;
+.gaea21home {
+  --ion-background-color: #d8e0ca;
+  font-size: $login-font-size;
+
+  ion-grid {
+    height: 100%;
+    padding: 0;
+    display: flex;
+    flex-flow: column;
+  }
+
+  .logo-row {
+    //padding: 50px;
+    min-height: 80px;
+    height: 15%;
+
+    ion-col {
+      height: 100%;
     }
-  
-    .icon-row {
-      height: 55%;
-    }  
-  
-    ion-img {
-      height: 20px;
+  }
+
+  .no-logo-row {
+    padding: 25px;
+  }
+
+  ion-img {
+    margin: 0 auto;
+    height: 100%;
+    width: 50%;
+    max-width: 264px;
+  }
+
+  .gray-row {
+    background-color: $gray-secondary;
+    border-top-left-radius: 50px;
+    flex: 1 1 auto;
+    align-content: flex-start;
+  }
+
+  .label-column {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    ion-text {
+      font-size: 32px;
     }
-  
-    ion-icon {
-      color: #4E4E4E;
+  }
+
+  ion-row,
+  form {
+    width: 100%;
+  }
+
+  .form-row {
+    margin-bottom: 20px;
+  }
+
+  ion-item {
+    --ion-background-color: white !important;
+    height: 66px;
+    border-radius: $login-border-radius;
+    margin: 0 auto;
+    --padding-start: 0 !important;
+    --border-style: none;
+    --highlight-background: none;
+    --ion-color-primary: black;
+  }
+
+  ion-label {
+    padding-left: 15px;
+    font-weight: bold;
+  }
+
+  ion-input {
+    margin-bottom: 5px;
+    --padding-start: 15px;
+  }
+
+  ion-button {
+    height: 40px;
+    margin-top: 20px;
+    font-weight: bold;
+    --border-radius: 6px; // $login-border-radius not working
+    text-transform: none;
+  }
+
+  ion-item,
+  ion-button {
+    font-size: $login-font-size;
+    width: 307px;
+  }
+
+  .dateInput {
+    padding-left: 15px;
+  }
+
+  .links-column {
+    padding-top: 15px;
+    ion-nav-link {
+      text-decoration: underline;
+      padding-left: 25px;
+      padding-right: 25px;
     }
+  }
+
+  .password-input {
+    width: 85%;
+  }
+
+  .eye-button {
+    width: 30px;
+    background-color: white;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-35%);
+    margin: 0;
+  }
+  .error-message {
+    padding-left: 20px ;
+    display: flex;
+    flex-direction: column;
+  }
+  .sameValidator {
+    font-family: "DroidSans" !important;
+    font-size: small !important;
+    font-weight: normal !important;
+    padding-left: 20px;
+    text-align: justify;
+    color: red;
+  }
+  
+   
 }
-
-//.label {
-//    width: 100%;
-//}
-
-//.toolbar {
-//    height: 100%;
-//    width: 100%;
-//}
-//
-//ion-modal {
-//    --width: 290px;
-//    --height: 382px;
-//    --border-radius: 8px;
-//}
-//
-//ion-modal ion-datetime {
-//    height: 382px;
-//}
-//
-//ion-datetime {
-//    height: auto;
-//    width: auto;
-//
-//    max-width: 350px;
-//} 

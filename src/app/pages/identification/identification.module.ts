@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { IdentificationPageRoutingModule } from './identification-routing.module';
+import { SharedComponentsModule } from 'src/app/components/shared-components.module';
+
 
 import { IdentificationPage } from './identification.page';
 
@@ -13,7 +15,8 @@ import { IdentificationPage } from './identification.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    IdentificationPageRoutingModule
+    IdentificationPageRoutingModule,
+    SharedComponentsModule
   ],
   declarations: [IdentificationPage]
 })
