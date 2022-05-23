@@ -1,0 +1,81 @@
+<app-toolbar *ngIf="isLogin"></app-toolbar>
+<app-toolbar-with-back
+  *ngIf="!isLogin"
+  backUrl="/login"
+></app-toolbar-with-back>
+
+<ion-content   force-overscroll="false"  class="gaea21home" *ngIf="!emailHasSend, else mailSend" >
+  <ion-grid>
+  <!-- Logo répertoire vert-->
+    <ion-row *ngIf="!isLogin" class="logo-row ion-align-items-center">
+      <ion-col class="ion-text-center">
+        <ion-img src="../assets/imgs/logo_repertoire_vert_ok.png"></ion-img>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row class="gray-row">
+         <ion-col size="12" class="ion-text-center label-column">
+            <ion-text *ngIf="!isLogin" translate="Réinitialisation de votre mot de passe"></ion-text>
+         </ion-col>
+
+<!-- Login form --->
+
+    <form #mailSend="ngForm"
+           (onSubmit)="sendEmailForm.valid && sendEmail()"
+           [formGroup]="sendEmailForm">
+              <ion-col size="12">
+                   <ion-item>
+                        <ion-label position="stacked"   [translate]="isLogin? 'login.emailOrUsername' : 'email'"></ion-label>
+                              <ion-input
+                              [(ngModel)]="userEmail"
+                               class="login-input"
+                               formControlName="email"
+                               type="email"
+                               ></ion-input>
+                  </ion-item>
+
+                  <div class="error-message">
+                    <app-error-message
+                      message="*Email is invalid use the format example@email.ex"
+                      [field]="sendEmailForm.get('email')"
+                      error="pattern"
+                    ></app-error-message>
+                    <app-error-message
+                      message="*Email is mandatory"
+                      [field]="sendEmailForm.get('email')"
+                      error="required"
+                    ></app-error-message>
+                  </div>
+       
+               </ion-col>
+                       <ion-col>
+                               <ion-button
+                                type="submit"
+                                   class="login-button"
+                                   color="gaea-green"
+                                 (click)="sendEmail()"
+                                   expand="block"
+                                  [disabled]="!sendEmailForm.valid"
+                                   >
+                               <ion-text>Envoyer</ion-text>
+                       </ion-button>
+                </ion-col>
+    </form>
+   
+    </ion-row>
+      
+  </ion-grid>
+
+</ion-content>
+
+
+
+<ng-template #mailSend>
+  <div class="container d-flex flex-column">
+    <h3 class="mb-3">Mail de récupération <br> de mot de passe envoyé</h3>
+    <p>Un email de confirmation vous a été envoyé. Vous y trouverez un lien de redirection pour réinitialiser votre mot de passe.</p>
+  </div>
+  
+</ng-template>
+
+

@@ -1,0 +1,93 @@
+@import "../../../global.scss";
+
+.gaea21home {
+  --ion-background-color: #D8E0CA ;
+  font-size: $login-font-size;
+
+  ion-grid {
+    height: 100%;
+    padding: 0;
+    display: flex;
+    flex-flow: column;
+  }
+
+  .logo-row {
+    //padding: 50px;
+    min-height: 80px;
+    height: 15%;
+
+    ion-col {
+      height: 100%;
+    }
+  }
+
+  .no-logo-row {
+    padding: 25px;
+  }
+
+  ion-img {
+    margin: 0 auto;
+    height: 100%;
+    width: 50%;
+    max-width: 264px;
+  }
+
+  .gray-row {
+    background-color: $gray-secondary;
+    border-top-left-radius: 50px;
+    flex: 1 1 auto;
+    align-content: flex-start;
+  }
+
+  .label-column {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    ion-text {
+      font-size: 32px;
+    }
+  }
+
+  ion-row, form {
+    width: 100%;
+  }
+
+  .form-row {
+    margin-bottom: 20px;
+  }
+
+  ion-item {
+    --ion-background-color: white !important;
+    height: 66px;
+    border-radius: $login-border-radius;
+    margin: 0 auto;
+    --padding-start: 0 !important;
+    --border-style: none;
+    --highlight-background: none;
+    --ion-color-primary: black;
+  }
+
+  ion-label {
+    padding-left: 15px;
+    font-weight: bold;  
+  }
+
+  ion-input {
+    margin-bottom: 5px;
+    --padding-start: 15px;
+  }
+
+  ion-button {
+    height: 40px;
+    margin-top: 20px;
+    margin-left: 45px;
+    font-weight: bold;
+   --border-radius: 6px; // $login-border-radius not working
+    text-transform: none;
+  }
+
+  ion-item, ion-button {
+    font-size: $login-font-size;
+    width: 307px;
+  }
+
+}
