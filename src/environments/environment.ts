@@ -4,20 +4,22 @@
 
 export const environment = {
   production: false,
-  
+
   // Proxy to bypass cors problem on login server
-  proxyUrl: 'https://agile-tor-83541.herokuapp.com/https://www.repertoirevert.org/',
-  authApiUrl: 'https://agile-tor-83541.herokuapp.com/https://gaea21user.sustlivprogram.org/apictrl/',
+  proxyUrl:
+    "https://agile-tor-83541.herokuapp.com/https://www.repertoirevert.org/",
+  authApiUrl:
+    "https://agile-tor-83541.herokuapp.com/https://gaea21user.sustlivprogram.org/apictrl/",
   //authApiUrl: 'https://www.repertoirevert.org/api/'
 
-  // Repertoire vert url / 
-  url: 'https://www.repertoirevert.org/',
+  // Repertoire vert url /
+  url: "https://www.repertoirevert.org",
   // url: 'https://dev.repertoirevert.org/',
   //url: 'https://localhost:8000/',
 
   // Geocodeapi
-  geocodeApiUrl: 'https://app.geocodeapi.io/api/v1/',
-  geocodeApiKey: 'b79a8300-51c4-11ec-a577-7de9f32705ba',
+  geocodeApiUrl: "https://app.geocodeapi.io/api/v1/",
+  geocodeApiKey: "b79a8300-51c4-11ec-a577-7de9f32705ba",
 };
 /*
  * For easier debugging in development mode, you can import the following file

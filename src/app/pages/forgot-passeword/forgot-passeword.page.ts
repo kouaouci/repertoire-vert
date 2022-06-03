@@ -2,13 +2,17 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { ForgotPasswordService } from "src/app/services/forgot-password.service";
 import { ToastController } from "@ionic/angular";
-import { async } from "rxjs/internal/scheduler/async";
+
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
+
 @Component({
   selector: "app-forgot-passeword",
   templateUrl: "./forgot-passeword.page.html",
   styleUrls: ["./forgot-passeword.page.scss"],
 })
 export class ForgotPassewordPage implements OnInit {
+  url: string = "https://www.repertoirevert.org";
+  email: string;
   emailHasSend: boolean;
   sendEmailForm = this.fb.group({
     email: [
@@ -24,41 +28,43 @@ export class ForgotPassewordPage implements OnInit {
   constructor(
     private fb: FormBuilder,
     private forgotPasswordService: ForgotPasswordService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.emailHasSend = false;
+    this.email = "";
   }
 
   ngOnInit() {}
 
   sendEmail() {
-    console.log(this.sendEmailForm.value);
-    let formData = new FormData();
-    formData.append("_email", this.sendEmailForm.value.email);
-    this.forgotPasswordService.preresetPassword(formData).subscribe({
-      next: async () => {
-        const toast = await this.toastController.create({
-          message: "Votre compte à été crée avec succès",
-          duration: 3500,
-          color: "gaea-green-deep",
-          position: "bottom",
-          animated: true,
-        });
-        toast.present();
+    this.forgotPasswordService
+      .preresetPassword(this.url, this.sendEmailForm.get("email").value)
+      .subscribe({
+        next: async () => {
+          const toast = await this.toastController.create({
+            message: "un mail avec un lien établi a été envoyé à votre adresse",
+            duration: 3500,
+            color: "gaea-green-deep",
+            position: "bottom",
+            animated: true,
+          });
+          toast.present();
 
-        //console.log("Email sent");
-      },
-      error: async (_error) => {
-        const toast = await this.toastController.create({
-          message:
-            "Un problème est survenue lors de la connexion au serveur veuillez réesayer",
-          duration: 3500,
-          position: "bottom",
-          animated: true,
-          color: "danger",
-        });
-        toast.present();
-      },
-    });
+          //console.log("Email sent");
+        },
+        error: async (_error) => {
+          const toast = await this.toastController.create({
+            message:
+              "Un problème est survenue lors de la connexion au serveur veuillez réesayer",
+            duration: 3500,
+            position: "bottom",
+            animated: true,
+            color: "danger",
+          });
+          toast.present();
+        },
+      });
   }
 }
