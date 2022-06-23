@@ -11,9 +11,10 @@ import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
   styleUrls: ["./forgot-passeword.page.scss"],
 })
 export class ForgotPassewordPage implements OnInit {
-  url: string = "https://www.repertoirevert.org";
+  url: string = "https://www.repertoirevert.org/";
   email: string;
-  emailHasSend: boolean;
+  token: string;
+
   sendEmailForm = this.fb.group({
     email: [
       "",
@@ -32,8 +33,8 @@ export class ForgotPassewordPage implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.emailHasSend = false;
     this.email = "";
+    this.token = "";
   }
 
   ngOnInit() {}
@@ -41,6 +42,7 @@ export class ForgotPassewordPage implements OnInit {
   sendEmail() {
     this.forgotPasswordService
       .preresetPassword(this.url, this.sendEmailForm.get("email").value)
+
       .subscribe({
         next: async () => {
           const toast = await this.toastController.create({

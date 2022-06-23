@@ -52,6 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+
     NgxPaginationModule,
     IonicStorageModule.forRoot({
       driverOrder: ["localstorage"],

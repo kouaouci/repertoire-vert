@@ -6,8 +6,8 @@
 
 <ion-content   force-overscroll="false"  class="gaea21home" *ngIf="!emailHasSend, else mailSend" >
   <ion-grid>
-  <!-- Logo répertoire vert-->
-    <ion-row *ngIf="!isLogin" class="logo-row ion-align-items-center">
+  <!--Logo répertoire vert-->
+   <ion-row *ngIf="!isLogin" class="logo-row ion-align-items-center">
       <ion-col class="ion-text-center">
         <ion-img src="../assets/imgs/logo_repertoire_vert_ok.png"></ion-img>
       </ion-col>
@@ -20,7 +20,7 @@
 
 <!-- Login form --->
 
-    <form #mailSend="ngForm"
+  <form #mailSend="ngForm"
            (onSubmit)="sendEmailForm.valid && sendEmail()"
            [formGroup]="sendEmailForm">
               <ion-col size="12">
@@ -48,7 +48,8 @@
                   </div>
        
                </ion-col>
-                       <ion-col>
+                       <ion-col size="12">
+                  
                                <ion-button
                                 type="submit"
                                    class="login-button"
@@ -59,6 +60,7 @@
                                    >
                                <ion-text>Envoyer</ion-text>
                        </ion-button>
+                   
                 </ion-col>
     </form>
    
@@ -70,12 +72,5 @@
 
 
 
-<ng-template #mailSend>
-  <div class="container d-flex flex-column">
-    <h3 class="mb-3">Mail de récupération <br> de mot de passe envoyé</h3>
-    <p>Un email de confirmation vous a été envoyé. Vous y trouverez un lien de redirection pour réinitialiser votre mot de passe.</p>
-  </div>
-  
-</ng-template>
 
 

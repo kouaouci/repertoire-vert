@@ -4,6 +4,8 @@ import { TabPage } from "./pages/tab/tab.page";
 import { WelcomeComponent } from "./pages/welcome/welcome.component";
 import { AuthGuard } from "./services/auth/auth.guard";
 import { LoginGuard } from "./services/auth/login.guard";
+import { AuthGuardService } from "./services/auth.guard.service";
+import { ErrorMessageComponent } from "./components/error-message/error-message.component";
 
 const routes: Routes = [
   {

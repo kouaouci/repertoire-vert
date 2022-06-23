@@ -8,6 +8,9 @@ import { environment } from "src/environments/environment";
 })
 export class ForgotPasswordService {
   url: string = environment.url;
+
+  token: string;
+
   constructor(private http: HttpClient) {}
   public preresetPassword(url: string, email: string): Observable<string> {
     console.log("email ", email);
@@ -16,25 +19,31 @@ export class ForgotPasswordService {
       { email, url: this.url }
     );
   }
+
   public sendResetPasswordMail(
     _email: any,
-    token: any,
+
     url: string
   ): Observable<string> {
     return this.http.post<string>(
       environment.authApiUrl + "/resetpassword/{email}/{token}",
       {
         _email,
-        token,
+
         url,
+        token: this.token,
       }
     );
   }
-  public sendNewPasswordMail(passeword: string): Observable<string> {
-    return this.http.post<string>(
+  public sendNewPasswordMail(
+    passeword: string,
+    token: string
+  ): Observable<string> {
+    return this.http.put<string>(
       environment.authApiUrl + "/resetpassword/{token}",
       {
         passeword,
+        token,
       }
     );
   }

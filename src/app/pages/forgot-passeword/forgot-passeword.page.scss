@@ -1,4 +1,7 @@
 @import "../../../global.scss";
+form{
+  width: 90%;
+}
 
 .gaea21home {
   --ion-background-color: #D8E0CA ;
@@ -79,7 +82,7 @@
   ion-button {
     height: 40px;
     margin-top: 20px;
-    margin-left: 45px;
+    margin-left: 30px;
     font-weight: bold;
    --border-radius: 6px; // $login-border-radius not working
     text-transform: none;
@@ -89,5 +92,21 @@
     font-size: $login-font-size;
     width: 307px;
   }
+ @media screen and (min-width: 720px) {
+   ion-button {
+    margin-left: 0;
+    margin-top: 20px;
+    width: 100%;
+   }
+  }
+   
+ }
 
-}
+
+
+
+ 
+  
+    
+  
+
